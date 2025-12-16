@@ -1,0 +1,278 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Contact | VEDANSH INFRA SERVICES</title>
+    <meta charset="utf-8">
+    <meta name="description" content="When you engage with Vedansh for your project, you can trust us on every step of the way. Right from Project Allocation all the way to Project Review and Handover, the entire process has been subdivided with milestones and checkpoints throughout, to ensure smooth and safe workflow and the assurance of quality that comes with Vedansh.">
+    <meta name="keywords" content="Cement, electricity,EPC, Engineering, Procurement, Commissioning, Project management,Plant Erection,  Testing and Commissioning, vedansh, infra, services ">
+    <meta name="author" content="vedansh infra services">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="./images/favicon.svg" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/style.css">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P0CPR9371Z">
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+
+gtag('config','G-P0CPR9371Z');
+</script>
+
+<script>
+$(document).ready(function(){
+    var from,to,subject,text,name,Email;
+	var sendingData = {
+        name : $("#yname").val(),
+        Email : $("#yemail").val(),
+        subject : $("#ysub").val(),
+        text : $("#ymsg").val()
+	};
+
+    $.ajax({
+        url: 'https://208.109.9.175:3000/sendmail',            
+	headers: {'Access-Control-Allow-Origin' : '*'},
+        method: 'GET',
+        type: 'json',
+        data: sendingData,
+	
+        success: function (response) {
+		alert(response);
+            console.log(response);
+        },
+        error: function (error) {
+		alert(error);
+            console.log(error);
+        }
+        });
+
+
+
+//    $("#postform").submit(function(e){     
+// 	e.preventDefault();  
+//        $("#message").text("Sending E-mail...Please wait");
+//        $.get("//localhost:3000/sendmail",{name:name,Email:Email,subject:subject,text:text},function(data){
+//        if(data=="sent")
+//        {
+//		alert('Mail Sent');
+//            $("#message").empty().html("Your Query send successfully, We will be in touch shortly !");
+//        }
+//	});
+//    });
+});
+
+
+
+
+</script>
+
+  </head>
+  <body>
+    
+	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container-fluid">
+	      <a class="navbar-brand" href="index.html"><img src="./images/logo.svg" id="navbar-logo"></a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+	          <li class="nav-item"><a href="index.html" class="nav-link">HOME</a></li>
+	          <li class="nav-item"><a href="about.html" class="nav-link">ABOUT</a></li>
+	          <li class="nav-item"><a href="team.html" class="nav-link">TEAM</a></li>
+			      <li class="nav-item"><a href="services.html" class="nav-link">SERVICES</a></li>
+			      <li class="nav-item"><a href="project.html" class="nav-link">PROJECT</a></li>
+
+	          <li class="nav-item active"><a href="contact.html" class="nav-link">CONTACT</a></li>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+    <section class="hero-wrap hero-wrap-2" style="background-image: url(./images/header.png); height: 380px !important;" data-stellar-background-ratio="1">
+      <div class="overlay" style="height: 100%;"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center">
+          <div class="col-md-9 ftco-animate pb-5">
+          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="fa fa-chevron-right"></i></a></span> <span>Contact us <i class="fa fa-chevron-right"></i></span></p>
+            <h2 class="mb-3 bread">CONTACT US</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+	  <section class="ftco-section contact-section">
+
+      <div class="container">
+        <h2 class="text-center mt-5" style="font-size: 22px;">At Vedansh, we value our people, because they are the force behind our growth.
+          If you’re dedicated and passionate, and if you believe in doing the best for your company and customers, you’re a perfect fit at Vedansh. Our work ethic is imparallelled, we believe in getting the work done with safety and on time.
+          <br><br>
+          </h2>
+          <h2 class="text-center mt-5" style="font-size: 24px;">
+          <b>Apply today if you are as driven about growth as we are!</b>
+            </h2>
+        <div class="row block-9 justify-content-center mb-5">
+          <div class="col-md-8 mb-md-5">
+            <form id="postform" class="bg-light p-5 contact-form">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Your Name" id="yname">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Your Email" id="yemail">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Subject" id="ysub">
+              </div>
+              <div class="form-group">
+                <textarea name=""  cols="30" rows="7" class="form-control" placeholder="Message" id="ymsg"></textarea>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Message" id="message" readonly>
+              </div>
+              <div class="form-group">
+                <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+              </div>
+            </form>
+
+          </div>
+        </div>
+        <div class="row d-flex mb-5 contact-info justify-content-center">
+        	<div class="col-md-8">
+        		<div class="row mb-5">
+		          <div class="col-md-4 text-center py-4">
+		          	<div class="icon">
+		          		<span class="fa fa-map"></span>
+		          	</div>
+		            <p><span>Address:</span> <a href="https://www.google.com/maps/place/Vedansh+Infra+Services+Pvt.+Ltd./@24.8903969,74.6240324,17z/data=!3m1!4b1!4m5!3m4!1s0x3968a19022c32229:0x844f13024d31c092!8m2!3d24.8903969!4d74.6262211">Vedansh Infra Services Pvt. Ltd. F-16, Block II, Ambe Market, Near Rituraj Vatika, Chittorgarh, Rajasthan - 312001</a></p>
+		          </div>
+		          <div class="col-md-4 text-center border-height py-4">
+		          	<div class="icon">
+		          		<span class="fa fa-phone"></span>
+		          	</div>
+		            <p><span>Phone:</span> <a href="tel:01472294007">01472-294007</a></p>
+		          </div>
+		          <div class="col-md-4 text-center py-4">
+		          	<div class="icon">
+		          		<span class="fa fa-paper-plane"></span>
+		          	</div>
+		            <p><span>Email:</span> <a href="mailto:vedansh.infragroup@gmail.com">vedansh.infragroup@gmail.com</a></p>
+		          </div>
+		        </div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+        	<div class="col-md-10">
+        		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3619.222328743689!2d74.62403241412933!3d24.890396884039756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3968a19022c32229%3A0x844f13024d31c092!2sVedansh%20Infra%20Services%20Pvt.%20Ltd.!5e0!3m2!1sen!2sin!4v1598505428862!5m2!1sen!2sin" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        	</div>
+        </div>
+      </div>
+    </section>	
+
+    <footer class="ftco-footer ftco-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Vedansh</h2>
+              <p>At Vedansh, you tell your dream, and our team of experts will turn it into reality.</p>
+              <ul class="ftco-footer-social list-unstyled mt-5">
+                <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="https://www.linkedin.com/company/vedansh/"><span class="fa fa-linkedin"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-4">
+              <h2 class="ftco-heading-2">Business</h2>
+              <ul class="list-unstyled">
+                <li><a href="project.html"><span class="fa fa-chevron-right mr-2"></span>Projects</a></li>
+                <li><a href="team.html"><span class="fa fa-chevron-right mr-2"></span>Team</a></li>
+
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-4">
+              <h2 class="ftco-heading-2">About Us</h2>
+              <ul class="list-unstyled">
+                <li><a href="about.html"><span class="fa fa-chevron-right mr-2"></span>Our Story</a></li>
+                <li><a href="team.html"><span class="fa fa-chevron-right mr-2"></span>Meet the team</a></li>
+                <li><a href="contact.html"><span class="fa fa-chevron-right mr-2"></span>Work with us</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Company</h2>
+              <ul class="list-unstyled">
+                <li><a href="about.html"><span class="fa fa-chevron-right mr-2"></span>About Us</a></li>
+       
+				<li><a href="contact.html"><span class="fa fa-chevron-right mr-2"></span>Contact</a></li>
+				
+				<li><a href="http://discovery.ariba.com/profile/AN01399503535"><span class="fa fa-chevron-right mr-2"></span>Ariba Profile</a></li>
+
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Have a Questions?</h2>
+            	<div class="block-23 mb-3">
+                <ul>
+	                <li><span class="icon fa fa-map"></span><span class="text">Vedansh Infra Services Pvt. Ltd. F-16, Block II, Ambe Market, Near Rituraj Vatika, Chittorgarh, Rajasthan - 312001</span></li>
+	                <li><a href="tel:01472294007"><span class="icon fa fa-phone"></span><span class="text">01472-294007</span></a></li>
+	                <li><a href="mailto:vedansh.infragroup@gmail.com"><span class="icon fa fa-envelope pr-4"></span><span class="text">vedansh.infragroup@gmail.com</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+	
+            <p>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved to Vedansh Infra Services Pvt. Ltd.
+  </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+    
+  </body>
+</html>
