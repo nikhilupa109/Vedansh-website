@@ -1,0 +1,834 @@
+// src/data/projects.js
+// Complete Projects Database for Vedansh Infra
+
+export const projects = [
+  // ==================== ONGOING PROJECTS ====================
+  {
+    id: 1,
+    slug: 'hindalco-e-waste-copper-smelter',
+    title: 'Hindalco E-waste & Secondary Copper Smelter',
+    client: 'Hindalco Industries Limited',
+    location: 'Pakhajan, Gujarat',
+    category: 'Mechanical',
+    type: 'ongoing',
+    orderValue: '₹66.00 Cr',
+    orderDate: 'Nov 2025',
+    completion: 'Dec 2026',
+    woNumber: 'HILBCRCLOI244',
+    description: 'Mechanical Supply including Fabrication and services of Erection and Commissioning for green field, Hindalco E-waste and secondary copper smelter facility',
+    scope: ['Fabrication', 'Erection', 'Commissioning', 'E-waste Facility'],
+    image: '/images/projects/hindalco-ewaste.jpg',
+    details: {
+      overview: 'This greenfield project represents a significant milestone in sustainable metal recovery and environmental management. Vedansh Infra is providing complete mechanical supply, fabrication, and erection services for Hindalco\'s state-of-the-art E-waste and secondary copper smelter facility in Pakhajan, Gujarat. The project encompasses comprehensive mechanical works for processing electronic waste and recovering valuable metals, contributing to India\'s circular economy initiatives.',
+      challenge: 'The project demands precision engineering for handling electronic waste processing equipment while ensuring environmental compliance and safety standards. The green field nature requires establishing complete infrastructure from ground up with stringent quality control measures. Coordinating complex mechanical systems for hazardous waste processing while maintaining zero environmental impact poses significant technical challenges.',
+      solution: 'Our team deployed specialized fabrication techniques and advanced erection methodologies tailored for E-waste processing equipment. We implemented robust quality assurance protocols and safety systems to meet environmental regulations while ensuring optimal plant efficiency. Advanced project management techniques ensure seamless coordination across multiple work fronts.',
+      outcome: 'The facility will set new benchmarks in sustainable metal recovery from electronic waste, contributing to India\'s circular economy goals. Our systematic approach ensures timely project delivery while maintaining the highest quality and safety standards. Upon completion, the facility will process significant volumes of e-waste, recovering valuable metals while protecting the environment.'
+    },
+    highlights: [
+      { title: 'Green Field Development', description: 'Complete facility setup from foundation to commissioning with state-of-the-art infrastructure' },
+      { title: 'Environmental Focus', description: 'Advanced E-waste processing with zero environmental impact and full regulatory compliance' },
+      { title: 'Large Scale Project', description: '₹66 Crore comprehensive mechanical package demonstrating our capability' },
+      { title: 'Sustainable Solution', description: 'Contributing to circular economy and responsible metal recovery initiatives' }
+    ],
+    keyFeatures: [
+      'Complete mechanical fabrication and supply',
+      'Advanced erection and installation services',
+      'Comprehensive commissioning and testing support',
+      'Specialized E-waste processing equipment',
+      'Secondary copper smelter infrastructure setup',
+      'Environmental compliance and safety systems',
+      'Quality assurance and control protocols',
+      'Project management and coordination'
+    ]
+  },
+
+  {
+    id: 2,
+    slug: 'mundra-petrochem-gpvc-complex',
+    title: 'Green PVC Complex - Electrical Works',
+    client: 'Mundra Petrochem Ltd',
+    location: 'Mundra, Gujarat',
+    category: 'Electrical',
+    type: 'ongoing',
+    orderValue: '₹36.00 Cr',
+    orderDate: 'Jun 2025',
+    completion: 'Dec 2026',
+    woNumber: 'MPL-VISPL-JB-SO-304-2025',
+    description: 'Execution of complete Electrical works i.e. Erection, testing commissioning of GPVC Complex for 1 MMTPA Green PVC Project',
+    scope: ['HV/LV Installation', 'Testing', 'Commissioning', 'GPVC Complex'],
+    image: '/images/projects/mundra-gpvc.jpg',
+    details: {
+      overview: 'A landmark project for establishing India\'s largest Green PVC manufacturing facility with 1 MMTPA capacity. Vedansh Infra is executing comprehensive electrical works including high voltage and low voltage installations, testing, and commissioning for the entire GPVC complex. This project represents a significant contribution to sustainable chemical manufacturing in India.',
+      challenge: 'The project requires coordinating complex electrical systems across multiple process units while ensuring uninterrupted power supply for continuous PVC production. Integration of advanced automation and control systems demands precise engineering and flawless execution. Managing high voltage installations in a chemical processing environment requires specialized safety protocols.',
+      solution: 'Our electrical team deployed advanced HV/LV installation techniques with robust testing protocols. We implemented state-of-the-art protection systems and automation infrastructure to ensure reliable and efficient plant operations. Systematic approach to commissioning ensures optimal performance of all electrical systems.',
+      outcome: 'The completed electrical infrastructure will power India\'s most advanced Green PVC manufacturing facility, supporting sustainable chemical production. The project demonstrates our expertise in handling large-scale industrial electrical systems and complex automation integration.'
+    },
+    highlights: [
+      { title: '1 MMTPA Capacity', description: 'India\'s largest Green PVC manufacturing facility with world-class infrastructure' },
+      { title: 'Complete Electrical Package', description: 'HV/LV systems, testing, commissioning, and automation integration' },
+      { title: 'Advanced Automation', description: 'Integrated control and monitoring systems for optimal plant efficiency' },
+      { title: 'Sustainable Manufacturing', description: 'Supporting eco-friendly PVC production with reliable power infrastructure' }
+    ],
+    keyFeatures: [
+      'High voltage electrical installations (33kV/11kV)',
+      'Low voltage distribution systems',
+      'Comprehensive testing and commissioning services',
+      'Protection and control systems',
+      'Advanced automation infrastructure',
+      'Power management and monitoring systems',
+      'DCS and PLC integration',
+      'Emergency power systems'
+    ]
+  },
+
+  {
+    id: 3,
+    slug: 'hzl-substation-debari',
+    title: '220kV & 132kV Substation EPC',
+    client: 'Hindustan Zinc Ltd',
+    location: 'Debari, Rajasthan',
+    category: 'EPC',
+    type: 'ongoing',
+    orderValue: '₹31.80 Cr',
+    orderDate: 'Jun 2023',
+    completion: 'Dec 2025',
+    woNumber: '8510001271, 8520001158',
+    description: 'EPC of 220kV & 132kV Substation Work and 132kV Line Replacement Work at Debari for Roaster-6 Power Arrangement Project',
+    scope: ['220kV Substation', '132kV Substation', 'Line Replacement', 'Full EPC'],
+    image: '/images/projects/hzl-substation.jpg',
+    details: {
+      overview: 'A comprehensive EPC project for establishing critical power infrastructure to support HZL\'s Roaster-6 expansion at their Debari zinc smelter. The project encompasses complete design, engineering, procurement, and construction of 220kV and 132kV substations along with extensive line replacement work. This critical infrastructure enables HZL\'s capacity expansion plans.',
+      challenge: 'Executing high-voltage substation work within an operational smelter facility requires meticulous planning and zero-error execution. The project demands seamless integration with existing power systems without disrupting ongoing production operations. Managing live facility constraints while maintaining safety and quality standards presents significant challenges.',
+      solution: 'Our EPC team executed detailed engineering design followed by systematic procurement and construction. We implemented advanced project management techniques to ensure safe execution within the live facility, maintaining stringent quality and safety standards throughout. Phased commissioning approach minimizes operational disruption.',
+      outcome: 'The new power infrastructure will reliably support HZL\'s increased zinc production capacity for years to come. The project showcases our capability in executing complex EPC assignments in challenging operational environments while maintaining zero safety incidents.'
+    },
+    highlights: [
+      { title: 'Full EPC Scope', description: 'Complete design, engineering, procurement, and construction delivery' },
+      { title: 'High Voltage Systems', description: '220kV and 132kV substation infrastructure with advanced protection' },
+      { title: 'Live Facility Work', description: 'Execution without production disruption through careful planning' },
+      { title: 'Critical Infrastructure', description: 'Supporting major capacity expansion and future growth' }
+    ],
+    keyFeatures: [
+      '220kV outdoor substation infrastructure',
+      '132kV substation with complete bay equipment',
+      'Transmission line replacement and upgrades',
+      'Complete EPC delivery from design to commissioning',
+      'Integration with existing power systems',
+      'Advanced protection and control schemes',
+      'SCADA integration and monitoring',
+      'Civil and structural works'
+    ]
+  },
+
+  {
+    id: 4,
+    slug: 'mundra-petrochem-cac2-sheeting',
+    title: 'Calcium Carbide Unit - PEB Sheeting Works',
+    client: 'Mundra Petrochem Ltd',
+    location: 'Mundra, Gujarat',
+    category: 'Mechanical',
+    type: 'ongoing',
+    orderValue: '₹28.99 Cr',
+    orderDate: 'Jun 2025',
+    completion: 'May 2026',
+    woNumber: '5700371976',
+    description: 'Supply, Erection & Mechanical completion of Sheeting Works on various Pre-Engineered Buildings (PEBs) Structures of Calcium Carbide (CaC2) unit',
+    scope: ['PEB Structures', 'Sheeting Work', 'CaC2 Unit', 'Mechanical Completion'],
+    image: '/images/projects/mundra-cac2.jpg',
+    details: {
+      overview: 'Large-scale mechanical project for executing complete sheeting works on multiple Pre-Engineered Buildings for Mundra Petrochem\'s Calcium Carbide production unit. The project involves supply, erection, and mechanical completion of PEB structures, ensuring weather-proof enclosures for the CaC2 manufacturing process. This critical infrastructure protects valuable equipment and ensures operational efficiency.',
+      challenge: 'Working with large-scale PEB structures in a chemical processing environment requires precise execution and adherence to strict safety protocols. Coordinating sheeting works across multiple buildings while maintaining structural integrity and weather-proofing standards demands specialized expertise and systematic project management.',
+      solution: 'Our team deployed advanced erection techniques specifically designed for PEB sheeting works in industrial environments. We implemented comprehensive quality control measures to ensure perfect weather sealing and structural integrity. Systematic phasing of work ensures minimal disruption to ongoing operations.',
+      outcome: 'The completed PEB structures provide robust, weather-proof enclosures for the CaC2 unit, protecting equipment and ensuring smooth operations. The project demonstrates our expertise in large-scale mechanical and civil integration works for chemical processing facilities.'
+    },
+    highlights: [
+      { title: 'Large Scale Sheeting', description: 'Multiple PEB structures covering extensive area with complex geometries' },
+      { title: 'Chemical Industry Standards', description: 'Meeting stringent requirements for chemical processing facilities' },
+      { title: 'Quality Execution', description: 'Perfect weather sealing and structural integrity across all buildings' },
+      { title: 'Timely Delivery', description: 'Systematic phasing ensuring on-time project completion' }
+    ],
+    keyFeatures: [
+      'Complete PEB structure sheeting supply and erection',
+      'Roof and wall cladding installation',
+      'Weather-proofing and sealing works',
+      'Mechanical completion services',
+      'Quality control and testing',
+      'Structural integration works',
+      'Safety systems installation',
+      'Finishing and painting works'
+    ]
+  },
+
+  {
+    id: 5,
+    slug: 'hzl-zawar-mines-om',
+    title: 'Zawar Mines - Electrical O&M Services',
+    client: 'Hindustan Zinc Ltd',
+    location: 'Zawar Mines, Rajasthan',
+    category: 'O&M',
+    type: 'ongoing',
+    orderValue: '₹18.05 Cr',
+    orderDate: 'Sep 2022',
+    completion: 'Nov 2025',
+    woNumber: '5100033109',
+    description: 'O&M Electrical of Surface & Underground at Zawar Mines',
+    scope: ['Annual Maintenance', 'Surface Operations', 'Underground Operations', 'Electrical O&M'],
+    image: '/images/projects/zawar-mines.jpg',
+    details: {
+      overview: 'Comprehensive Operation and Maintenance contract for electrical systems at HZL\'s Zawar Mines, covering both surface and underground operations. This critical service ensures uninterrupted power supply for mining operations, maintaining equipment reliability and operational efficiency. Our team manages all aspects of electrical maintenance, from routine servicing to emergency repairs.',
+      challenge: 'Managing electrical systems in underground mining environment presents unique challenges including harsh operating conditions, safety constraints, and requirement for 24/7 reliability. Coordinating maintenance activities without disrupting mining operations requires careful planning and expert execution.',
+      solution: 'Our dedicated O&M team implements preventive maintenance schedules, predictive monitoring, and rapid emergency response systems. We deploy specialized teams for surface and underground operations, ensuring comprehensive coverage. Advanced diagnostic tools enable proactive maintenance and minimize downtime.',
+      outcome: 'Sustained high reliability of electrical systems supporting continuous mining operations. Our professional O&M services have contributed to improved equipment life, reduced unplanned downtime, and enhanced operational safety at the mines.'
+    },
+    highlights: [
+      { title: 'Comprehensive Coverage', description: 'Complete electrical O&M for surface and underground mining operations' },
+      { title: '24/7 Support', description: 'Round-the-clock maintenance and emergency response services' },
+      { title: 'Mining Expertise', description: 'Specialized team with underground mining electrical experience' },
+      { title: 'High Reliability', description: 'Maintaining excellent uptime through preventive maintenance' }
+    ],
+    keyFeatures: [
+      'Preventive and breakdown maintenance services',
+      'Surface electrical systems maintenance',
+      'Underground mining electrical systems',
+      '24/7 emergency response capability',
+      'Predictive maintenance and monitoring',
+      'Equipment testing and diagnostics',
+      'Spare parts management',
+      'Safety compliance and audits'
+    ]
+  },
+
+  {
+    id: 6,
+    slug: 'sprng-solar-pooling-substation',
+    title: '220kV Solar Pooling Substation - Banaskantha',
+    client: 'Sprng Power Earth Pvt Ltd',
+    location: 'Banaskantha, Gujarat',
+    category: 'Renewables',
+    type: 'ongoing',
+    orderValue: '₹16.65 Cr',
+    orderDate: 'Dec 2024',
+    completion: 'Dec 2025',
+    woNumber: 'SPEPL-VEDANSH-SS-01',
+    description: 'EPC for 220kV Pooling Substation (GIS) at Padan for 250 MW Solar PV Plant',
+    scope: ['220kV GIS', 'Solar Pooling Station', 'Installation', 'Commissioning'],
+    image: '/images/projects/sprng-solar.jpg',
+    details: {
+      overview: 'EPC project for establishing a 220kV Gas Insulated Switchgear pooling substation for SPRNG\'s 250 MW solar PV plant at Padan, Banaskantha. This critical infrastructure evacuates renewable energy from the solar farm to the state transmission grid. The project demonstrates our growing expertise in renewable energy infrastructure development.',
+      challenge: 'Designing and implementing GIS technology for solar power evacuation requires expertise in both renewable energy systems and high-voltage engineering. Coordinating civil works, equipment installation, and grid integration while meeting tight project timelines demands efficient project management.',
+      solution: 'Our EPC team executed detailed engineering for optimal GIS configuration, followed by systematic procurement and installation. We implemented advanced testing protocols to ensure reliable performance and grid compliance. Close coordination with transmission utility ensures smooth grid integration.',
+      outcome: 'The completed pooling substation will efficiently evacuate 250 MW of clean solar power to the grid, supporting India\'s renewable energy goals. The project showcases our capability in executing complex renewable energy infrastructure projects.'
+    },
+    highlights: [
+      { title: 'GIS Technology', description: 'Compact 220kV Gas Insulated Switchgear for space optimization' },
+      { title: 'Renewable Energy', description: 'Supporting 250 MW solar power evacuation to grid' },
+      { title: 'Full EPC Delivery', description: 'Complete design, engineering, procurement, and commissioning' },
+      { title: 'Grid Integration', description: 'Seamless connection to state transmission network' }
+    ],
+    keyFeatures: [
+      '220kV Gas Insulated Switchgear',
+      'Power transformers and reactors',
+      'Protection and control systems',
+      'SCADA and communication systems',
+      'Civil and structural works',
+      'Testing and commissioning services',
+      'Grid synchronization systems',
+      'Remote monitoring infrastructure'
+    ]
+  },
+
+  {
+    id: 7,
+    slug: 'kctl-plant-om-manpower',
+    title: 'KCTL Plant - O&M Manpower Services',
+    client: 'Kutch Copper Tubes Ltd',
+    location: 'Mundra, Gujarat',
+    category: 'O&M',
+    type: 'ongoing',
+    orderValue: '₹7.04 Cr',
+    orderDate: 'Jun 2025',
+    completion: 'Jun 2026',
+    woNumber: '8130025828',
+    description: 'O&M Manpower deployment at KCTL Plant',
+    scope: ['Manpower Supply', 'Plant Operations', 'Maintenance Services', 'Annual Contract'],
+    image: '/images/projects/kctl-plant.jpg',
+    details: {
+      overview: 'Comprehensive manpower deployment contract for Operation and Maintenance services at Kutch Copper Tubes Limited\'s manufacturing facility in Mundra. Our skilled workforce supports plant operations, routine maintenance, and ensures optimal equipment performance. This service enables KCTL to focus on core manufacturing while we manage operational support.',
+      challenge: 'Providing consistent, skilled manpower for copper tube manufacturing operations requires thorough training, safety compliance, and operational knowledge. Managing workforce deployment, scheduling, and performance while maintaining high service standards demands robust systems and processes.',
+      solution: 'We deployed trained and experienced personnel across various operational and maintenance functions. Comprehensive safety training, regular skill upgradation, and performance monitoring ensure high service quality. Dedicated supervision and management systems maintain operational excellence.',
+      outcome: 'Reliable manpower support enabling smooth plant operations and maintenance activities. Our professional workforce contributes to improved operational efficiency, safety performance, and equipment reliability at the KCTL facility.'
+    },
+    highlights: [
+      { title: 'Skilled Workforce', description: 'Trained and experienced personnel for copper manufacturing operations' },
+      { title: 'Comprehensive Coverage', description: 'Operations and maintenance support across all plant areas' },
+      { title: 'Safety Focus', description: 'Strong emphasis on safety training and compliance' },
+      { title: 'Operational Excellence', description: 'Contributing to improved plant efficiency and reliability' }
+    ],
+    keyFeatures: [
+      'Operations support personnel',
+      'Maintenance technicians and supervisors',
+      'Safety and compliance management',
+      'Training and skill development programs',
+      'Performance monitoring systems',
+      'Emergency response capability',
+      'Documentation and reporting',
+      'Quality assurance processes'
+    ]
+  },
+
+  {
+    id: 8,
+    slug: 'jindal-wte-boiler-jodhpur',
+    title: 'Waste-to-Energy Boiler - Jodhpur',
+    client: 'Jindal Urban Waste Management Jodhpur Ltd',
+    location: 'Jodhpur, Rajasthan',
+    category: 'Mechanical',
+    type: 'ongoing',
+    orderValue: '₹4.85 Cr',
+    orderDate: 'Aug 2025',
+    completion: 'Jul 2026',
+    woNumber: '4500039334',
+    description: 'Erection, Testing and Commissioning of Boiler at WtE Plant',
+    scope: ['Boiler Erection', 'WtE Plant', 'Testing', 'Commissioning'],
+    image: '/images/projects/jindal-jodhpur-wte.jpg',
+    details: {
+      overview: 'Mechanical erection, testing, and commissioning project for waste-to-energy boiler at Jindal\'s urban waste management facility in Jodhpur. This sustainable infrastructure converts municipal solid waste into clean energy while reducing landfill burden. The project contributes significantly to Jodhpur\'s waste management and renewable energy initiatives.',
+      challenge: 'Installing WtE boilers requires specialized expertise in handling equipment designed for variable waste feedstock. Ensuring emission compliance, optimal combustion efficiency, and reliable energy generation from waste presents complex technical challenges requiring expert engineering.',
+      solution: 'Our team implemented specialized erection techniques for WtE boilers, including precision alignment of combustion chambers, refractory installation, and emission control systems. Comprehensive testing protocols ensure optimal performance across variable waste inputs and compliance with environmental norms.',
+      outcome: 'The commissioned boiler will convert municipal waste into clean energy, significantly reducing Jodhpur\'s landfill requirements while generating renewable power. The project demonstrates our expertise in sustainable energy infrastructure development.'
+    },
+    highlights: [
+      { title: 'Sustainable Solution', description: 'Converting urban waste into clean, renewable energy' },
+      { title: 'Environmental Impact', description: 'Reducing landfill burden and carbon emissions' },
+      { title: 'Technical Excellence', description: 'Precision erection and commissioning of specialized WtE equipment' },
+      { title: 'Renewable Energy', description: 'Contributing to India\'s clean energy generation goals' }
+    ],
+    keyFeatures: [
+      'Waste-to-energy boiler erection',
+      'Combustion chamber assembly',
+      'Refractory and insulation works',
+      'Emission control systems installation',
+      'Feed system integration',
+      'Comprehensive testing and commissioning',
+      'Performance optimization',
+      'Operator training and documentation'
+    ]
+  },
+
+  {
+    id: 9,
+    slug: 'adani-kawai-thermal-plant',
+    title: 'Kawai Thermal Power Plant - Operations Support',
+    client: 'Adani Infrastructure Management Services Ltd',
+    location: 'Kawai, Rajasthan',
+    category: 'O&M',
+    type: 'ongoing',
+    orderValue: '₹3.62 Cr',
+    orderDate: 'Apr 2025',
+    completion: 'Apr 2028',
+    woNumber: '4800080252',
+    description: 'Operation assistance services for Main Plant and BOP area for 36 months at 2 X 660 MW Kawai Thermal Power Plant',
+    scope: ['Operation Services', '2x660 MW TPP', 'BOP Area', 'Main Plant'],
+    image: '/images/projects/kawai-tpp.jpg',
+    details: {
+      overview: 'Three-year operations assistance contract for Adani\'s 2x660 MW Kawai Thermal Power Plant, covering main plant and Balance of Plant areas. Our skilled workforce supports plant operations, ensuring optimal performance, reliability, and efficiency of this major thermal generation facility. This long-term engagement demonstrates our capability in power plant operations support.',
+      challenge: 'Supporting operations of a large-scale thermal power plant requires highly skilled personnel, deep operational knowledge, and commitment to safety and efficiency. Managing workforce across main plant and BOP areas while maintaining operational excellence demands robust systems and continuous training.',
+      solution: 'We deployed experienced operations personnel trained in thermal power plant operations. Comprehensive safety protocols, continuous skill development, and performance monitoring ensure high service standards. Close coordination with plant management optimizes operational efficiency.',
+      outcome: 'Reliable operations support contributing to sustained high performance of the 1320 MW thermal power plant. Our professional services help maintain optimal generation efficiency, equipment reliability, and safety standards throughout the contract period.'
+    },
+    highlights: [
+      { title: 'Large Scale Power Plant', description: 'Supporting 2x660 MW thermal generation facility operations' },
+      { title: 'Long-Term Contract', description: '36-month engagement demonstrating client confidence' },
+      { title: 'Comprehensive Coverage', description: 'Main plant and BOP area operations support' },
+      { title: 'Operational Excellence', description: 'Contributing to sustained high plant performance' }
+    ],
+    keyFeatures: [
+      'Main plant operations support',
+      'Balance of Plant area operations',
+      'Shift operations personnel',
+      'Safety management systems',
+      'Performance monitoring and optimization',
+      'Maintenance coordination',
+      'Training and skill development',
+      'Emergency response capability'
+    ]
+  },
+
+  {
+    id: 10,
+    slug: 'hzl-line-replacement-zawar',
+    title: 'Zawar - 33kV & 11kV Line Replacement',
+    client: 'Hindustan Zinc Ltd',
+    location: 'Zawar Mines, Rajasthan',
+    category: 'Electrical',
+    type: 'ongoing',
+    orderValue: '₹3.27 Cr',
+    orderDate: 'Mar 2025',
+    completion: 'Jan 2026',
+    woNumber: '5100033693',
+    description: 'Supply, Installation, testing and commissioning of 33kV & 11kV line replacement work',
+    scope: ['33kV Line', '11kV Line', 'Earth Pits', 'Testing & Commissioning'],
+    image: '/images/projects/zawar-line.jpg',
+    details: {
+      overview: 'Electrical infrastructure upgradation project involving replacement of aging 33kV and 11kV transmission lines at HZL\'s Zawar mines complex. The project includes supply, installation, testing, and commissioning of new lines along with earthing system upgrades. This critical infrastructure renewal ensures reliable power supply for mining operations.',
+      challenge: 'Replacing transmission lines in operational mining environment requires careful planning to minimize power disruptions. Working in mountainous terrain with existing infrastructure constraints presents logistical challenges. Maintaining safety while working on high-voltage systems demands expert execution.',
+      solution: 'Our team executed detailed planning for phased line replacement minimizing operational impact. We deployed specialized equipment and techniques for line stringing in difficult terrain. Comprehensive testing protocols ensure reliability and compliance with electrical safety standards.',
+      outcome: 'Upgraded transmission infrastructure providing reliable, efficient power distribution for Zawar mines operations. The new lines enhance system reliability, reduce losses, and support future load growth requirements.'
+    },
+    highlights: [
+      { title: 'Infrastructure Upgrade', description: 'Replacing aging transmission lines with modern infrastructure' },
+      { title: 'Minimal Disruption', description: 'Phased execution ensuring continuous mining operations' },
+      { title: 'Terrain Challenges', description: 'Successfully executed in difficult mountainous terrain' },
+      { title: 'Enhanced Reliability', description: 'Improved power distribution system performance' }
+    ],
+    keyFeatures: [
+      '33kV transmission line replacement',
+      '11kV distribution line upgrades',
+      'Tower and pole installation',
+      'Conductor stringing and tensioning',
+      'Earthing system installation and testing',
+      'Protection system integration',
+      'Comprehensive testing and commissioning',
+      'As-built documentation'
+    ]
+  },
+
+  // ==================== EXECUTED PROJECTS ====================
+
+  {
+    id: 11,
+    slug: 'adani-kutch-copper-mundra',
+    title: 'Adani Kutch Copper - Boiler & FGD Systems',
+    client: 'Adani Kutch Copper Limited',
+    location: 'Mundra, Gujarat',
+    category: 'EPC',
+    type: 'executed',
+    status: 'Completed',
+    year: '2023-2024',
+    description: 'Erection, Testing, Commissioning and PG Support for Mechanical, Insulation, Electrical & Instrumentation of WHRB, FSF & PSC Boilers, FGD System, Plant Steam Piping, and PMR Plant',
+    scope: ['1 No. FSF Boiler', '4 Nos. PSC Boilers', 'FGD System', 'PMR Plant', 'Steam Piping'],
+    image: '/images/projects/adani-copper.jpg',
+    details: {
+      overview: 'Successfully delivered comprehensive erection, testing, and commissioning services for Adani Kutch Copper\'s major expansion project at Mundra. The multi-disciplinary scope included one Flash Smelting Furnace (FSF) boiler, four Pierce Smith Converter (PSC) boilers, complete Flue Gas Desulfurization (FGD) system, extensive plant steam piping network, and Precious Metal Recovery (PMR) plant. This complex project required coordinated execution across mechanical, electrical, and instrumentation disciplines.',
+      challenge: 'Coordinating the erection and commissioning of multiple complex systems including WHRB, FSF, and four PSC boilers while maintaining the stringent timelines of a fast-track project demanded exceptional project management and technical expertise. Integration of FGD system with existing infrastructure and commissioning of PMR plant added to project complexity.',
+      solution: 'Our multi-disciplinary team executed parallel activities across mechanical, electrical, and instrumentation domains. We deployed specialized erection techniques for each boiler system, implemented comprehensive testing protocols, and ensured flawless commissioning of all integrated systems. Advanced project management tools enabled optimal resource utilization.',
+      outcome: 'All systems were successfully commissioned and handed over to the client ahead of schedule, contributing to Adani Kutch Copper\'s production capacity enhancement. The project established new benchmarks for complex multi-system execution in the copper industry and earned client recognition for excellence.'
+    },
+    highlights: [
+      { title: 'Multi-System Integration', description: 'Successfully coordinated WHRB, FSF, PSC boilers, FGD, and PMR systems' },
+      { title: 'Fast-Track Execution', description: 'Completed ahead of scheduled timeline despite project complexity' },
+      { title: 'Zero Safety Incidents', description: 'Maintained perfect safety record throughout project execution' },
+      { title: 'Client Excellence Award', description: 'Recognized by Adani for outstanding project delivery' }
+    ],
+    keyFeatures: [
+      'Waste Heat Recovery Boiler (WHRB) erection and commissioning',
+      'Flash Smelting Furnace (FSF) boiler installation',
+      'Four Pierce Smith Converter (PSC) boilers',
+      'Complete FGD system installation and integration',
+      'Extensive plant steam piping network',
+      'Precious Metal Recovery (PMR) plant commissioning',
+      'Mechanical, electrical, and instrumentation works',
+      'Performance guarantee support'
+    ]
+  },
+
+  {
+    id: 12,
+    slug: 'jindal-wte-boiler-jaipur',
+    title: 'Waste-to-Energy Boiler - Jaipur',
+    client: 'Jindal Urban Waste Management Jaipur Ltd',
+    location: 'Jaipur, Rajasthan',
+    category: 'Mechanical',
+    type: 'executed',
+    status: 'Completed',
+    year: '2023',
+    description: 'Erection, Testing, and Commissioning of 65 TPH Waste to Heat Energy Boilers',
+    scope: ['65 TPH Boiler', 'Waste-to-Energy', 'Complete Erection', 'Commissioning'],
+    image: '/images/projects/jindal-wte-jaipur.jpg',
+    details: {
+      overview: 'Successfully executed the erection, testing, and commissioning of a 65 TPH Waste-to-Energy boiler system for Jaipur\'s municipal waste management facility. This landmark project contributes significantly to sustainable urban waste management and clean energy generation in Rajasthan\'s capital city. The facility processes municipal solid waste to generate renewable electricity while drastically reducing landfill requirements.',
+      challenge: 'Installing a waste-to-energy boiler requires handling specialized combustion systems designed for variable waste feedstock characteristics. Ensuring emission compliance with stringent environmental norms while optimizing energy recovery efficiency presented complex technical challenges. The project required expertise in both waste management and power generation technologies.',
+      solution: 'Our team implemented advanced erection techniques specific to WtE boilers, including specialized refractory lining installation, precision combustion chamber assembly, and state-of-the-art emission control systems. Comprehensive testing protocols ensured optimal performance across variable waste inputs while maintaining environmental compliance.',
+      outcome: 'The facility now successfully converts 65 tonnes per hour of municipal waste into clean energy, significantly reducing Jaipur\'s landfill burden while generating renewable power for the grid. The project demonstrates our expertise in sustainable energy infrastructure development and earned recognition from the client for timely, quality delivery.'
+    },
+    highlights: [
+      { title: 'Sustainable Solution', description: 'Converting 65 TPH municipal waste to clean renewable energy' },
+      { title: '65 TPH Capacity', description: 'Processing significant waste volume reducing landfill requirements' },
+      { title: 'Environmental Impact', description: 'Substantially reducing carbon emissions and landfill burden' },
+      { title: 'Renewable Energy', description: 'Contributing megawatts to grid supporting green energy goals' }
+    ],
+    keyFeatures: [
+      '65 TPH waste-to-energy boiler capacity',
+      'Advanced combustion systems for variable waste',
+      'Emission control and monitoring systems',
+      'Waste feed and handling systems',
+      'Complete erection and commissioning services',
+      'Performance optimization and testing',
+      'Operator training and documentation',
+      'Environmental compliance systems'
+    ]
+  },
+
+  {
+    id: 13,
+    slug: 'ultratech-bulk-loading-nathdwara',
+    title: 'UltraTech Bulk Loading - Electrical & Structural',
+    client: 'UltraTech Nathdwara Cement Ltd',
+    location: 'Nathdwara, Rajasthan',
+    category: 'Electrical',
+    type: 'executed',
+    status: 'Completed',
+    year: '2021-2024',
+    description: 'Electrical Works for Bulk Loading Project and Fabrication and Erection Works of Structure & Equipment',
+    scope: ['Bulk Loading', 'Structural Fabrication', 'Equipment Erection', 'Electrical Installation'],
+    image: '/images/projects/ultratech-nathdwara.jpg',
+    details: {
+      overview: 'Multi-year project delivering comprehensive electrical and mechanical works for UltraTech\'s bulk loading facility at their Nathdwara cement plant. The project included complete electrical installation for the bulk loading system along with fabrication and erection of structural steel and equipment. This facility enhancement improves cement dispatch efficiency and reduces loading time significantly.',
+      challenge: 'Executing work in an operational cement plant environment required careful coordination to avoid production disruptions. Integration of new bulk loading systems with existing infrastructure demanded precise engineering. Managing both electrical and structural works in parallel required efficient project coordination.',
+      solution: 'Our team executed detailed engineering followed by systematic fabrication, erection, and electrical installation. Work was phased to minimize operational impact. Quality control measures ensured structural integrity and electrical system reliability. Close coordination with plant operations enabled smooth project execution.',
+      outcome: 'Successfully commissioned bulk loading facility enhancing UltraTech\'s dispatch efficiency and customer service. The project demonstrates our capability in executing complex integrated projects in operational industrial environments while maintaining zero safety incidents.'
+    },
+    highlights: [
+      { title: 'Integrated Delivery', description: 'Combined electrical and mechanical works execution' },
+      { title: 'Operational Facility', description: 'Executed without disrupting cement production operations' },
+      { title: 'Multi-Year Success', description: 'Sustained performance across 3-year project duration' },
+      { title: 'Enhanced Efficiency', description: 'Improved bulk loading capacity and dispatch operations' }
+    ],
+    keyFeatures: [
+      'Complete electrical installation for bulk loading',
+      'Structural steel fabrication and erection',
+      'Equipment installation and alignment',
+      'Control and automation systems',
+      'Material handling equipment installation',
+      'Testing and commissioning services',
+      'Integration with existing systems',
+      'Training and documentation'
+    ]
+  },
+
+  {
+    id: 14,
+    slug: 'hindalco-motor-alignment-dahej',
+    title: 'Hindalco Birla Copper - Motor & Pipeline Works',
+    client: 'Hindalco Industries Ltd - Birla Copper Unit',
+    location: 'Dahej, Gujarat',
+    category: 'Mechanical',
+    type: 'executed',
+    status: 'Completed',
+    year: '2021-2022',
+    description: 'Dismantling, Erection & Alignment of Motor at CU-III Smelter and Fabrication & Erection of Water Pipeline at Jetty',
+    scope: ['Motor Alignment', 'Dismantling', 'Water Pipeline', 'Jetty Work'],
+    image: '/images/projects/hindalco-dahej.jpg',
+    details: {
+      overview: 'Successfully executed precision mechanical works at Hindalco\'s Birla Copper unit including dismantling and re-erection of critical motors at CU-III smelter with precise alignment, along with fabrication and installation of water pipeline at the jetty facility. This project required high precision work in an operational smelter environment.',
+      challenge: 'Motor dismantling and alignment work in operational smelter demanded zero-error execution and minimal downtime. Precision alignment of heavy rotating equipment required specialized expertise and equipment. Jetty pipeline work in marine environment presented unique logistical and execution challenges.',
+      solution: 'Our team deployed specialized alignment equipment and techniques for motor works, ensuring precision installation. Detailed planning minimized downtime impact. For pipeline work, we used marine-grade materials and installation techniques suitable for jetty environment. Quality control ensured long-term reliability.',
+      outcome: 'Successfully completed motor alignment ensuring optimal equipment performance at CU-III smelter. Pipeline installation enhanced water supply reliability for jetty operations. The project demonstrated our capability in precision mechanical works in challenging industrial environments.'
+    },
+    highlights: [
+      { title: 'Precision Alignment', description: 'Achieved high-precision motor alignment at operational smelter' },
+      { title: 'Minimal Downtime', description: 'Executed motor works with minimum production impact' },
+      { title: 'Marine Works', description: 'Successfully completed pipeline installation at jetty facility' },
+      { title: 'Quality Execution', description: 'Maintained stringent quality standards throughout' }
+    ],
+    keyFeatures: [
+      'Heavy motor dismantling and removal',
+      'Precision motor erection and alignment',
+      'Laser alignment technology',
+      'Water pipeline fabrication (marine-grade)',
+      'Jetty pipeline installation',
+      'Testing and commissioning',
+      'Corrosion protection systems',
+      'Quality documentation'
+    ]
+  },
+
+  {
+    id: 15,
+    slug: 'sprng-solar-pooling-barmer',
+    title: 'SPRNG Solar - 220kV Pooling Substation Barmer',
+    client: 'Sprng Natural Power Source Pvt Ltd',
+    location: 'Barmer, Rajasthan',
+    category: 'Renewables',
+    type: 'executed',
+    status: 'Completed',
+    year: '2023-2024',
+    description: '220kV Solar PV Plant Pooling Substation - EPC Work',
+    scope: ['220kV Pooling Station', 'Solar Integration', 'Full EPC', 'Testing & Commissioning'],
+    image: '/images/projects/sprng-barmer.jpg',
+    details: {
+      overview: 'Successfully executed complete EPC for 220kV pooling substation for SPRNG\'s solar PV plant in Barmer, Rajasthan. This critical renewable energy infrastructure evacuates solar power from the PV plant to the state transmission grid. The project supports Rajasthan\'s position as a leading solar energy state and contributes to national renewable energy targets.',
+      challenge: 'Executing substation work in desert environment of Barmer presented challenges including extreme temperatures, sand storms, and remote location logistics. Ensuring equipment performance in harsh climatic conditions required special considerations. Coordinating with transmission utility for grid connection demanded careful planning.',
+      solution: 'Our EPC team designed robust infrastructure suitable for desert conditions. We implemented special protection measures for equipment against dust and temperature extremes. Systematic execution of civil, electrical, and testing works ensured quality delivery. Close coordination with transmission utility enabled smooth grid integration.',
+      outcome: 'Successfully commissioned pooling substation evacuating solar power to grid reliably and efficiently. The project contributes to renewable energy generation in Rajasthan and demonstrates our expertise in solar infrastructure development in challenging environments.'
+    },
+    highlights: [
+      { title: 'Desert Execution', description: 'Successfully completed project in harsh Barmer desert conditions' },
+      { title: 'Renewable Energy', description: 'Supporting significant solar power evacuation to grid' },
+      { title: 'Full EPC Success', description: 'Complete design to commissioning delivery on schedule' },
+      { title: 'Grid Integration', description: 'Smooth connection to state transmission network' }
+    ],
+    keyFeatures: [
+      '220kV outdoor switchyard',
+      'Power transformers and reactors',
+      'Protection and control systems',
+      'SCADA and communication infrastructure',
+      'Civil works including desert-rated foundations',
+      'Environmental protection measures',
+      'Testing and commissioning',
+      'Grid synchronization and compliance'
+    ]
+  },
+
+  {
+    id: 16,
+    slug: 'hzl-rzo-plant-chittorgarh',
+    title: 'HZL RZO Plant - Electrical & Instrumentation EPC',
+    client: 'Hindustan Zinc Ltd',
+    location: 'Chittorgarh, Rajasthan',
+    category: 'EPC',
+    type: 'executed',
+    status: 'Completed',
+    year: '2023',
+    description: 'EPC for Electrical & Instrumentation Works of RZO Plant',
+    scope: ['EI Works', 'RZO Plant', 'Complete Installation', 'Commissioning'],
+    image: '/images/projects/hzl-rzo.jpg',
+    details: {
+      overview: 'Successfully delivered complete Electrical and Instrumentation EPC works for HZL\'s Roasted Zinc Oxide (RZO) plant at Chittorgarh. The project encompassed design, engineering, procurement, installation, testing, and commissioning of complete E&I infrastructure for this specialized zinc processing facility. This critical plant enhances HZL\'s zinc product portfolio.',
+      challenge: 'EPC execution for RZO plant required expertise in specialized zinc processing electrical systems. Integrating advanced instrumentation and control systems for optimal plant performance demanded precision engineering. Coordinating multiple vendor equipment and ensuring system integration presented complex technical challenges.',
+      solution: 'Our EPC team executed detailed engineering design followed by systematic procurement of equipment. We implemented structured installation approach with rigorous quality checks. Comprehensive testing protocols and staged commissioning ensured flawless plant startup. Close coordination with process team optimized control systems.',
+      outcome: 'Successfully commissioned RZO plant with all E&I systems performing optimally. The facility now produces specialized zinc products contributing to HZL\'s product diversification. The project demonstrates our capability in complex industrial E&I EPC execution.'
+    },
+    highlights: [
+      { title: 'Complete EPC', description: 'Full E&I scope from design to commissioning delivery' },
+      { title: 'Specialized Plant', description: 'RZO processing facility with advanced systems' },
+      { title: 'System Integration', description: 'Successfully integrated multiple vendor equipment' },
+      { title: 'Optimal Performance', description: 'Plant operating at designed efficiency parameters' }
+    ],
+    keyFeatures: [
+      'Complete electrical installation (HV/LV)',
+      'Process instrumentation and control',
+      'DCS and automation systems',
+      'Motor control centers and VFDs',
+      'Cable laying and terminations',
+      'Protection and earthing systems',
+      'Testing and commissioning',
+      'Integration with plant systems'
+    ]
+  },
+
+  {
+    id: 17,
+    slug: 'sprng-switchyard-200mw-barmer',
+    title: 'SPRNG 200MW Solar - 33/220kV Switchyard',
+    client: 'Sprng Natural Power Source Pvt Ltd',
+    location: 'Barmer, Rajasthan',
+    category: 'Renewables',
+    type: 'executed',
+    status: 'Completed',
+    year: '2023-2024',
+    description: 'Erection, Testing, Commissioning of 33/220kV Switchyard for 200 MW Solar PV Plant',
+    scope: ['33/220kV Switchyard', '200 MW Solar', 'Complete Erection', 'T&C'],
+    image: '/images/projects/sprng-200mw.jpg',
+    details: {
+      overview: 'Successfully executed erection, testing, and commissioning of 33/220kV switchyard for SPRNG\'s 200 MW solar PV plant in Barmer. This critical infrastructure steps up power from 33kV collection system to 220kV for grid evacuation. The project represents significant contribution to Rajasthan\'s renewable energy capacity and India\'s solar mission.',
+      challenge: 'Installing switchyard equipment in remote desert location with extreme temperature variations and dust storms required special planning. Ensuring reliable performance in harsh environment demanded robust engineering. Coordinating 33kV and 220kV systems installation and achieving synchronization with grid presented technical challenges.',
+      solution: 'Our team designed switchyard layout optimized for desert conditions with enhanced equipment protection. We deployed specialized erection techniques for high-voltage equipment. Comprehensive testing protocols verified system integrity before energization. Systematic commissioning approach ensured safe grid connection.',
+      outcome: 'Successfully commissioned switchyard evacuating 200 MW solar power reliably to transmission grid. The facility operates efficiently in harsh desert conditions contributing to India\'s renewable energy targets. The project demonstrates our expertise in large-scale solar infrastructure execution.'
+    },
+    highlights: [
+      { title: 'Large Scale Solar', description: 'Supporting 200 MW solar power evacuation infrastructure' },
+      { title: 'Dual Voltage Systems', description: 'Successfully integrated 33kV and 220kV systems' },
+      { title: 'Desert Engineering', description: 'Equipment and systems rated for extreme conditions' },
+      { title: 'Grid Compliance', description: 'Meeting all transmission utility technical requirements' }
+    ],
+    keyFeatures: [
+      '33kV collection system switchgear',
+      '220kV transmission switchyard',
+      'Step-up transformers (33/220kV)',
+      'Protection and control systems',
+      'SCADA and monitoring infrastructure',
+      'Lightning and earthing systems',
+      'Testing and commissioning services',
+      'Grid integration and synchronization'
+    ]
+  },
+
+  {
+    id: 18,
+    slug: 'ultratech-cement-nathdwara',
+    title: 'UltraTech Nathdwara - Multiple Packages',
+    client: 'UltraTech Nathdwara Cement Ltd',
+    location: 'Nathdwara, Rajasthan',
+    category: 'Mechanical',
+    type: 'executed',
+    status: 'Completed',
+    year: '2020-2023',
+    description: 'Multiple mechanical and electrical packages for cement plant expansion and upgrades',
+    scope: ['Equipment Installation', 'Electrical Works', 'Mechanical Upgrades', 'Plant Expansion'],
+    image: '/images/projects/ultratech-packages.jpg',
+    details: {
+      overview: 'Successfully executed multiple mechanical and electrical packages for UltraTech\'s Nathdwara cement plant across several years. Projects included equipment installation, electrical system upgrades, mechanical modifications, and plant expansion works. This long-term engagement demonstrates sustained performance and client confidence in our capabilities.',
+      challenge: 'Executing multiple packages in operational cement plant required careful coordination to minimize production impact. Each package had different technical requirements and timelines. Managing resources across parallel activities while maintaining quality and safety standards demanded robust project management.',
+      solution: 'Our team executed detailed planning for each package with phased approach minimizing operational disruption. We deployed specialized teams for different packages with dedicated supervision. Systematic quality control and safety management ensured consistent performance across all projects.',
+      outcome: 'Successfully completed all packages contributing to enhanced plant capacity, efficiency, and reliability. The multi-year engagement strengthened our relationship with UltraTech and demonstrated our capability in long-term industrial project partnerships.'
+    },
+    highlights: [
+      { title: 'Multi-Year Partnership', description: 'Sustained performance across multiple project packages' },
+      { title: 'Diverse Scope', description: 'Mechanical, electrical, and expansion works executed' },
+      { title: 'Operational Excellence', description: 'Minimal production disruption throughout execution' },
+      { title: 'Client Confidence', description: 'Repeated project awards demonstrating trust' }
+    ],
+    keyFeatures: [
+      'Equipment installation and commissioning',
+      'Electrical system upgrades',
+      'Mechanical modifications',
+      'Plant capacity enhancement',
+      'Automation upgrades',
+      'Testing and commissioning',
+      'Training and documentation',
+      'Ongoing support services'
+    ]
+  },
+
+  // ==================== UPCOMING PROJECTS ====================
+
+  {
+    id: 21,
+    slug: 'hzl-switchyard-gis-debari',
+    title: '220kV Switchyard & GIS - HZL Debari',
+    client: 'Hindustan Zinc Ltd',
+    location: 'Debari, Rajasthan',
+    category: 'EPC',
+    type: 'upcoming',
+    estimatedValue: '₹190.00 Cr',
+    status: 'Under Finalization',
+    description: 'EPC for 220kV Outdoor Switchyard cum Transformer Yard and 220kV Indoor GIS at HZL Zinc Smelter',
+    scope: ['220kV Switchyard', '220kV GIS', 'Transformer Yard', 'Indoor & Outdoor'],
+    image: '/images/projects/hzl-gis-upcoming.jpg',
+    details: {
+      overview: 'Major upcoming EPC project for establishing comprehensive 220kV power infrastructure including outdoor switchyard, transformer yard, and indoor Gas Insulated Switchgear at HZL\'s Debari zinc smelter complex. This significant investment will enhance power reliability and support future capacity expansion plans. The project represents one of the largest single EPC contracts in our portfolio.',
+      challenge: 'The project requires integrating advanced GIS technology with conventional outdoor switchyard in a space-constrained operational facility. Managing both indoor and outdoor installations while coordinating with ongoing smelter operations demands innovative engineering solutions and precise execution planning. The hybrid configuration presents unique design and integration challenges.',
+      solution: 'Our proposed solution includes state-of-the-art 220kV GIS technology for space optimization combined with optimized outdoor switchyard layout for economic efficiency. Advanced project management and execution strategies ensure minimal operational disruption. 3D modeling and clash detection optimize layout and installation planning.',
+      outcome: 'Upon completion, the infrastructure will provide reliable, high-capacity power supply supporting HZL\'s long-term production expansion plans. The hybrid GIS-outdoor configuration will optimize both space utilization and cost efficiency while improving overall system reliability and reducing maintenance requirements.'
+    },
+    highlights: [
+      { title: 'Major EPC Project', description: '₹190 Crore comprehensive power infrastructure investment' },
+      { title: 'GIS Technology', description: 'Advanced 220kV Gas Insulated Switchgear implementation' },
+      { title: 'Hybrid Configuration', description: 'Optimal combination of indoor GIS with outdoor switchyard' },
+      { title: 'Capacity Enhancement', description: 'Supporting future zinc production growth plans' }
+    ],
+    keyFeatures: [
+      '220kV outdoor switchyard with multiple bays',
+      '220kV indoor GIS for space optimization',
+      'Transformer yard with power transformers',
+      'Complete EPC scope including civil works',
+      'Advanced protection and control systems',
+      'SCADA integration and remote monitoring',
+      'Testing and commissioning services',
+      'Integration with existing systems'
+    ]
+  },
+
+  {
+    id: 22,
+    slug: 'sprng-gis-substation-fatehgarh',
+    title: 'SPRNG 800MW Solar - 33/400kV GIS Substation',
+    client: 'Sprng Akshay Urja Pvt Ltd',
+    location: 'Fatehgarh, Rajasthan',
+    category: 'Renewables',
+    type: 'upcoming',
+    estimatedValue: '₹35.00 Cr',
+    status: 'Under Finalization',
+    description: 'Installation, Testing & Commissioning of 33/400kV GIS Substation for 800MW Solar Project',
+    scope: ['33/400kV GIS', '800 MW Solar', 'Installation', 'Commissioning'],
+    image: '/images/projects/sprng-800mw.jpg',
+    details: {
+      overview: 'Significant upcoming renewable energy project for installation, testing, and commissioning of 33/400kV GIS substation for SPRNG\'s massive 800 MW solar power project in Fatehgarh. This ultra-high voltage GIS substation will evacuate large-scale solar power to the interstate transmission system. The project represents our entry into 400kV class infrastructure and ultra-mega solar projects.',
+      challenge: 'Installing 400kV GIS equipment requires specialized expertise and handling capabilities. The large capacity (800 MW) demands robust infrastructure and multiple transformer banks. Coordination with interstate transmission system for 400kV connection presents regulatory and technical challenges. Ensuring reliable performance for such large renewable capacity evacuation is critical.',
+      solution: 'Our proposed approach includes detailed engineering for 400kV GIS configuration optimized for solar evacuation. We will deploy specialized equipment and expertise for 400kV class installation. Systematic testing protocols will verify system integrity before energization. Close coordination with transmission utility ensures smooth grid integration and compliance.',
+      outcome: 'Upon completion, the substation will enable evacuation of 800 MW clean solar power to the interstate grid, making significant contribution to India\'s renewable energy targets. The project will establish our credentials in ultra-high voltage and ultra-mega renewable projects, opening doors for similar future opportunities.'
+    },
+    highlights: [
+      { title: 'Ultra-Mega Solar', description: 'Supporting 800 MW solar power evacuation infrastructure' },
+      { title: '400kV Technology', description: 'Our entry into extra-high voltage GIS implementation' },
+      { title: 'Interstate Connection', description: 'Direct connection to interstate transmission system' },
+      { title: 'Renewable Leadership', description: 'Contributing to India\'s largest solar installations' }
+    ],
+    keyFeatures: [
+      '33/400kV GIS technology',
+      'Multiple power transformer banks',
+      'Advanced protection schemes for 400kV',
+      'SCADA and communication systems',
+      'Interstate grid synchronization',
+      'Comprehensive testing and commissioning',
+      'Remote monitoring infrastructure',
+      'Weather monitoring systems'
+    ]
+  },
+
+  {
+    id: 23,
+    slug: 'hindalco-converter-replacement-dahej',
+    title: 'Hindalco Dahej - Converter & Cooling System',
+    client: 'Hindalco Industries Limited',
+    location: 'Dahej, Gujarat',
+    category: 'Mechanical',
+    type: 'upcoming',
+    estimatedValue: '₹20.00 Cr',
+    status: 'Under Finalization',
+    description: 'Replacement of Converter and associated systems and installation of additional cooling water line during shutdown',
+    scope: ['Converter Replacement', 'Cooling Water Line', 'Shutdown Work', 'System Integration'],
+    image: '/images/projects/hindalco-converter.jpg',
+    details: {
+      overview: 'Critical upcoming shutdown project for complete replacement of converter and associated systems at Hindalco\'s Dahej copper smelter, along with installation of additional cooling water lines. This major equipment replacement requires precise planning and execution during scheduled plant shutdown to minimize downtime. The project enhances plant capacity and reliability.',
+      challenge: 'Converter replacement during shutdown requires meticulous planning to complete within limited time window. Handling heavy equipment in congested plant environment presents logistical challenges. Ensuring perfect integration of new converter with existing systems is critical. Additional cooling water line installation must be coordinated with converter works for timely completion.',
+      solution: 'Our proposed approach includes detailed shutdown planning with parallel execution strategies. We will deploy specialized heavy lifting equipment and crews. Pre-shutdown preparation including pre-assembly and testing of components minimizes shutdown duration. Systematic commissioning approach ensures smooth startup after shutdown.',
+      outcome: 'Upon completion, the new converter will enhance plant capacity and reliability while reducing maintenance requirements. The additional cooling water capacity will support increased production and improve operational flexibility. The project demonstrates our capability in complex shutdown execution for critical industrial equipment.'
+    },
+    highlights: [
+      { title: 'Critical Shutdown', description: 'Major equipment replacement during limited shutdown window' },
+      { title: 'Heavy Lifting', description: 'Specialized equipment and expertise for converter handling' },
+      { title: 'Capacity Enhancement', description: 'Improved plant capacity and operational efficiency' },
+      { title: 'Minimal Downtime', description: 'Optimized planning ensuring shortest possible shutdown' }
+    ],
+    keyFeatures: [
+      'Complete converter dismantling and removal',
+      'New converter installation and alignment',
+      'Associated systems integration',
+      'Additional cooling water line installation',
+      'Piping and instrumentation works',
+      'Testing and commissioning',
+      'Shutdown planning and coordination',
+      'Fast-track execution strategies'
+    ]
+  }
+];
+
+// Helper Functions
+export const getProjectBySlug = (slug) => {
+  return projects.find(project => project.slug === slug);
+};
+
+export const getRelatedProjects = (currentProject, limit = 3) => {
+  return projects
+    .filter(p => 
+      p.slug !== currentProject.slug && 
+      (p.category === currentProject.category || p.client === currentProject.client)
+    )
+    .slice(0, limit);
+};
+
+export const getProjectsByType = (type) => {
+  return projects.filter(project => project.type === type);
+};
+
+export const getProjectsByCategory = (category) => {
+  return projects.filter(project => project.category === category);
+};
+
+export const getOngoingProjects = () => getProjectsByType('ongoing');
+export const getExecutedProjects = () => getProjectsByType('executed');
+export const getUpcomingProjects = () => getProjectsByType('upcoming');
+
+export default projects;
