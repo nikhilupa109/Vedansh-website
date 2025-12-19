@@ -318,7 +318,6 @@ export default function Careers() {
   const benefitsRef = useRef(null);
   const openingsRef = useRef(null);
   const testimonialsRef = useRef(null);
-  const processRef = useRef(null);
   const applyRef = useRef(null);
 
   // Character animation for the hero title (same pattern as About/Services)
@@ -430,7 +429,6 @@ export default function Careers() {
       animateSection(benefitsRef.current);
       animateSection(openingsRef.current, '.job-card');
       animateSection(testimonialsRef.current);
-      animateSection(processRef.current);
       animateSection(applyRef.current, '.form-card');
     }, pageRef);
 
@@ -461,6 +459,9 @@ export default function Careers() {
     border: '1px solid #E5E7EB',
     transition: 'all 0.4s ease',
   };
+
+  const baseUrl = import.meta.env.BASE_URL || '/';
+  const heroBg = `${baseUrl}images/hero/careers-hero.jpg`;
 
   return (
     <>
@@ -506,15 +507,49 @@ export default function Careers() {
             minHeight: '70vh',
             display: 'flex',
             alignItems: 'center',
-            background: 'linear-gradient(135deg, #F8F9FA 0%, #E5E7EB 100%)',
-            paddingTop: '120px',
-            paddingBottom: '80px',
+            paddingTop: '140px',
+            paddingBottom: '90px',
             position: 'relative',
             overflow: 'hidden',
+            backgroundImage: `linear-gradient(180deg, rgba(15, 23, 42, 0.78) 0%, rgba(15, 23, 42, 0.78) 100%), url("${heroBg}")`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
           }}
         >
+          {/* Accent overlay */}
+          <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
+            <div
+              style={{
+                position: 'absolute',
+                inset: 0,
+                backgroundImage:
+                  'radial-gradient(circle at 20% 20%, rgba(31,173,191,0.22) 0%, transparent 55%), radial-gradient(circle at 80% 30%, rgba(31,173,191,0.16) 0%, transparent 55%)',
+              }}
+            />
+          </div>
+
           <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-            <div style={{ maxWidth: '920px', margin: '0 auto', textAlign: 'center' }}>
+            <div style={{ maxWidth: '980px', margin: '0 auto', textAlign: 'center' }}>
+              <div
+                className="hero-animate"
+                style={{
+                  display: 'inline-block',
+                  background: 'rgba(31, 173, 191, 0.18)',
+                  border: '1px solid rgba(255,255,255,0.18)',
+                  color: '#FFFFFF',
+                  padding: '10px 22px',
+                  borderRadius: '999px',
+                  fontSize: '13px',
+                  fontWeight: 800,
+                  textTransform: 'uppercase',
+                  letterSpacing: '1px',
+                  marginBottom: '22px',
+                  backdropFilter: 'blur(8px)',
+                }}
+              >
+                INDUSTRIAL EXCELLENCE SINCE 2006
+              </div>
+
               <h1
                 ref={heroTitleRef}
                 style={{
@@ -522,9 +557,10 @@ export default function Careers() {
                   fontWeight: '900',
                   marginBottom: '22px',
                   fontFamily: "'Poppins', sans-serif",
-                  color: '#1F2937',
+                  color: '#FFFFFF',
                   lineHeight: '1.1',
                   perspective: '1000px',
+                  textShadow: '0 10px 40px rgba(0,0,0,0.35)',
                 }}
               >
                 Join Vedansh Infra Services
@@ -534,10 +570,10 @@ export default function Careers() {
                 className="hero-animate"
                 style={{
                   fontSize: '22px',
-                  color: '#6B7280',
+                  color: 'rgba(255,255,255,0.84)',
                   marginBottom: '40px',
                   lineHeight: '1.7',
-                  maxWidth: '760px',
+                  maxWidth: '780px',
                   marginLeft: 'auto',
                   marginRight: 'auto',
                 }}
@@ -550,7 +586,15 @@ export default function Careers() {
                 <a href="#openings" className="btn btn-primary">
                   View Open Positions
                 </a>
-                <Link to="/contact" className="btn btn-secondary">
+                <Link
+                  to="/contact"
+                  className="btn btn-secondary"
+                  style={{
+                    background: 'rgba(255,255,255,0.08)',
+                    color: '#FFFFFF',
+                    borderColor: 'rgba(255,255,255,0.55)',
+                  }}
+                >
                   Contact HR
                 </Link>
               </div>
@@ -569,12 +613,7 @@ export default function Careers() {
                 gap: '40px',
                 textAlign: 'center',
               }}
-            >
-              <div>
-                <div style={{ fontSize: '46px', fontWeight: '900', color: '#1fadbf', marginBottom: '8px' }}>₹226+ Cr</div>
-                <p style={{ color: '#E5E7EB', fontWeight: '500' }}>Ongoing Projects</p>
-              </div>
-              <div>
+            ><div>
                 <div style={{ fontSize: '46px', fontWeight: '900', color: '#1fadbf', marginBottom: '8px' }}>19 Years</div>
                 <p style={{ color: '#E5E7EB', fontWeight: '500' }}>Industry Excellence</p>
               </div>
@@ -937,71 +976,6 @@ export default function Careers() {
           </div>
         </section>
 
-        {/* Hiring Process */}
-        <section ref={processRef} style={{ padding: '120px 0', backgroundColor: '#1F2937' }}>
-          <div className="container">
-            <div style={{ textAlign: 'center', marginBottom: '70px' }}>
-              <h2 className="section-animate" style={{ ...sectionTitle, color: '#FFFFFF' }}>
-                Hiring Process
-              </h2>
-              <p className="section-animate" style={{ ...sectionSubtitle, color: '#E5E7EB' }}>
-                Simple, clear steps—so you always know what’s next.
-              </p>
-            </div>
-
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '22px' }}>
-              {hiringProcess.map((step, i) => (
-                <div
-                  key={i}
-                  className="reveal-card"
-                  style={{
-                    background: 'rgba(255, 255, 255, 0.05)',
-                    border: '1px solid rgba(255, 255, 255, 0.12)',
-                    padding: '30px',
-                    borderRadius: '22px',
-                    transition: 'all 0.35s ease',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-10px)';
-                    e.currentTarget.style.borderColor = 'rgba(31, 173, 191, 0.6)';
-                    e.currentTarget.style.boxShadow = '0 18px 44px rgba(0,0,0,0.22)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.12)';
-                    e.currentTarget.style.boxShadow = 'none';
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '14px' }}>
-                    <div
-                      style={{
-                        width: '44px',
-                        height: '44px',
-                        borderRadius: '16px',
-                        background: 'rgba(31, 173, 191, 0.18)',
-                        color: '#1fadbf',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontWeight: 900,
-                        fontFamily: "'Poppins', sans-serif",
-                      }}
-                    >
-                      {step.step}
-                    </div>
-                    <h3 style={{ margin: 0, color: '#FFFFFF', fontWeight: 900, fontFamily: "'Poppins', sans-serif" }}>{step.title}</h3>
-                  </div>
-                  <p style={{ margin: 0, color: '#E5E7EB', lineHeight: '1.8' }}>{step.desc}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="section-animate" style={{ marginTop: '50px', textAlign: 'center' }}>
-              <a href="#apply-form" className="btn btn-primary">Start Your Application</a>
-            </div>
-          </div>
-        </section>
-
         {/* Apply */}
         <section ref={applyRef} style={{ padding: '120px 0', backgroundColor: '#FFFFFF' }}>
           <div className="container">
@@ -1094,7 +1068,7 @@ export default function Careers() {
                     <FaPhone style={{ color: '#1fadbf' }} /> +91 XXXXX XXXXX
                   </span>
                   <span style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
-                    <FaEnvelope style={{ color: '#1fadbf' }} /> careers@vedanshinfra.com
+                    <FaEnvelope style={{ color: '#1fadbf' }} /> career@vedansh.in
                   </span>
                 </div>
               </form>

@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { getProjectBySlug } from '../data/projects';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { 
@@ -7,6 +8,25 @@ import {
 } from 'react-icons/fa';
 
 gsap.registerPlugin(ScrollTrigger);
+
+// Public asset helper (mirrors Home.jsx logic and works when deployed under a sub-path like /Vedansh-website/)
+const BASE = import.meta.env.BASE_URL || '/';
+const asset = (p) => {
+  const s = String(p || '');
+  if (!s) return '';
+  // Keep absolute URLs/data URLs untouched
+  if (/^(?:[a-z]+:)?\/\//i.test(s) || s.startsWith('data:')) return s;
+
+  // If the path already includes the base, don't double-prefix it
+  if (s.startsWith(BASE)) return s;
+
+  // Support inputs like "/logos/x.png" or "public/logos/x.png"
+  const clean = s.replace(/^\/+/,'').replace(/^public\//i,'');
+  return `${BASE}${clean}`;
+};
+
+
+
 
 // Optional: map client names to logo paths (recommended place: /public/logos/*)
 // Example:
@@ -409,7 +429,55 @@ category: 'Mechanical',
         `/images/${folder}/img${num}.jpg`,
         `/images/${folder}/image${num}.jpg`,
         `/images/${folder}/${prefix}-${String(num).padStart(2, '0')}.jpg`,
-        `/images/${folder}/${prefix}${String(num).padStart(2, '0')}.jpg`
+        `/images/${folder}/${prefix}${String(num).padStart(2, '0')}.jpg`,
+        `/images/${folder}/${prefix}-${num}.png`,
+        `/images/${folder}/${prefix}${num}.png`,
+        `/images/${folder}/${prefix}_${num}.png`,
+        `/images/${folder}/${num}.png`,
+        `/images/${folder}/img${num}.png`,
+        `/images/${folder}/image${num}.png`,
+        `/images/${folder}/${prefix}-${String(num).padStart(2, '0')}.png`,
+        `/images/${folder}/${prefix}${String(num).padStart(2, '0')}.png`,
+        `/images/${folder}/${prefix}-${num}.jpeg`,
+        `/images/${folder}/${prefix}${num}.jpeg`,
+        `/images/${folder}/${prefix}_${num}.jpeg`,
+        `/images/${folder}/${num}.jpeg`,
+        `/images/${folder}/img${num}.jpeg`,
+        `/images/${folder}/image${num}.jpeg`,
+        `/images/${folder}/${prefix}-${String(num).padStart(2, '0')}.jpeg`,
+        `/images/${folder}/${prefix}${String(num).padStart(2, '0')}.jpeg`,
+        `/images/${folder}/${prefix}-${num}.webp`,
+        `/images/${folder}/${prefix}${num}.webp`,
+        `/images/${folder}/${prefix}_${num}.webp`,
+        `/images/${folder}/${num}.webp`,
+        `/images/${folder}/img${num}.webp`,
+        `/images/${folder}/image${num}.webp`,
+        `/images/${folder}/${prefix}-${String(num).padStart(2, '0')}.webp`,
+        `/images/${folder}/${prefix}${String(num).padStart(2, '0')}.webp`,
+        `/images/${folder}/${prefix}-${num}.PNG`,
+        `/images/${folder}/${prefix}${num}.PNG`,
+        `/images/${folder}/${prefix}_${num}.PNG`,
+        `/images/${folder}/${num}.PNG`,
+        `/images/${folder}/img${num}.PNG`,
+        `/images/${folder}/image${num}.PNG`,
+        `/images/${folder}/${prefix}-${String(num).padStart(2, '0')}.PNG`,
+        `/images/${folder}/${prefix}${String(num).padStart(2, '0')}.PNG`,
+        `/images/${folder}/${prefix}-${num}.JPEG`,
+        `/images/${folder}/${prefix}${num}.JPEG`,
+        `/images/${folder}/${prefix}_${num}.JPEG`,
+        `/images/${folder}/${num}.JPEG`,
+        `/images/${folder}/img${num}.JPEG`,
+        `/images/${folder}/image${num}.JPEG`,
+        `/images/${folder}/${prefix}-${String(num).padStart(2, '0')}.JPEG`,
+        `/images/${folder}/${prefix}${String(num).padStart(2, '0')}.JPEG`,
+        `/images/${folder}/${prefix}-${num}.WEBP`,
+        `/images/${folder}/${prefix}${num}.WEBP`,
+        `/images/${folder}/${prefix}_${num}.WEBP`,
+        `/images/${folder}/${num}.WEBP`,
+        `/images/${folder}/img${num}.WEBP`,
+        `/images/${folder}/image${num}.WEBP`,
+        `/images/${folder}/${prefix}-${String(num).padStart(2, '0')}.WEBP`,
+        `/images/${folder}/${prefix}${String(num).padStart(2, '0')}.WEBP`,
       ];
     };
 
@@ -447,7 +515,7 @@ category: 'Mechanical',
         )}
         {currentAttempt < patterns.length && (
           <img 
-            src={currentPath}
+            src={asset(currentPath)}
             alt={`${type} ${num}`}
             onError={handleError}
             onLoad={handleLoad}
@@ -549,14 +617,88 @@ category: 'Mechanical',
       `}</style>
 
       {/* Hero Section */}
-      <section ref={heroRef} style={{ minHeight: '70vh', display: 'flex', alignItems: 'center', background: 'linear-gradient(135deg, #F8F9FA 0%, #E5E7EB 100%)', paddingTop: '100px', paddingBottom: '80px', position: 'relative', overflow: 'hidden' }}>
+      <section
+        ref={heroRef}
+        style={{
+          minHeight: '70vh',
+          display: 'flex',
+          alignItems: 'center',
+          paddingTop: '100px',
+          paddingBottom: '80px',
+          position: 'relative',
+          overflow: 'hidden',
+          backgroundColor: '#0B1220',
+          backgroundImage: `url(${asset('images/hero/projects-hero.jpg')})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}
+      >
+        {/* Dark overlay for readability */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'rgba(0, 0, 0, 0.62)'
+          }}
+        />
+        {/* Teal accent wash */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background:
+              'radial-gradient(circle at 20% 30%, rgba(31, 173, 191, 0.18), transparent 55%), radial-gradient(circle at 80% 10%, rgba(31, 173, 191, 0.10), transparent 50%)'
+          }}
+        />
+
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
-            <h1 ref={heroTitleRef} style={{ fontSize: 'clamp(40px, 6vw, 68px)', fontWeight: '900', marginBottom: '28px', fontFamily: "'Poppins', sans-serif", color: '#1F2937', lineHeight: '1.1', perspective: '1000px' }}>
-              Delivering excellence across India's industrial landscape
+            <div
+              className="hero-animate"
+              style={{
+                display: 'inline-block',
+                background: 'rgba(31, 173, 191, 0.18)',
+                border: '1px solid rgba(31, 173, 191, 0.35)',
+                color: '#FFFFFF',
+                padding: '10px 22px',
+                borderRadius: '999px',
+                fontSize: '13px',
+                fontWeight: 800,
+                textTransform: 'uppercase',
+                letterSpacing: '1px',
+                marginBottom: '20px'
+              }}
+            >
+              INDUSTRIAL EXCELLENCE SINCE 2006
+            </div>
+
+            <h1
+              ref={heroTitleRef}
+              style={{
+                fontSize: 'clamp(42px, 5vw, 72px)',
+                fontWeight: '900',
+                color: '#FFFFFF',
+                lineHeight: '1.05',
+                perspective: '1000px',
+                textShadow: '0 8px 28px rgba(0,0,0,0.45)'
+              }}
+            >
+              Projects that prove execution
             </h1>
-            <p className="hero-animate" style={{ fontSize: '22px', color: '#6B7280', lineHeight: '1.7', maxWidth: '750px', margin: '0 auto 40px' }}>
-              From mega power plants to renewable energy installations, our project portfolio showcases 19 years of engineering excellence and successful execution.
+
+            <p
+              className="hero-animate"
+              style={{
+                fontSize: '20px',
+                color: 'rgba(255,255,255,0.86)',
+                lineHeight: '1.7',
+                maxWidth: '760px',
+                margin: '22px auto 0'
+              }}
+            >
+              Explore a selection of our ongoing and executed work across mechanical plant erection, electrical packages, and industrial civil execution.
             </p>
           </div>
         </div>
@@ -595,58 +737,6 @@ category: 'Mechanical',
                 <div style={{ fontSize: '16px', color: '#6B7280', fontWeight: '600' }}>
                   {stat.label}
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PROJECT GALLERY */}
-      <section style={{ padding: '100px 0', backgroundColor: '#1F2937', overflow: 'hidden' }}>
-        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-          <h2 style={{ fontSize: '48px', fontWeight: '800', marginBottom: '16px', fontFamily: "'Poppins', sans-serif", color: '#FFFFFF' }}>
-            Glimpse of Our Projects
-          </h2>
-          <p style={{ fontSize: '18px', color: '#E5E7EB', maxWidth: '700px', margin: '0 auto' }}>
-            A visual journey through our successful project executions across India
-          </p>
-        </div>
-
-        <div className="auto-scroll-container">
-          <div className="auto-scroll-track">
-            {[1,2,3,4,5,6,7,8,9,10,11,12,1,2,3,4,5,6,7,8,9,10,11,12].map((num, index) => (
-              <div key={index} className="photo-card">
-                <SmartImage 
-                  num={num} 
-                  type="project" 
-                  gradient={projectGradients[(num - 1) % 12]}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* TEAM GALLERY */}
-      <section style={{ padding: '100px 0', backgroundColor: '#F8F9FA', overflow: 'hidden' }}>
-        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-          <h2 style={{ fontSize: '48px', fontWeight: '800', marginBottom: '16px', fontFamily: "'Poppins', sans-serif", color: '#1F2937' }}>
-            Our Team in Action
-          </h2>
-          <p style={{ fontSize: '18px', color: '#6B7280', maxWidth: '700px', margin: '0 auto' }}>
-            The dedicated professionals behind every successful project delivery
-          </p>
-        </div>
-
-        <div className="auto-scroll-container">
-          <div className="auto-scroll-track" style={{ animationDuration: '35s', animationDirection: 'reverse' }}>
-            {[1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10].map((num, index) => (
-              <div key={index} className="team-photo-card">
-                <SmartImage 
-                  num={num} 
-                  type="team" 
-                  gradient={teamGradients[(num - 1) % 10]}
-                />
               </div>
             ))}
           </div>
@@ -705,7 +795,10 @@ category: 'Mechanical',
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(450px, 1fr))', gap: '32px' }}>
-            {getFilteredProjects().map((project) => (
+            {getFilteredProjects().map((project) => {
+              const fullProject = getProjectBySlug(project.slug);
+              const cardImage = fullProject?.image || project.image;
+              return (
               <div
                 key={project.id}
                 style={{
@@ -726,13 +819,27 @@ category: 'Mechanical',
                   e.currentTarget.style.borderColor = '#E5E7EB';
                 }}
               >
+                {/* Project Photo (uses src/data/projects.js -> image field). If missing, card still renders safely. */}
+                <div
+                  style={{
+                    width: '100%',
+                    height: '200px',
+                    borderRadius: '16px',
+                    overflow: 'hidden',
+                    marginBottom: '18px',
+                    background: '#F3F4F6',
+                    backgroundImage: cardImage ? `url(${asset(cardImage)})` : 'none',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  }}
+                />
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
                   <div style={{ display: 'inline-block', padding: '6px 16px', background: 'rgba(31, 173, 191, 0.1)', color: '#1fadbf', borderRadius: '6px', fontSize: '12px', fontWeight: '700', marginBottom: '0px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                   {project.category}
                 </div>
                   {(project.clientLogo || CLIENT_LOGOS[project.client]) && (
                     <img
-                      src={project.clientLogo || CLIENT_LOGOS[project.client]}
+                      src={asset(project.clientLogo || CLIENT_LOGOS[project.client])}
                       alt={`${project.client} logo`}
                       loading="lazy"
                       style={{
@@ -805,7 +912,8 @@ category: 'Mechanical',
                   <FaArrowRight />
                 </Link>
               </div>
-            ))}
+            );
+            })}
           </div>
         </div>
       </section>

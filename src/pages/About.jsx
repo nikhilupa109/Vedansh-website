@@ -7,6 +7,22 @@ import { HiCheckCircle } from 'react-icons/hi';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const BASE = import.meta.env.BASE_URL || '/';
+
+const asset = (p) => {
+  const s = String(p || '');
+  if (!s) return '';
+  // Keep absolute URLs/data URLs untouched
+  if (/^(?:[a-z]+:)?\/\//i.test(s) || s.startsWith('data:')) return s;
+
+  // If the path already includes the base, don't double-prefix it
+  if (s.startsWith(BASE)) return s;
+
+  // Support inputs like "/logos/x.png" or "public/logos/x.png"
+  const clean = s.replace(/^\/+/,'').replace(/^public\//i,'');
+  return `${BASE}${clean}`;
+};
+
 // Fallback team data
 const fallbackTeam = [
   { name: 'Lokendra Upadhyay', position: 'Managing Director', initials: 'LU' },
@@ -25,6 +41,8 @@ const About = () => {
   const [teamData, setTeamData] = useState(fallbackTeam);
 
   const heroRef = useRef(null);
+  const heroBgRef = useRef(null);
+  const heroContentRef = useRef(null);
   const heroTitleRef = useRef(null);
   const storyRef = useRef(null);
   const valuesRef = useRef(null);
@@ -56,7 +74,8 @@ const About = () => {
     const text = title.textContent;
     title.innerHTML = '';
 
-    const words = text.split(' ');
+    // Split on spaces but keep rendering + wrapping correct.
+    const words = text.split(' ').filter(Boolean);
     const allChars = [];
 
     words.forEach((word, wordIndex) => {
@@ -75,11 +94,10 @@ const About = () => {
 
       title.appendChild(wordSpan);
 
+      // Use a real text-node space (not a span) so the browser
+      // reliably renders spacing AND allows line-wrapping between words.
       if (wordIndex < words.length - 1) {
-        const spaceSpan = document.createElement('span');
-        spaceSpan.innerHTML = '&nbsp;';
-        spaceSpan.style.display = 'inline-block';
-        title.appendChild(spaceSpan);
+        title.appendChild(document.createTextNode(' '));
       }
     });
 
@@ -97,6 +115,38 @@ const About = () => {
         });
       }
     });
+  }, []);
+
+
+  // Parallax hero (same feel as Home)
+  useEffect(() => {
+    if (!heroRef.current || !heroBgRef.current || !heroContentRef.current) return;
+
+    const ctx = gsap.context(() => {
+      gsap.to(heroBgRef.current, {
+        yPercent: 25,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1.2,
+        }
+      });
+
+      gsap.to(heroContentRef.current, {
+        yPercent: -10,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1.2,
+        }
+      });
+    }, heroRef);
+
+    return () => ctx.revert();
   }, []);
 
   // Hero animation
@@ -253,27 +303,436 @@ const About = () => {
     { Icon: FaLeaf, title: 'Sustainability', description: 'Environmental responsibility is central to our operations, from planning through execution.' }
   ];
 
-  return (
+  const projectGradients = [
+    'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+    'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+    'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+    'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+    'linear-gradient(135deg, #30cfd0 0%, #330867 100%)',
+    'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
+    'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)',
+    'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)',
+    'linear-gradient(135deg, #ff6e7f 0%, #bfe9ff 100%)',
+    'linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)',
+    'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
+  ];
+
+  const teamGradients = [
+    'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+    'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+    'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+    'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+    'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)',
+    'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)',
+    'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
+    'linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)',
+    'linear-gradient(135deg, #30cfd0 0%, #330867 100%)'
+  ];
+
+  // Smart Image Component - tries multiple filename patterns
+  const SmartImage = ({ num, type, gradient }) => {
+    const [currentAttempt, setCurrentAttempt] = useState(0);
+    const [imageLoaded, setImageLoaded] = useState(false);
+
+    // All possible filename patterns to try
+    const getImagePatterns = (num, type) => {
+      const folder = type === 'project' ? 'projects' : 'team';
+      const prefix = type === 'project' ? 'project' : 'team';
+
+      return [
+        `/images/${folder}/${prefix}-${num}.jpg`,
+        `/images/${folder}/${prefix}${num}.jpg`,
+        `/images/${folder}/${prefix}_${num}.jpg`,
+        `/images/${folder}/${prefix}-${num}.JPG`,
+        `/images/${folder}/${prefix}${num}.JPG`,
+        `/images/${folder}/${prefix.toUpperCase()}-${num}.jpg`,
+        `/images/${folder}/${prefix.toUpperCase()}${num}.jpg`,
+        `/images/${folder}/${num}.jpg`,
+        `/images/${folder}/img${num}.jpg`,
+        `/images/${folder}/image${num}.jpg`,
+        `/images/${folder}/${prefix}-${String(num).padStart(2, '0')}.jpg`,
+        `/images/${folder}/${prefix}${String(num).padStart(2, '0')}.jpg`,
+        `/images/${folder}/${prefix}-${num}.png`,
+        `/images/${folder}/${prefix}${num}.png`,
+        `/images/${folder}/${prefix}_${num}.png`,
+        `/images/${folder}/${num}.png`,
+        `/images/${folder}/img${num}.png`,
+        `/images/${folder}/image${num}.png`,
+        `/images/${folder}/${prefix}-${String(num).padStart(2, '0')}.png`,
+        `/images/${folder}/${prefix}${String(num).padStart(2, '0')}.png`,
+        `/images/${folder}/${prefix}-${num}.jpeg`,
+        `/images/${folder}/${prefix}${num}.jpeg`,
+        `/images/${folder}/${prefix}_${num}.jpeg`,
+        `/images/${folder}/${num}.jpeg`,
+        `/images/${folder}/img${num}.jpeg`,
+        `/images/${folder}/image${num}.jpeg`,
+        `/images/${folder}/${prefix}-${String(num).padStart(2, '0')}.jpeg`,
+        `/images/${folder}/${prefix}${String(num).padStart(2, '0')}.jpeg`,
+        `/images/${folder}/${prefix}-${num}.webp`,
+        `/images/${folder}/${prefix}${num}.webp`,
+        `/images/${folder}/${prefix}_${num}.webp`,
+        `/images/${folder}/${num}.webp`,
+        `/images/${folder}/img${num}.webp`,
+        `/images/${folder}/image${num}.webp`,
+        `/images/${folder}/${prefix}-${String(num).padStart(2, '0')}.webp`,
+        `/images/${folder}/${prefix}${String(num).padStart(2, '0')}.webp`,
+        `/images/${folder}/${prefix}-${num}.PNG`,
+        `/images/${folder}/${prefix}${num}.PNG`,
+        `/images/${folder}/${prefix}_${num}.PNG`,
+        `/images/${folder}/${num}.PNG`,
+        `/images/${folder}/img${num}.PNG`,
+        `/images/${folder}/image${num}.PNG`,
+        `/images/${folder}/${prefix}-${String(num).padStart(2, '0')}.PNG`,
+        `/images/${folder}/${prefix}${String(num).padStart(2, '0')}.PNG`,
+        `/images/${folder}/${prefix}-${num}.JPEG`,
+        `/images/${folder}/${prefix}${num}.JPEG`,
+        `/images/${folder}/${prefix}_${num}.JPEG`,
+        `/images/${folder}/${num}.JPEG`,
+        `/images/${folder}/img${num}.JPEG`,
+        `/images/${folder}/image${num}.JPEG`,
+        `/images/${folder}/${prefix}-${String(num).padStart(2, '0')}.JPEG`,
+        `/images/${folder}/${prefix}${String(num).padStart(2, '0')}.JPEG`,
+        `/images/${folder}/${prefix}-${num}.WEBP`,
+        `/images/${folder}/${prefix}${num}.WEBP`,
+        `/images/${folder}/${prefix}_${num}.WEBP`,
+        `/images/${folder}/${num}.WEBP`,
+        `/images/${folder}/img${num}.WEBP`,
+        `/images/${folder}/image${num}.WEBP`,
+        `/images/${folder}/${prefix}-${String(num).padStart(2, '0')}.WEBP`,
+        `/images/${folder}/${prefix}${String(num).padStart(2, '0')}.WEBP`,
+      ];
+    };
+
+    const patterns = getImagePatterns(num, type);
+    const currentPath = patterns[currentAttempt];
+
+    const handleError = () => {
+      if (currentAttempt < patterns.length - 1) {
+        setCurrentAttempt(prev => prev + 1);
+      } else {
+        setImageLoaded(false);
+      }
+    };
+
+    const handleLoad = () => {
+      setImageLoaded(true);
+    };
+
+    return (
+      <>
+        {!imageLoaded && currentAttempt >= patterns.length - 1 && (
+          <div style={{
+            width: '100%',
+            height: '100%',
+            background: gradient,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: 'white',
+            fontSize: '24px',
+            fontWeight: 'bold'
+          }}>
+            {num}
+          </div>
+        )}
+        {currentAttempt < patterns.length && (
+          <img 
+            src={asset(currentPath)}
+            alt={`${type} ${num}`}
+            onError={handleError}
+            onLoad={handleLoad}
+            style={{ 
+              width: '100%', 
+              height: '100%', 
+              objectFit: 'cover',
+              display: imageLoaded ? 'block' : 'none'
+            }}
+          />
+        )}
+      </>
+    );
+  };
+
+return (
     <>
-      {/* Hero Section */}
-      <section ref={heroRef} style={{ minHeight: '70vh', display: 'flex', alignItems: 'center', background: 'linear-gradient(135deg, #F8F9FA 0%, #E5E7EB 100%)', paddingTop: '100px', paddingBottom: '80px', position: 'relative', overflow: 'hidden' }}>
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-          <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
-            <h1 ref={heroTitleRef} style={{ fontSize: 'clamp(40px, 6vw, 68px)', fontWeight: '900', marginBottom: '28px', fontFamily: "'Poppins', sans-serif", color: '#1F2937', lineHeight: '1.1', perspective: '1000px' }}>
+            {/* Hero Section */}
+      <section
+        ref={heroRef}
+        style={{
+          minHeight: '70vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          position: 'relative',
+          overflow: 'hidden',
+          paddingTop: '160px',
+          paddingBottom: '90px',
+        }}
+      >
+        {/* About hero background (same hero style as Home) */}
+        <div
+          ref={heroBgRef}
+          style={{
+            position: 'absolute',
+            top: '-20%',
+            left: 0,
+            width: '100%',
+            height: '120%',
+            backgroundImage: `url("${BASE}images/hero/about.jpg"), url("https://source.unsplash.com/1920x1080/?industrial,construction,plant")`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            zIndex: 0,
+          }}
+        >
+          {/* Dark overlay for readability */}
+          <div
+            style={{
+              position: 'absolute',
+              inset: 0,
+              background:
+                'linear-gradient(180deg, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.50) 45%, rgba(0,0,0,0.62) 100%)',
+            }}
+          />
+          {/* Subtle teal pattern tint */}
+          <div
+            style={{
+              position: 'absolute',
+              inset: 0,
+              backgroundImage:
+                "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231fadbf' fill-opacity='0.18'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm-16 0v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+              opacity: 0.35,
+            }}
+          />
+        </div>
+
+        {/* Hero Content */}
+        <div
+          ref={heroContentRef}
+          className="container"
+          style={{
+            position: 'relative',
+            zIndex: 2,
+            width: '100%',
+          }}
+        >
+          <div style={{ maxWidth: '980px', margin: '0 auto', textAlign: 'center' }}>
+            <div className="hero-animate">
+              <div
+                style={{
+                  display: 'inline-block',
+                  background: 'rgba(31,173,191,0.22)',
+                  border: '1px solid rgba(255,255,255,0.25)',
+                  color: '#FFFFFF',
+                  padding: '10px 22px',
+                  borderRadius: '999px',
+                  fontSize: '13px',
+                  fontWeight: 800,
+                  letterSpacing: '1.2px',
+                  textTransform: 'uppercase',
+                  backdropFilter: 'blur(10px)',
+                  WebkitBackdropFilter: 'blur(10px)',
+                  boxShadow: '0 14px 40px rgba(0,0,0,0.22)',
+                  marginBottom: '22px',
+                }}
+              >
+                INDUSTRIAL EXCELLENCE SINCE 2006
+              </div>
+            </div>
+
+            <h1
+              ref={heroTitleRef}
+              style={{
+                fontSize: 'clamp(40px, 8vw, 80px)',
+                fontWeight: '900',
+                lineHeight: '1.08',
+                marginBottom: '28px',
+                fontFamily: "'Poppins', sans-serif",
+                color: '#FFFFFF',
+                perspective: '1000px',
+                whiteSpace: 'normal',
+                textShadow: '0 18px 40px rgba(0,0,0,0.45)',
+              }}
+            >
               Building India's industrial infrastructure since 2006
             </h1>
-            <p className="hero-animate" style={{ fontSize: '22px', color: '#6B7280', lineHeight: '1.7', maxWidth: '750px', margin: '0 auto 40px' }}>
+
+            <p
+              className="hero-animate"
+              style={{
+                fontSize: 'clamp(18px, 2vw, 22px)',
+                color: 'rgba(255,255,255,0.88)',
+                lineHeight: '1.75',
+                maxWidth: '780px',
+                margin: '0 auto 40px',
+              }}
+            >
               A leading EPC contractor delivering world-class plant erection, project management, and industrial solutions across India's core infrastructure sectors.
             </p>
-            <div className="hero-animate" style={{ display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap' }}>
+
+            <div
+              className="hero-animate"
+              style={{ display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap' }}
+            >
               <Link to="/projects" className="btn btn-primary">View Our Projects</Link>
-              <Link to="/contact" className="btn btn-secondary">Get in Touch</Link>
+              {/* btn-secondary is dark by default in main.css; override here for the dark hero */}
+              <Link
+                to="/contact"
+                className="btn btn-secondary"
+                style={{
+                  color: '#FFFFFF',
+                  borderColor: 'rgba(255,255,255,0.55)',
+                  background: 'rgba(255,255,255,0.08)',
+                  backdropFilter: 'blur(10px)',
+                  WebkitBackdropFilter: 'blur(10px)',
+                }}
+              >
+                Get in Touch
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Quick Stats */}
+
+
+      <style>{`
+              @keyframes scroll-left {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
+              }
+
+              .auto-scroll-container {
+                overflow: hidden;
+                position: relative;
+                width: 100%;
+              }
+
+              .auto-scroll-track {
+                display: flex;
+                animation: scroll-left 40s linear infinite;
+                width: fit-content;
+              }
+
+              .auto-scroll-track:hover {
+                animation-play-state: paused;
+              }
+
+              .photo-card {
+                flex-shrink: 0;
+                width: 400px;
+                height: 300px;
+                margin: 0 16px;
+                border-radius: 16px;
+                overflow: hidden;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+                transition: all 0.4s ease;
+              }
+
+              .photo-card:hover {
+                transform: translateY(-12px) scale(1.05);
+                box-shadow: 0 16px 40px rgba(31, 173, 191, 0.3);
+              }
+
+              .team-photo-card {
+                flex-shrink: 0;
+                width: 350px;
+                height: 280px;
+                margin: 0 16px;
+                border-radius: 16px;
+                overflow: hidden;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+                transition: all 0.4s ease;
+              }
+
+              .team-photo-card:hover {
+                transform: translateY(-12px) scale(1.05);
+                box-shadow: 0 16px 40px rgba(245, 87, 108, 0.3);
+              }
+
+              .view-details-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 12px 24px;
+                background: linear-gradient(135deg, #1fadbf 0%, #16a085 100%);
+                color: white;
+                text-decoration: none;
+                border-radius: 8px;
+                font-weight: 600;
+                font-size: 14px;
+                transition: all 0.3s ease;
+                margin-top: 20px;
+              }
+
+              .view-details-btn:hover {
+                transform: translateX(5px);
+                box-shadow: 0 8px 20px rgba(31, 173, 191, 0.4);
+              }
+
+              .view-details-btn svg {
+                transition: transform 0.3s ease;
+              }
+
+              .view-details-btn:hover svg {
+                transform: translateX(5px);
+              }
+            `}</style>
+
+      {/* PROJECT GALLERY */}
+            <section style={{ padding: '100px 0', backgroundColor: '#1F2937', overflow: 'hidden' }}>
+              <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+                <h2 style={{ fontSize: '48px', fontWeight: '800', marginBottom: '16px', fontFamily: "'Poppins', sans-serif", color: '#FFFFFF' }}>
+                  Glimpse of Our Projects
+                </h2>
+                <p style={{ fontSize: '18px', color: '#E5E7EB', maxWidth: '700px', margin: '0 auto' }}>
+                  A visual journey through our successful project executions across India
+                </p>
+              </div>
+
+              <div className="auto-scroll-container">
+                <div className="auto-scroll-track">
+                  {[1,2,3,4,5,6,7,8,9,10,11,12,1,2,3,4,5,6,7,8,9,10,11,12].map((num, index) => (
+                    <div key={index} className="photo-card">
+                      <SmartImage 
+                        num={num} 
+                        type="project" 
+                        gradient={projectGradients[(num - 1) % 12]}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* TEAM GALLERY */}
+            <section style={{ padding: '100px 0', backgroundColor: '#F8F9FA', overflow: 'hidden' }}>
+              <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+                <h2 style={{ fontSize: '48px', fontWeight: '800', marginBottom: '16px', fontFamily: "'Poppins', sans-serif", color: '#1F2937' }}>
+                  Our Team in Action
+                </h2>
+                <p style={{ fontSize: '18px', color: '#6B7280', maxWidth: '700px', margin: '0 auto' }}>
+                  The dedicated professionals behind every successful project delivery
+                </p>
+              </div>
+
+              <div className="auto-scroll-container">
+                <div className="auto-scroll-track" style={{ animationDuration: '35s', animationDirection: 'reverse' }}>
+                  {[1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10].map((num, index) => (
+                    <div key={index} className="team-photo-card">
+                      <SmartImage 
+                        num={num} 
+                        type="team" 
+                        gradient={teamGradients[(num - 1) % 10]}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+{/* Quick Stats */}
       <section style={{ padding: '60px 0', backgroundColor: '#1F2937' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '40px', textAlign: 'center' }}>
@@ -313,15 +772,15 @@ const About = () => {
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '80px' }}>
             <h2 style={{ fontSize: '48px', fontWeight: '800', marginBottom: '20px', fontFamily: "'Poppins', sans-serif", color: '#1F2937' }}>Consistent growth trajectory</h2>
-            <p style={{ fontSize: '18px', color: '#6B7280', maxWidth: '700px', margin: '0 auto' }}>Nearly 3x revenue growth in 4 years, reflecting our expanding capabilities and client trust</p>
+            <p style={{ fontSize: '18px', color: '#6B7280', maxWidth: '700px', margin: '0 auto' }}>200% cumulative growth in 4 years, reflecting our expanding capabilities and client trust</p>
           </div>
           <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '24px', marginBottom: '40px' }}>
               {[
-                { year: 'FY 21-22', amount: '₹57 Cr', height: 35, color: '#60A5FA' },
-                { year: 'FY 22-23', amount: '₹66 Cr', height: 40, color: '#3B82F6' },
-                { year: 'FY 23-24', amount: '₹115 Cr', height: 70, color: '#2563EB' },
-                { year: 'FY 24-25', amount: '₹166 Cr', height: 100, color: '#1fadbf' }
+                { year: 'FY 21-22', amount: '0%', height: 35, color: '#60A5FA' },
+                { year: 'FY 22-23', amount: '16%', height: 42, color: '#3B82F6' },
+                { year: 'FY 23-24', amount: '102%', height: 74, color: '#2563EB' },
+                { year: 'FY 24-25', amount: '200%', height: 100, color: '#1fadbf' }
               ].map((data, i) => (
                 <div key={i} style={{ textAlign: 'center' }}>
                   <div style={{ height: '280px', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', marginBottom: '16px' }}>
@@ -354,7 +813,7 @@ const About = () => {
             </div>
             <div style={{ textAlign: 'center', padding: '32px', backgroundColor: 'white', borderRadius: '16px', border: '2px solid #1fadbf' }}>
               <p style={{ fontSize: '18px', color: '#1F2937', fontWeight: '600', marginBottom: '8px' }}>
-                <strong style={{ fontSize: '24px', color: '#1fadbf' }}>192% Growth</strong> from FY 21-22 to FY 24-25
+                <strong style={{ fontSize: '24px', color: '#1fadbf' }}>200% Growth</strong> from FY 21-22 to FY 24-25
               </p>
               <p style={{ fontSize: '16px', color: '#6B7280' }}>
                 Demonstrating consistent performance and market expansion

@@ -376,16 +376,167 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Form & Map Section */}
+      {/* Visit Our Office Section */}
       <section style={{ padding: '80px 0', background: '#F8F9FA' }}>
         <div className="container">
-          <div style={{ 
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))',
-            gap: '60px',
-            maxWidth: '1400px',
-            margin: '0 auto'
-          }}>
+          <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+            {/* Map & Trust Section */}
+            <div ref={mapRef}>
+              <h2 style={{ 
+                fontSize: '36px',
+                fontWeight: '800',
+                color: '#1F2937',
+                marginBottom: '16px',
+                fontFamily: "'Poppins', sans-serif"
+              }}>
+                Visit Our Office
+              </h2>
+              <p style={{ 
+                fontSize: '18px',
+                color: '#6B7280',
+                marginBottom: '32px'
+              }}>
+                Come meet us at our Chittorgarh office or reach out anytime.
+              </p>
+
+              {/* Google Map */}
+              <div className="map-container" style={{ marginBottom: '32px', height: '400px' }}>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3591.7562489147446!2d74.62736!3d24.87995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDUyJzQ4LjAiTiA3NMKwMzcnMzguNSJF!5e0!3m2!1sen!2sin!4v1234567890"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Vedansh Infra Location"
+                />
+              </div>
+
+              {/* Why Choose Us */}
+              <div style={{
+                background: 'white',
+                padding: '32px',
+                borderRadius: '20px',
+                border: '2px solid #E5E7EB'
+              }}>
+                <h3 style={{ 
+                  fontSize: '24px',
+                  fontWeight: '700',
+                  color: '#1F2937',
+                  marginBottom: '20px',
+                  fontFamily: "'Poppins', sans-serif"
+                }}>
+                  Why Partner With Us
+                </h3>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                  <div style={{ 
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '16px'
+                  }}>
+                    <div style={{
+                      width: '48px',
+                      height: '48px',
+                      borderRadius: '12px',
+                      background: 'linear-gradient(135deg, #1fadbf 0%, #16a085 100%)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      flexShrink: 0
+                    }}>
+                      <FaCheckCircle style={{ color: 'white', fontSize: '20px' }} />
+                    </div>
+                    <div>
+                      <h4 style={{ 
+                        fontSize: '16px',
+                        fontWeight: '700',
+                        color: '#1F2937',
+                        marginBottom: '6px'
+                      }}>
+                        19+ Years Experience
+                      </h4>
+                      <p style={{ fontSize: '14px', color: '#6B7280', lineHeight: '1.6' }}>
+                        Nearly two decades of delivering excellence in industrial infrastructure.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div style={{ 
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '16px'
+                  }}>
+                    <div style={{
+                      width: '48px',
+                      height: '48px',
+                      borderRadius: '12px',
+                      background: 'linear-gradient(135deg, #1fadbf 0%, #16a085 100%)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      flexShrink: 0
+                    }}>
+                      <FaCheckCircle style={{ color: 'white', fontSize: '20px' }} />
+                    </div>
+                    <div>
+                      <h4 style={{ 
+                        fontSize: '16px',
+                        fontWeight: '700',
+                        color: '#1F2937',
+                        marginBottom: '6px'
+                      }}>
+                        ISO Certified Quality
+                      </h4>
+                      <p style={{ fontSize: '14px', color: '#6B7280', lineHeight: '1.6' }}>
+                        ISO 9001, 14001, 45001 certified with IBR approval for quality assurance.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div style={{ 
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '16px'
+                  }}>
+                    <div style={{
+                      width: '48px',
+                      height: '48px',
+                      borderRadius: '12px',
+                      background: 'linear-gradient(135deg, #1fadbf 0%, #16a085 100%)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      flexShrink: 0
+                    }}>
+                      <FaCheckCircle style={{ color: 'white', fontSize: '20px' }} />
+                    </div>
+                    <div>
+                      <h4 style={{ 
+                        fontSize: '16px',
+                        fontWeight: '700',
+                        color: '#1F2937',
+                        marginBottom: '6px'
+                      }}>
+                        250+ Projects Delivered
+                      </h4>
+                      <p style={{ fontSize: '14px', color: '#6B7280', lineHeight: '1.6' }}>
+                        Successfully completed major projects across India's industrial sectors.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Send Us a Message Section */}
+      <section style={{ padding: '80px 0', background: '#F8F9FA' }}>
+        <div className="container">
+          <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
             {/* Contact Form */}
             <div ref={formRef}>
               <h2 style={{ 
@@ -601,156 +752,7 @@ const Contact = () => {
               </form>
             </div>
 
-            {/* Map & Trust Section */}
-            <div ref={mapRef}>
-              <h2 style={{ 
-                fontSize: '36px',
-                fontWeight: '800',
-                color: '#1F2937',
-                marginBottom: '16px',
-                fontFamily: "'Poppins', sans-serif"
-              }}>
-                Visit Our Office
-              </h2>
-              <p style={{ 
-                fontSize: '18px',
-                color: '#6B7280',
-                marginBottom: '32px'
-              }}>
-                Come meet us at our Chittorgarh office or reach out anytime.
-              </p>
-
-              {/* Google Map */}
-              <div className="map-container" style={{ marginBottom: '32px', height: '400px' }}>
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3591.7562489147446!2d74.62736!3d24.87995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDUyJzQ4LjAiTiA3NMKwMzcnMzguNSJF!5e0!3m2!1sen!2sin!4v1234567890"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen=""
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Vedansh Infra Location"
-                />
-              </div>
-
-              {/* Why Choose Us */}
-              <div style={{
-                background: 'white',
-                padding: '32px',
-                borderRadius: '20px',
-                border: '2px solid #E5E7EB'
-              }}>
-                <h3 style={{ 
-                  fontSize: '24px',
-                  fontWeight: '700',
-                  color: '#1F2937',
-                  marginBottom: '20px',
-                  fontFamily: "'Poppins', sans-serif"
-                }}>
-                  Why Partner With Us
-                </h3>
-
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                  <div style={{ 
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: '16px'
-                  }}>
-                    <div style={{
-                      width: '48px',
-                      height: '48px',
-                      borderRadius: '12px',
-                      background: 'linear-gradient(135deg, #1fadbf 0%, #16a085 100%)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      flexShrink: 0
-                    }}>
-                      <FaCheckCircle style={{ color: 'white', fontSize: '20px' }} />
-                    </div>
-                    <div>
-                      <h4 style={{ 
-                        fontSize: '16px',
-                        fontWeight: '700',
-                        color: '#1F2937',
-                        marginBottom: '6px'
-                      }}>
-                        19+ Years Experience
-                      </h4>
-                      <p style={{ fontSize: '14px', color: '#6B7280', lineHeight: '1.6' }}>
-                        Nearly two decades of delivering excellence in industrial infrastructure.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div style={{ 
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: '16px'
-                  }}>
-                    <div style={{
-                      width: '48px',
-                      height: '48px',
-                      borderRadius: '12px',
-                      background: 'linear-gradient(135deg, #1fadbf 0%, #16a085 100%)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      flexShrink: 0
-                    }}>
-                      <FaCheckCircle style={{ color: 'white', fontSize: '20px' }} />
-                    </div>
-                    <div>
-                      <h4 style={{ 
-                        fontSize: '16px',
-                        fontWeight: '700',
-                        color: '#1F2937',
-                        marginBottom: '6px'
-                      }}>
-                        ISO Certified Quality
-                      </h4>
-                      <p style={{ fontSize: '14px', color: '#6B7280', lineHeight: '1.6' }}>
-                        ISO 9001, 14001, 45001 certified with IBR approval for quality assurance.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div style={{ 
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: '16px'
-                  }}>
-                    <div style={{
-                      width: '48px',
-                      height: '48px',
-                      borderRadius: '12px',
-                      background: 'linear-gradient(135deg, #1fadbf 0%, #16a085 100%)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      flexShrink: 0
-                    }}>
-                      <FaCheckCircle style={{ color: 'white', fontSize: '20px' }} />
-                    </div>
-                    <div>
-                      <h4 style={{ 
-                        fontSize: '16px',
-                        fontWeight: '700',
-                        color: '#1F2937',
-                        marginBottom: '6px'
-                      }}>
-                        250+ Projects Delivered
-                      </h4>
-                      <p style={{ fontSize: '14px', color: '#6B7280', lineHeight: '1.6' }}>
-                        Successfully completed major projects across India's industrial sectors.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+                      </div>
         </div>
       </section>
     </>

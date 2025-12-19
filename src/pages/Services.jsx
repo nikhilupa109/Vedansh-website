@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -11,9 +11,44 @@ import { MdPrecisionManufacturing, MdEngineering } from 'react-icons/md';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const BASE = import.meta.env.BASE_URL || '/';
+
 const Services = () => {
   const heroRef = useRef(null);
   const heroTitleRef = useRef(null);
+
+
+// Hero background image (GitHub Pages-safe) with extension fallbacks
+const [heroBg, setHeroBg] = useState(`${BASE}images/hero/services.jpg`);
+
+useEffect(() => {
+  const candidates = [
+    `${BASE}images/hero/services.jpg`,
+    `${BASE}images/hero/services.jpeg`,
+    `${BASE}images/hero/services.png`,
+    `${BASE}images/hero/services.webp`,
+    `${BASE}images/hero/services-hero.jpg`,
+    `${BASE}images/hero/services-hero.jpeg`,
+    `${BASE}images/hero/services-hero.png`,
+    `${BASE}images/hero/services-hero.webp`,
+  ];
+
+  let cancelled = false;
+
+  const tryLoad = (idx) => {
+    if (idx >= candidates.length) return;
+    const img = new Image();
+    img.onload = () => {
+      if (!cancelled) setHeroBg(candidates[idx]);
+    };
+    img.onerror = () => tryLoad(idx + 1);
+    img.src = candidates[idx];
+  };
+
+  tryLoad(0);
+  return () => { cancelled = true; };
+}, []);
+
 
   // Character animation for title
   useEffect(() => {
@@ -43,10 +78,7 @@ const Services = () => {
       title.appendChild(wordSpan);
 
       if (wordIndex < words.length - 1) {
-        const spaceSpan = document.createElement('span');
-        spaceSpan.innerHTML = '&nbsp;';
-        spaceSpan.style.display = 'inline-block';
-        title.appendChild(spaceSpan);
+        title.appendChild(document.createTextNode(' '));
       }
     });
 
@@ -87,76 +119,146 @@ const Services = () => {
   const coreServices = [
     {
       Icon: GiCrane,
-      title: 'Plant Erection & Commissioning',
-      description: 'Expert erection and commissioning of industrial plants including detailed engineering, fabrication, and installation of critical heavy equipment in thermal, steel, petrochemical and process industries.',
-      highlights: ['Boiler Erection (IBR Certified)', 'Heavy Equipment Installation', 'Structural & Pipeline Erection', 'Testing & Commissioning']
+      title: 'Mechanical Plant Erection',
+      description: 'Heavy mechanical erection of industrial plants with precision installation, alignment, and commissioning support.',
+      highlights: ['Heavy Equipment Installation', 'Alignment & Commissioning', 'Shutdown & Turnaround Support', 'Site Safety Compliance']
     },
     {
       Icon: FaTools,
+      title: 'Boilers and Pipeline',
+      description: 'Boiler erection support and piping fabrication / installation to accelerate plant timelines and improve reliability.',
+      highlights: ['IBR Boiler Erection', 'Piping Fabrication & Installation', 'Hydro / Pneumatic Testing', 'Commissioning Support']
+    },
+    {
+      Icon: FaBolt,
+      title: 'Electrical and Substation EPC',
+      description: 'EPC delivery for electrical packages and substations including testing, commissioning, and integrated execution.',
+      highlights: ['HV/LV Cabling & Panels', 'Substations & Switchyards', 'Testing & Commissioning', 'E&I Integration']
+    },
+    {
+      Icon: FaCogs,
       title: 'Operation & Maintenance',
-      description: 'Comprehensive O&M services with skilled manpower to minimize downtime and maximize plant efficiency. Our technical experts ensure reliability and sustained performance.',
-      highlights: ['Annual Maintenance Contracts', 'Plant Shutdown & Overhauling', 'Preventive Maintenance', '24/7 Technical Support']
+      description: 'O&M services designed to increase uptime, improve reliability, and extend the life of critical assets.',
+      highlights: ['Annual Maintenance Contracts', 'Preventive Maintenance', 'Breakdown Support', 'Shutdown Overhauls']
     },
     {
-      Icon: FaProjectDiagram,
-      title: 'EPC Services',
-      description: 'End-to-end Engineering, Procurement, and Construction services delivering turnkey solutions with single-source accountability from design to commissioning.',
-      highlights: ['Complete Project Management', 'Design & Engineering', 'Procurement & Supply', 'Construction & Commissioning']
-    },
-    {
-      Icon: FaUsers,
-      title: 'Manpower Services',
-      description: 'Skilled technical manpower deployment across all disciplines including ITI-certified technicians, engineers, and specialized workforce for industrial operations.',
-      highlights: ['Certified Technicians', 'Engineering Expertise', 'Safety-Trained Personnel', 'Flexible Deployment']
+      Icon: MdPrecisionManufacturing,
+      title: 'Fabrication Workshop',
+      description: 'Fabrication capability for critical steel components with quality checks and reliable, repeatable output.',
+      highlights: ['Structural Fabrication', 'Pipe Spools & Supports', 'QA/QC Checks', 'Repeatable Output']
     }
   ];
 
+
   const technicalDisciplines = [
+    { Icon: FaIndustry, name: 'Civil', desc: 'Foundations, structures, infrastructure' },
     { Icon: FaBolt, name: 'Electrical', desc: 'HV/LV installations, substations, switchyards' },
-    { Icon: MdEngineering, name: 'Mechanical', desc: 'Heavy equipment, piping, structural work' },
     { Icon: GiElectric, name: 'Instrumentation', desc: 'Control systems, automation, calibration' },
-    { Icon: FaIndustry, name: 'Civil', desc: 'Foundations, structures, infrastructure' }
+    { Icon: MdEngineering, name: 'Mechanical', desc: 'Heavy equipment, piping, structural work' }
   ];
 
+
   const industries = [
-    { name: 'Metal & Mining', icon: '⚙️' },
-    { name: 'Power Generation', icon: '⚡' },
-    { name: 'Cement', icon: '🏗️' },
     { name: 'Chemical', icon: '🧪' },
+    { name: 'Cement', icon: '🏗️' },
     { name: 'Fertilizers', icon: '🌾' },
-    { name: 'Renewables', icon: '♻️' },
-    { name: 'Data Centers', icon: '💾' },
-    { name: 'Petrochemical', icon: '🛢️' }
+    { name: 'Metal & Mining', icon: '⚙️' },
+    { name: 'Petrochemical', icon: '🛢️' },
+    { name: 'Power Generation', icon: '⚡' },
+    { name: 'Renewables', icon: '♻️' }
   ];
+
 
   const capabilities = [
     { Icon: FaCertificate, text: 'Special Class IBR Boiler Erector License' },
     { Icon: FaBolt, text: 'Class-A Electrical Contractor License (Rajasthan & Gujarat)' },
-    { Icon: FaCheckCircle, text: 'ISO 9001, 14001, 45001 Certified' },
     { Icon: FaHardHat, text: '77+ Lakh Safe Man-Hours with Zero Fatalities' },
-    { Icon: FaIndustry, text: 'MSME Registered Organization' },
     { Icon: FaLightbulb, text: '19+ Years of Industrial Expertise' }
   ];
+
 
   return (
     <>
       {/* Hero Section */}
-      <section ref={heroRef} style={{ minHeight: '70vh', display: 'flex', alignItems: 'center', background: 'linear-gradient(135deg, #F8F9FA 0%, #E5E7EB 100%)', paddingTop: '100px', paddingBottom: '80px', position: 'relative', overflow: 'hidden' }}>
+      <section
+        ref={heroRef}
+        style={{
+          minHeight: '70vh',
+          display: 'flex',
+          alignItems: 'center',
+          paddingTop: '140px',
+          paddingBottom: '80px',
+          position: 'relative',
+          overflow: 'hidden',
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(${heroBg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundColor: '#111827'
+        }}
+      >
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
-            <h1 ref={heroTitleRef} style={{ fontSize: 'clamp(40px, 6vw, 68px)', fontWeight: '900', marginBottom: '28px', fontFamily: "'Poppins', sans-serif", color: '#1F2937', lineHeight: '1.1', perspective: '1000px' }}>
+            <div
+              className="hero-animate"
+              style={{
+                display: 'inline-block',
+                background: 'rgba(31, 173, 191, 0.9)',
+                color: 'white',
+                padding: '10px 24px',
+                borderRadius: '999px',
+                fontSize: '14px',
+                fontWeight: 800,
+                textTransform: 'uppercase',
+                letterSpacing: '1px',
+                marginBottom: '26px',
+                border: '1px solid rgba(255,255,255,0.25)'
+              }}
+            >
+              INDUSTRIAL EXCELLENCE SINCE 2006
+            </div>
+
+            <h1
+              ref={heroTitleRef}
+              style={{
+                fontSize: 'clamp(40px, 6vw, 68px)',
+                fontWeight: '900',
+                marginBottom: '22px',
+                fontFamily: "'Poppins', sans-serif",
+                color: '#FFFFFF',
+                lineHeight: '1.1',
+                perspective: '1000px'
+              }}
+            >
               Comprehensive industrial solutions across all disciplines
             </h1>
-            <p className="hero-animate" style={{ fontSize: '22px', color: '#6B7280', lineHeight: '1.7', maxWidth: '750px', margin: '0 auto 40px' }}>
+
+            <p
+              className="hero-animate"
+              style={{
+                fontSize: '22px',
+                color: 'rgba(255,255,255,0.85)',
+                lineHeight: '1.7',
+                maxWidth: '750px',
+                margin: '0 auto 40px'
+              }}
+            >
               Expert EPC, plant erection, and O&M services delivering quality excellence across electrical, mechanical, civil, and instrumentation projects.
             </p>
+
             <div className="hero-animate" style={{ display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap' }}>
               <Link to="/projects" className="btn btn-primary">View Projects</Link>
-              <Link to="/contact" className="btn btn-secondary">Request Quote</Link>
+              <Link
+                to="/contact"
+                className="btn btn-secondary"
+                style={{ color: '#FFFFFF', borderColor: 'rgba(255,255,255,0.65)', background: 'transparent' }}
+              >
+                Request Quote
+              </Link>
             </div>
           </div>
         </div>
       </section>
+
 
       {/* Core Services - IMMEDIATELY VISIBLE */}
       <section style={{ padding: '120px 0', backgroundColor: '#FFFFFF' }}>
@@ -267,7 +369,7 @@ const Services = () => {
       </section>
 
       {/* Industries Served - IMMEDIATELY VISIBLE */}
-      <section style={{ padding: '120px 0', backgroundColor: '#FFFFFF' }}>
+      <section style={{ padding: '140px 0', backgroundColor: '#FFFFFF' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '80px' }}>
             <h2 style={{ fontSize: '48px', fontWeight: '800', marginBottom: '20px', fontFamily: "'Poppins', sans-serif", color: '#1F2937' }}>
@@ -278,13 +380,13 @@ const Services = () => {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '24px', maxWidth: '1100px', margin: '0 auto' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '28px', maxWidth: '1200px', margin: '0 auto' }}>
             {industries.map((industry, i) => (
               <div
                 key={i}
                 style={{
                   background: 'linear-gradient(135deg, #F8F9FA 0%, #FFFFFF 100%)',
-                  padding: '32px 24px',
+                  padding: '40px 26px',
                   borderRadius: '16px',
                   textAlign: 'center',
                   border: '1px solid #E5E7EB',

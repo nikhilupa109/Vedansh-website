@@ -3,7 +3,7 @@
 
 /* Professional Light Theme */
 :root {
-  --primary-color: #1fadbf;
+  --primary-color: #1f2a38;
   --primary-dark: #215f69;
   --primary-light: #4ec9d9;
 
@@ -733,4 +733,322 @@ section {
     gap: 50px;
     animation: scroll 35s linear infinite;
   }
+}
+/* =========================================
+   THEME OVERRIDES: Teal Navbar + Footer
+   (Safe overrides — preserves GSAP/classes)
+   ========================================= */
+
+/* Navbar background teal + white text */
+.navbar {
+  background: var(--primary-color) !important;
+  backdrop-filter: none !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18) !important;
+}
+
+.navbar.scrolled {
+  background: var(--primary-color) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+/* Nav links white + slightly bigger */
+.nav-menu a {
+  color: rgba(255, 255, 255, 0.92) !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+  color: #ffffff !important;
+}
+
+/* Mobile hamburger visible on teal */
+.mobile-toggle span {
+  background: #ffffff !important;
+}
+
+/* Mobile menu background teal */
+@media (max-width: 768px) {
+  .nav-menu {
+    background: var(--primary-color) !important;
+  }
+}
+
+/* Footer teal + white text */
+.footer {
+  background: var(--primary-color) !important;
+  border-top: 0 !important;
+}
+
+.footer-col h4,
+.footer-col p,
+.footer-col ul li,
+.footer-col ul li a {
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+
+.footer-col ul li a:hover {
+  color: #ffffff !important;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.22) !important;
+}
+
+.footer-bottom p {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+/* =========================================
+   Client Logos: Step-scroll + drag + arrows
+   (Overrides old infinite marquee safely)
+   ========================================= */
+
+.logo-slider {
+  display: grid;
+  grid-template-columns: 52px 1fr 52px;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background: #ffffff;
+  color: #111827;
+  font-size: 28px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+
+.logo-arrow:hover {
+  transform: translateY(-1px);
+}
+
+.logo-scroll-container {
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+  user-select: none;
+  padding: 6px 4px;
+}
+
+.logo-scroll-container.dragging {
+  cursor: grabbing;
+}
+
+.logo-scroll {
+  display: flex !important;
+  gap: 24px !important;
+  animation: none !important; /* stops old marquee animation */
+  will-change: auto !important;
+  padding: 10px 6px;
+}
+
+/* bigger + full color logos */
+.logo-item {
+  flex-shrink: 0;
+  width: 320px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: none !important;     /* removes grayscale */
+  opacity: 1 !important;       /* full color */
+  scroll-snap-align: center;
+  padding: 18px;
+  background: #fafafa;
+  border-radius: 16px;
+  border: 1px solid #f0f0f0;
+  transition: transform 0.25s ease;
+}
+
+.logo-item:hover {
+  transform: scale(1.04);
+}
+
+.logo-item img {
+  width: 85%;
+  height: 85%;
+  object-fit: contain;
+}
+/* Navbar logo visibility fix */
+.nav-logo-wrap{
+  background: #ffffff;
+  padding: 8px 12px;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+
+.nav-logo-img{
+  height: 56px;
+  width: auto;
+  display: block;
+}
+/* --- Navbar spacing + no overlap --- */
+.navbar .container {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+/* shrink the white pill slightly so header height reduces */
+.nav-logo-wrap {
+  padding: 6px 10px !important;
+  border-radius: 12px !important;
+}
+
+.nav-logo-img {
+  height: 46px !important; /* reduced from 56 */
+}
+
+/* ensure page content starts below sticky navbar */
+.hero,
+.hero-section,
+.page-hero {
+  padding-top: 100px; /* prevents overlap even if navbar is sticky */
+}
+/* --- Bigger nav links --- */
+.nav-menu a {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+}
+/* Ensure navbar always stays above hero elements */
+.navbar {
+  z-index: 99999 !important;
+}
+/* Generic safeguard for hero pills/badges overlapping navbar */
+.hero-badge,
+.hero-pill,
+.hero-tag,
+.hero-label,
+.hero-subtitle-pill {
+  margin-top: 24px !important;
+  position: relative !important;
+  top: 0 !important;
+}
+
+/* =========================================================
+   CLIENT CHANGES (17-12-2025) — SAFE OVERRIDES
+   (keeps GSAP + existing animations intact)
+   ========================================================= */
+
+/* 1) Navbar: teal background + readable logo + larger menu text */
+.navbar {
+  background: var(--primary-color) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
+}
+.navbar .container {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+.navbar .logo {
+  background: #ffffff;
+  padding: 10px 14px;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+.navbar .logo img {
+  display: block;
+  height: 44px;
+  width: auto;
+}
+.nav-menu a {
+  color: rgba(255, 255, 255, 0.92) !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+}
+.nav-menu a:hover,
+.nav-menu a.active {
+  color: #ffffff !important;
+}
+.nav-menu a::after {
+  background: #ffffff !important;
+}
+
+/* 2) Footer: teal background */
+.footer {
+  background: var(--primary-color) !important;
+  color: #ffffff !important;
+  border-top: none !important;
+}
+.footer a {
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+.footer a:hover {
+  color: #ffffff !important;
+}
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.18) !important;
+}
+
+/* 3) Home — Comprehensive industrial services: equal grid */
+.services-grid {
+  display: grid;
+  gap: 28px;
+  margin-top: 60px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+@media (min-width: 1400px) {
+  .services-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .services-grid { grid-template-columns: 1fr; }
+}
+.services-grid .service-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 4) Home — Achievements: 3×3 grid + photo space */
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+@media (max-width: 1100px) {
+  .achievements-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .achievements-grid { grid-template-columns: 1fr; }
+}
+.achievement-photo {
+  height: 160px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(31,173,191,0.18), rgba(17,24,39,0.06));
+  border: 1px solid rgba(0,0,0,0.06);
+}
+.achievement-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 5) Home — Client logos: bigger + full color (no grayscale) */
+.logo-item {
+  width: 380px !important;
+  height: 190px !important;
+  filter: none !important;
+  opacity: 1 !important;
+  background: #ffffff !important;
+}
+.logo-item img {
+  filter: none !important;
+  opacity: 1 !important;
+  width: 90% !important;
+  height: 90% !important;
+  object-fit: contain !important;
 }

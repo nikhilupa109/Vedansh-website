@@ -29,13 +29,18 @@ const Navbar = () => {
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="container">
-        <Link to="/" className="logo" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-  <img 
-    src="/logo.png" 
-    alt="Vedansh Infra Services" 
-    style={{ height: '40px', width: 'auto' }}
-  />
-</Link>
+        <Link
+          to="/"
+          className="logo nav-logo-link"
+          aria-label="Vedansh Infra Services"
+          style={{ display: 'flex', alignItems: 'center' }}
+        >
+          <img
+            src={`${import.meta.env.BASE_URL}logo.png`}
+            alt="Vedansh Infra Services"
+            className="nav-logo-img"
+          />
+        </Link>
 
         
         <ul className={`nav-menu ${mobileMenuOpen ? 'active' : ''}`}>
