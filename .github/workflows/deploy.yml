@@ -2,7 +2,8 @@ name: Deploy Vite site to GitHub Pages
 
 on:
   push:
-    branches: ["react-redesign-v2"]
+    branches:
+      - react-redesign-v2
   workflow_dispatch:
 
 permissions:
@@ -21,22 +22,47 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Determine app directory
+        run: |
+          if [ -f "vedansh-infra-react/package.json" ]; then
+            APP_DIR="vedansh-infra-react"
+          else
+            APP_DIR="."
+          fi
+          echo "APP_DIR=$APP_DIR" >> $GITHUB_ENV
+          echo "Using app dir: $APP_DIR"
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "npm"
 
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
+        working-directory: ${{ env.APP_DIR }}
 
       - name: Build
         run: npm run build
+        working-directory: ${{ env.APP_DIR }}
+
+      - name: Detect build output folder
+        run: |
+          set -e
+          for d in dist build docs; do
+            if [ -d "${APP_DIR}/${d}" ]; then
+              echo "BUILD_DIR=${APP_DIR}/${d}" >> $GITHUB_ENV
+              echo "Using build dir: ${APP_DIR}/${d}"
+              exit 0
+            fi
+          done
+          echo "No build output folder found under ${APP_DIR}. Listing:"
+          ls -la "${APP_DIR}"
+          exit 1
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./docs
+          path: ${{ env.BUILD_DIR }}
 
   deploy:
     runs-on: ubuntu-latest
