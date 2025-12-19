@@ -1058,12 +1058,12 @@ const Home = () => {
 
           {(() => {
             const certs = [
-              { name: 'ISO 9001:2015', desc: 'Quality Management System', img: `${BASE}certificates/iso-9001.png` },
-              { name: 'ISO 14001:2015', desc: 'Environmental Management', img: `${BASE}certificates/iso-14001.png` },
-              { name: 'ISO 45001:2018', desc: 'Health & Safety Management', img: `${BASE}certificates/iso-45001.png` },
-              { name: 'IBR Approval', desc: 'Boiler Erector Certificate', img: `${BASE}certificates/ibr-approval.png` },
-              { name: 'Electrical Contractor', desc: 'Licensed Electrical Contractor', img: `${BASE}certificates/electrical-contractor.png` },
-              { name: 'Electrical Contractor (Gujarat)', desc: 'Licensed Electrical Contractor', img: `${BASE}certificates/electrical-contractor-gujarat.png` }
+              { name: 'ISO 9001:2015', desc: 'Quality Management System', img: `${BASE}certificates/iso-9001.jpg` },
+              { name: 'ISO 14001:2015', desc: 'Environmental Management', img: `${BASE}certificates/iso-14001.jpg` },
+              { name: 'ISO 45001:2018', desc: 'Health & Safety Management', img: `${BASE}certificates/iso-45001.jpg` },
+              { name: 'IBR Approval', desc: 'Boiler Erector Certificate', img: `${BASE}certificates/ibr-approval.jpg` },
+              { name: 'Electrical Contractor', desc: 'Licensed Electrical Contractor', img: `${BASE}certificates/electrical-contractor.jpg` },
+              { name: 'Electrical Contractor (Gujarat)', desc: 'Licensed Electrical Contractor', img: `${BASE}certificates/electrical-contractor-gujarat.jpg` }
             ];
 
             return (
