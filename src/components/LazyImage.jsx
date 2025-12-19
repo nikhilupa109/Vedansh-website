@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-const LazyImage = ({ 
-  src, 
-  alt, 
-  placeholder = '/placeholder.svg', 
-  className = '', 
-  style = {} 
+const LazyImage = ({
+  src,
+  alt,
+  placeholder = `${import.meta.env.BASE_URL}placeholder.svg`,
+  className = '',
+  style = {}
 }) => {
   const [imageSrc, setImageSrc] = useState(placeholder);
   const [imageLoaded, setImageLoaded] = useState(false);
