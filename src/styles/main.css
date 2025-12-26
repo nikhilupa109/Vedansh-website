@@ -1066,3 +1066,61 @@ box-shadow: none !important;
 .navbar .container{height:56px !important;}
 @media (max-width:768px){.nav-menu{top:56px !important;height:calc(100vh - 56px) !important;}}
 .footer{padding:56px 0 !important;}
+
+
+/* === Home: equal-height cards === */
+
+/* Make grid items stretch */
+.services-grid,
+.achievements-grid {
+  align-items: stretch;
+}
+
+/* Services cards: equal layout + CTA pinned to bottom */
+.services-grid .service-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.services-grid .service-card > div {
+  /* the content wrapper div (the one with padding in Home.jsx) */
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.services-grid .service-card a {
+  margin-top: auto; /* pushes "Learn More" to bottom */
+}
+
+/* Achievements cards: equal layout + CTA pinned to bottom */
+.achievements-grid .achievement-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 440px; /* tweak up/down until it matches your screenshot */
+}
+
+.achievements-grid .achievement-photo {
+  flex: 0 0 160px; /* keep photo box consistent (matches your current height) */
+}
+
+.achievements-grid .achievement-card a {
+  margin-top: auto; /* pushes "View related projects" to bottom */
+}
+
+/* Clamp title/meta so long text doesn't change card height */
+.achievements-grid .achievement-card h3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* title max 2 lines */
+  overflow: hidden;
+}
+
+.achievements-grid .achievement-card p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* meta max 2 lines */
+  overflow: hidden;
+}
