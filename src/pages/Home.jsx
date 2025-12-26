@@ -74,7 +74,7 @@ const Home = () => {
       meta: 'Kutch Copper Ltd., Mundra (Adani Group)',
       logo: `${BASE}logos/adani.png`,
       period: '2023–25',
-      photo: '' // add your image URL later if needed
+      photo: `${BASE}images/achievements/a1.jpg` // add your image URL later if needed
     },
     {
       id: 2,
@@ -82,7 +82,7 @@ const Home = () => {
       meta: 'Kutch Copper Ltd., Mundra (Adani Group)',
       logo: `${BASE}logos/adani.png`,
       period: '2023–25',
-      photo: ''
+      photo: `${BASE}images/achievements/a2.jpg`
     },
     {
       id: 3,
@@ -90,7 +90,7 @@ const Home = () => {
       meta: 'Barmer, Rajasthan',
       logo: '',
       period: '2023–25',
-      photo: ''
+      photo: `${BASE}images/achievements/a3.jpg`
     },
     {
       id: 4,
@@ -98,7 +98,7 @@ const Home = () => {
       meta: 'Kutch Copper Ltd., Mundra (Adani Group)',
       logo: `${BASE}logos/adani.png`,
       period: '2023–25',
-      photo: ''
+      photo: `${BASE}images/achievements/a4.jpg`
     },
     {
       id: 5,
@@ -106,7 +106,7 @@ const Home = () => {
       meta: 'Mundra Petrochem Ltd., Mundra (Adani Group)',
       logo: `${BASE}logos/adani.png`,
       period: '2023–25',
-      photo: ''
+      photo: `${BASE}images/achievements/a5.jpg`
     },
     {
       id: 6,
@@ -774,7 +774,7 @@ const Home = () => {
           </p>
 
           <div ref={achievementsRef} className="achievements-grid">
-            {notableAchievements.map((a) => (
+            {notableAchievements.filter((a) => a.id <= 5).map((a) => (
               <div
                 key={a.id}
                 className="achievement-card"

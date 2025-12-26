@@ -27,23 +27,30 @@ const Navbar = () => {
 
 
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-      <div className="container">
+    <nav
+      className={`navbar ${scrolled ? 'scrolled' : ''}`}
+      style={{ background: "#deded1", height: "56px", padding: 0, borderBottom: "1px solid rgba(0,0,0,0.12)", backdropFilter: "none" }}
+    >
+      <div className="container" style={{ height: "56px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <Link
           to="/"
           className="logo nav-logo-link"
           aria-label="Vedansh Infra Services"
-          style={{ display: 'flex', alignItems: 'center' }}
+          style={{ display: 'flex', alignItems: 'center', background: 'transparent', padding: 0, boxShadow: 'none' }}
         >
           <img
             src={`${import.meta.env.BASE_URL}logo.png`}
             alt="Vedansh Infra Services"
             className="nav-logo-img"
+            style={{ height: "36px", width: "auto" }}
           />
         </Link>
 
         
-        <ul className={`nav-menu ${mobileMenuOpen ? 'active' : ''}`}>
+        <ul
+          className={`nav-menu ${mobileMenuOpen ? 'active' : ''}`}
+          style={mobileMenuOpen ? { background: "#deded1" } : undefined}
+        >
           {navLinks.map(link => (
             <li key={link.path}>
               <Link to={link.path} className={location.pathname === link.path ? 'active' : ''}>

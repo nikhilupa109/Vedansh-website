@@ -4,9 +4,9 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="footer">
+    <footer className="footer" style={{ background: "#deded1", padding: "56px 0", borderTop: "1px solid rgba(0,0,0,0.12)" }}>
       <div className="container">
-        <div className="footer-content">
+        <div className="footer-content" style={{ gridTemplateColumns: "1.6fr 1fr 1fr 1.4fr", gap: "48px", marginBottom: "40px" }}>
           <div className="footer-col">
             <h4>VEDANSH INFRA SERVICES PVT. LTD. </h4>
             <p>Engineering Excellence, Building the Future.</p>
@@ -40,10 +40,30 @@ const Footer = () => {
           <div className="footer-col">
             <h4>Contact</h4>
             <ul>
-              <li>F-16, Block-II, Ambe Market, Near</li>
-              <li>Rituraj Vatika, Chittorgarh-312001</li>
-              <li><a href="mailto:vedansh.infragroup@gmail.com">info@vedansh.in</a></li>
-              <li><a href="tel:+918955177870">+91 89551 77870</a></li>
+              <li>
+                <div style={{ fontWeight: 800, fontSize: '12px', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '8px' }}>
+                  Registered Office
+                </div>
+                <div style={{ lineHeight: 1.65 }}>
+                  F-16, Block-II, Ambe Market, Near<br />
+                  Rituraj Vatika, Chittorgarh-312001
+                </div>
+              </li>
+
+              <li style={{ marginTop: '16px' }}>
+                <div style={{ fontWeight: 800, fontSize: '12px', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '8px' }}>
+                  Branch Office
+                </div>
+                <div style={{ lineHeight: 1.65 }}>
+                  302, Central by Sangath IPL, B/H 4D Square Mall,<br />
+                  Motera Road, Chandkheda, Ahmedabad, Gujarat. 380005.
+                </div>
+              </li>
+
+              <li style={{ marginTop: '16px' }}>
+                <a href="mailto:vedansh.infragroup@gmail.com">vedansh.infragroup@gmail.com</a>
+              </li>
+
               <li style={{ marginTop: '10px' }}>
                 <a
                   href="https://www.linkedin.com/company/vedansh/?viewAsMember=true"

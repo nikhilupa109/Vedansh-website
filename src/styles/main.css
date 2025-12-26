@@ -741,43 +741,43 @@ section {
 
 /* Navbar background teal + white text */
 .navbar {
-  background: var(--primary-color) !important;
+  background: #deded1 !important;
   backdrop-filter: none !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.18) !important;
 }
 
 .navbar.scrolled {
-  background: var(--primary-color) !important;
+  background: #deded1 !important;
   box-shadow: var(--shadow-sm) !important;
 }
 
 /* Nav links white + slightly bigger */
 .nav-menu a {
-  color: rgba(255, 255, 255, 0.92) !important;
+  color: rgba(0, 0, 0, 0.78) !important;
   font-size: 16px !important;
   font-weight: 600 !important;
 }
 
 .nav-menu a:hover,
 .nav-menu a.active {
-  color: #ffffff !important;
+  color: #000000 !important;
 }
 
 /* Mobile hamburger visible on teal */
 .mobile-toggle span {
-  background: #ffffff !important;
+  background: rgba(0, 0, 0, 0.85) !important;
 }
 
 /* Mobile menu background teal */
 @media (max-width: 768px) {
   .nav-menu {
-    background: var(--primary-color) !important;
+    background: #deded1 !important;
   }
 }
 
 /* Footer teal + white text */
 .footer {
-  background: var(--primary-color) !important;
+  background: #deded1 !important;
   border-top: 0 !important;
 }
 
@@ -785,11 +785,11 @@ section {
 .footer-col p,
 .footer-col ul li,
 .footer-col ul li a {
-  color: rgba(255, 255, 255, 0.92) !important;
+  color: rgba(0, 0, 0, 0.78) !important;
 }
 
 .footer-col ul li a:hover {
-  color: #ffffff !important;
+  color: #000000 !important;
 }
 
 .footer-bottom {
@@ -797,7 +797,7 @@ section {
 }
 
 .footer-bottom p {
-  color: rgba(255, 255, 255, 0.88) !important;
+  color: rgba(0, 0, 0, 0.62) !important;
 }
 /* =========================================
    Client Logos: Step-scroll + drag + arrows
@@ -942,7 +942,7 @@ section {
 
 /* 1) Navbar: teal background + readable logo + larger menu text */
 .navbar {
-  background: var(--primary-color) !important;
+  background: #deded1 !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
 }
 .navbar .container {
@@ -950,40 +950,46 @@ section {
   padding-bottom: 10px !important;
 }
 .navbar .logo {
-  background: #ffffff;
-  padding: 10px 14px;
-  border-radius: 14px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+
+background: transparent !important;
+
+padding: 0 !important;
+
+border-radius: 0 !important;
+
+box-shadow: none !important;
+
 }
+
 .navbar .logo img {
   display: block;
   height: 44px;
   width: auto;
 }
 .nav-menu a {
-  color: rgba(255, 255, 255, 0.92) !important;
+  color: rgba(0, 0, 0, 0.78) !important;
   font-size: 16px !important;
   font-weight: 700 !important;
 }
 .nav-menu a:hover,
 .nav-menu a.active {
-  color: #ffffff !important;
+  color: #000000 !important;
 }
 .nav-menu a::after {
-  background: #ffffff !important;
+  background: rgba(0, 0, 0, 0.85) !important;
 }
 
 /* 2) Footer: teal background */
 .footer {
-  background: var(--primary-color) !important;
-  color: #ffffff !important;
+  background: #deded1 !important;
+  color: #000000 !important;
   border-top: none !important;
 }
 .footer a {
-  color: rgba(255, 255, 255, 0.92) !important;
+  color: rgba(0, 0, 0, 0.78) !important;
 }
 .footer a:hover {
-  color: #ffffff !important;
+  color: #000000 !important;
 }
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.18) !important;
@@ -1043,7 +1049,7 @@ section {
   height: 190px !important;
   filter: none !important;
   opacity: 1 !important;
-  background: #ffffff !important;
+  background: rgba(0, 0, 0, 0.85) !important;
 }
 .logo-item img {
   filter: none !important;
@@ -1052,3 +1058,11 @@ section {
   height: 90% !important;
   object-fit: contain !important;
 }
+
+
+/* FIXED HEADER/FOOTER 26-12-2025 */
+.navbar{padding:0 !important;height:56px !important;}
+.navbar.scrolled{padding:0 !important;}
+.navbar .container{height:56px !important;}
+@media (max-width:768px){.nav-menu{top:56px !important;height:calc(100vh - 56px) !important;}}
+.footer{padding:56px 0 !important;}
