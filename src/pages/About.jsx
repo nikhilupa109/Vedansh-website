@@ -915,7 +915,7 @@ return (
       <section ref={industryRef} style={{ padding: '120px 0', backgroundColor: '#FFFFFF' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-            <h2 style={{ fontSize: '48px', fontWeight: '800', marginBottom: '20px', fontFamily: "'Poppins', sans-serif", color: '#1F2937' }}>Industry expertise</h2>
+            <h2 style={{ fontSize: '48px', fontWeight: '800', marginBottom: '20px', fontFamily: "'Poppins', sans-serif", color: '#1F2937' }}>Diversified Portfolio</h2>
             <p style={{ fontSize: '18px', color: '#6B7280', maxWidth: '700px', margin: '0 auto' }}>Our diversified portfolio across major industrial sectors</p>
           </div>
           <div style={{ maxWidth: '900px', margin: '0 auto' }}>

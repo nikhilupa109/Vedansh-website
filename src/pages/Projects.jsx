@@ -327,44 +327,10 @@ const Projects = () => {
     }
   ];
 
-  const upcomingProjects = [
-    {
-      id: 1,
-      slug: 'hzl-switchyard-gis-debari',
-      client: 'Hindustan Zinc Ltd',
-      location: 'Debari, Rajasthan',
-      description: 'EPC for 220kV Outdoor Switchyard cum Transformer Yard and 220kV Indoor GIS at HZL Zinc Smelter',
-category: 'EPC',
-      scope: ['220kV Switchyard', '220kV GIS', 'Transformer Yard', 'Indoor & Outdoor'],
-      status: 'Under Finalization'
-    },
-    {
-      id: 2,
-      slug: 'sprng-gis-substation-fatehgarh',
-      client: 'Sprng Akshay Urja Pvt Ltd',
-      location: 'Fatehgarh, Rajasthan',
-      description: 'Installation, Testing & Commissioning of 33/400kV GIS Substation for 800MW Solar Project',
-category: 'Renewables',
-      scope: ['33/400kV GIS', '800 MW Solar', 'Installation', 'Commissioning'],
-      status: 'Under Finalization'
-    },
-    {
-      id: 3,
-      slug: 'hindalco-converter-replacement-dahej',
-      client: 'Hindalco Industries Limited',
-      location: 'Dahej, Gujarat',
-      description: 'Replacement of Converter and associated systems and installation of additional cooling water line during shutdown',
-category: 'Mechanical',
-      scope: ['Converter Replacement', 'Cooling Water Line', 'Shutdown Work', 'System Integration'],
-      status: 'Under Finalization'
-    }
-  ];
-
   const categories = ['all', 'EPC', 'Electrical', 'Mechanical', 'O&M', 'Renewables'];
 
   const getFilteredProjects = () => {
-    let projects = activeTab === 'ongoing' ? ongoingProjects : 
-                   activeTab === 'executed' ? majorExecutedProjects : upcomingProjects;
+    let projects = activeTab === 'ongoing' ? ongoingProjects : majorExecutedProjects;
 
     if (selectedCategory !== 'all') {
       projects = projects.filter(p => p.category === selectedCategory);
@@ -747,7 +713,7 @@ category: 'Mechanical',
       <section style={{ padding: '120px 0', backgroundColor: '#FFFFFF' }}>
         <div className="container">
           <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', marginBottom: '60px', flexWrap: 'wrap' }}>
-            {['ongoing', 'executed', 'upcoming'].map((tab) => (
+            {['ongoing', 'executed'].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
@@ -766,7 +732,7 @@ category: 'Mechanical',
                   textTransform: 'capitalize'
                 }}
               >
-                {tab === 'ongoing' ? 'Ongoing Projects' : tab === 'executed' ? 'Executed Projects' : 'Upcoming Projects'}
+                {tab === 'ongoing' ? 'Ongoing Projects' : 'Executed Projects'}
               </button>
             ))}
           </div>
