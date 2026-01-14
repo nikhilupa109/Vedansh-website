@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
-import {  FaEnvelope, 
+import { 
+  FaPhone, 
+  FaEnvelope, 
   FaMapMarkerAlt, 
   FaClock,
   FaCheckCircle,
@@ -146,6 +148,12 @@ const Contact = () => {
 
   const contactInfo = [
     {
+      icon: FaPhone,
+      title: 'Call Us',
+      primary: '+91 89551 77870',
+      secondary: 'Mon-Sat, 9:00 AM - 6:00 PM'
+    },
+    {
       icon: FaEnvelope,
       title: 'Email Us',
       primary: 'info@vedansh.in',
@@ -156,12 +164,6 @@ const Contact = () => {
       title: 'Visit Us',
       primary: 'F-16, Block-II, Ambe Market',
       secondary: 'Chittorgarh - 312001, Rajasthan'
-    },
-    {
-      icon: FaMapMarkerAlt,
-      title: 'Branch Office',
-      primary: '302, Central by Sangath IPL, B/H 4D Square Mall,',
-      secondary: 'Motera Road, Chandkheda, Ahmedabad, Gujarat. 380005.'
     }
   ];
 
@@ -400,7 +402,7 @@ const Contact = () => {
               {/* Google Map */}
               <div className="map-container" style={{ marginBottom: '32px', height: '400px' }}>
                 <iframe
-                  src="https://maps.app.goo.gl/NgZbED8Ye1V4dMrC8"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3591.7562489147446!2d74.62736!3d24.87995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDUyJzQ4LjAiTiA3NMKwMzcnMzguNSJF!5e0!3m2!1sen!2sin!4v1234567890"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -409,17 +411,6 @@ const Contact = () => {
                   referrerPolicy="no-referrer-when-downgrade"
                   title="Vedansh Infra Location"
                 />
-
-                <div style={{ marginTop: '12px' }}>
-                  <a
-                    href="https://maps.app.goo.gl/NgZbED8Ye1V4dMrC8"
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{ color: '#1fadbf', fontWeight: 700, textDecoration: 'none' }}
-                  >
-                    View location on Google Maps
-                  </a>
-                </div>
               </div>
 
               {/* Why Choose Us */}

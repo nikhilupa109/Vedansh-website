@@ -830,7 +830,7 @@ return (
             <h2 style={{ fontSize: '48px', fontWeight: '800', marginBottom: '20px', fontFamily: "'Poppins', sans-serif", color: '#1F2937' }}>Values that drive us forward</h2>
             <p style={{ fontSize: '18px', color: '#6B7280', maxWidth: '700px', margin: '0 auto' }}>These core principles guide every decision we make and every project we deliver</p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '32px' }}>
+          <div className="value-grid">
             {values.map((value, i) => (
               <div key={i} className="value-card" style={{ background: '#F8F9FA', padding: '48px', borderRadius: '24px', border: '1px solid #E5E7EB', transition: 'all 0.3s ease', clipPath: 'inset(0% 0% 0% 0%)', opacity: 1 }}
               onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-12px)'; e.currentTarget.style.boxShadow = '0 20px 50px rgba(0,0,0,0.1)'; e.currentTarget.style.borderColor = '#1fadbf'; }}
@@ -915,7 +915,7 @@ return (
       <section ref={industryRef} style={{ padding: '120px 0', backgroundColor: '#FFFFFF' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-            <h2 style={{ fontSize: '48px', fontWeight: '800', marginBottom: '20px', fontFamily: "'Poppins', sans-serif", color: '#1F2937' }}>Diversified Portfolio</h2>
+            <h2 style={{ fontSize: '48px', fontWeight: '800', marginBottom: '20px', fontFamily: "'Poppins', sans-serif", color: '#1F2937' }}>Industry expertise</h2>
             <p style={{ fontSize: '18px', color: '#6B7280', maxWidth: '700px', margin: '0 auto' }}>Our diversified portfolio across major industrial sectors</p>
           </div>
           <div style={{ maxWidth: '900px', margin: '0 auto' }}>

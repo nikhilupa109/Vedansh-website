@@ -270,7 +270,13 @@ useEffect(() => {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(500px, 1fr))', gap: '40px' }}>
+          <div style={{ 
+        display: 'grid', 
+        gridTemplateColumns: 'repeat(auto-fit, minmax(480px, 1fr))', 
+        gap: '32px',
+        maxWidth: '1400px',
+        margin: '0 auto'
+      }}>
             {coreServices.map((service, i) => (
               <div 
                 key={i}
@@ -330,7 +336,7 @@ useEffect(() => {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '32px' }}>
+          <div className="cert-grid">
             {technicalDisciplines.map((discipline, i) => (
               <div
                 key={i}

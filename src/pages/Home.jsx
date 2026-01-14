@@ -342,65 +342,39 @@ const Home = () => {
 
     const viewport = logosViewportRef.current;
 
-    // Slower + smoother tuning
-    const AUTO_INTERVAL_MS = 4500; // was 650
-    const SCROLL_DURATION = 1.9;
-    const SNAP_DURATION = 1.1;
-    const STEP_MULTIPLIER = 0.85;
-
     const getStep = () => {
       const first = viewport.querySelector('.logo-item');
       if (!first) return 380;
-
       const track = viewport.querySelector('.logo-scroll') || viewport;
       const styles = window.getComputedStyle(track);
       const gap = parseInt(styles.gap || styles.columnGap || '24', 10) || 24;
-
       return first.getBoundingClientRect().width + gap;
-    };
-
-    const animateScrollTo = (left, duration = SCROLL_DURATION) => {
-      gsap.killTweensOf(viewport);
-      gsap.to(viewport, {
-        scrollLeft: left,
-        duration,
-        ease: 'power2.out',
-        overwrite: 'auto'
-      });
     };
 
     const snapToNearest = () => {
       const step = getStep();
       const target = Math.round(viewport.scrollLeft / step) * step;
-      animateScrollTo(target, SNAP_DURATION);
+      viewport.scrollTo({ left: target, behavior: 'smooth' });
     };
 
     const stepScroll = (dir = 1) => {
       const step = getStep();
       const max = viewport.scrollWidth - viewport.clientWidth;
-      const delta = step * STEP_MULTIPLIER;
 
-      if (dir > 0 && viewport.scrollLeft >= max - delta) {
-        animateScrollTo(0, SCROLL_DURATION);
+      if (dir > 0 && viewport.scrollLeft >= max - step) {
+        viewport.scrollTo({ left: 0, behavior: 'smooth' });
         return;
       }
-      if (dir < 0 && viewport.scrollLeft <= 0) {
-        animateScrollTo(max, SCROLL_DURATION);
-        return;
-      }
-
-      const next = Math.max(0, Math.min(max, viewport.scrollLeft + dir * delta));
-      animateScrollTo(next, SCROLL_DURATION);
+      viewport.scrollBy({ left: dir * step, behavior: 'smooth' });
     };
 
     const startAuto = () => {
       stopAuto();
-
       logosAutoTimerRef.current = window.setInterval(() => {
         if (logosIsHoveringRef.current) return;
         if (logosIsDraggingRef.current) return;
         stepScroll(1);
-      }, AUTO_INTERVAL_MS);
+      }, 650); // faster
     };
 
     const stopAuto = () => {
@@ -411,7 +385,6 @@ const Home = () => {
     };
 
     const onEnter = () => (logosIsHoveringRef.current = true);
-
     const onLeave = () => {
       logosIsHoveringRef.current = false;
       snapToNearest();
@@ -428,7 +401,7 @@ const Home = () => {
         ease: 'expo.out',
         scrollTrigger: {
           trigger: logosSectionRef.current,
-          start: 'top 80%'
+          start: 'top 80%',
         }
       });
     }, logosSectionRef);
@@ -446,8 +419,6 @@ const Home = () => {
   const onLogoPointerDown = (e) => {
     const viewport = logosViewportRef.current;
     if (!viewport) return;
-
-    gsap.killTweensOf(viewport);
     logosIsDraggingRef.current = true;
     viewport.classList.add('dragging');
     logosDragStartXRef.current = e.clientX;
@@ -476,41 +447,26 @@ const Home = () => {
     const step = first.getBoundingClientRect().width + gap;
 
     const target = Math.round(viewport.scrollLeft / step) * step;
-    gsap.killTweensOf(viewport);
-    gsap.to(viewport, { scrollLeft: target, duration: 1.1, ease: 'power2.out', overwrite: 'auto' });
+    viewport.scrollTo({ left: target, behavior: 'smooth' });
   };
 
   const logoStepScroll = (dir) => {
     const viewport = logosViewportRef.current;
     if (!viewport) return;
-
     const first = viewport.querySelector('.logo-item');
     if (!first) return;
-
     const track = viewport.querySelector('.logo-scroll') || viewport;
     const styles = window.getComputedStyle(track);
     const gap = parseInt(styles.gap || styles.columnGap || '24', 10) || 24;
-
     const step = first.getBoundingClientRect().width + gap;
-    const delta = step * 0.85;
+
     const max = viewport.scrollWidth - viewport.clientWidth;
-
-    const animateTo = (left) => {
-      gsap.killTweensOf(viewport);
-      gsap.to(viewport, { scrollLeft: left, duration: 1.9, ease: 'power2.out', overwrite: 'auto' });
-    };
-
-    if (dir > 0 && viewport.scrollLeft >= max - delta) {
-      animateTo(0);
+    if (dir > 0 && viewport.scrollLeft >= max - step) {
+      viewport.scrollTo({ left: 0, behavior: 'smooth' });
       return;
     }
 
-    if (dir < 0 && viewport.scrollLeft <= 0) {
-      animateTo(max);
-      return;
-    }
-
-    animateTo(Math.max(0, Math.min(max, viewport.scrollLeft + dir * delta)));
+    viewport.scrollBy({ left: dir * step, behavior: 'smooth' });
   };
 
   // Lightbox close (ESC)
