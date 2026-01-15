@@ -24,31 +24,6 @@ import {
 
 gsap.registerPlugin(ScrollTrigger);
 
-
-// Scroll reveal animations for card grids (consistent with Home)
-useEffect(() => {
-  const cards = document.querySelectorAll('.benefit-card, .value-card, .cert-badge');
-  if (!cards.length) return;
-
-  const ctx = gsap.context(() => {
-    gsap.from(cards, {
-      clipPath: 'inset(100% 0 0 0)',
-      opacity: 0,
-      y: 40,
-      duration: 1,
-      stagger: 0.08,
-      ease: 'expo.out',
-      immediateRender: false,
-      scrollTrigger: {
-        trigger: cards[0].closest('section') || cards[0].parentElement,
-        start: 'top 80%',
-      },
-    });
-  });
-
-  return () => ctx.revert();
-}, []);
-
 export default function Careers() {
   // UI state
   const [selectedDepartment, setSelectedDepartment] = useState('all');
@@ -667,11 +642,11 @@ export default function Careers() {
               </p>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '28px' }}>
+            <div className="cert-grid">
               {whyVedansh.map((item, i) => (
                 <div
                   key={i}
-                  className="reveal-card"
+                  className="benefit-card"
                   style={{ ...cardBase, cursor: 'pointer' }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = 'translateY(-12px)';
@@ -709,7 +684,7 @@ export default function Careers() {
               </p>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '28px' }}>
+            <div className="cert-grid">
               {careerPaths.map((path, i) => (
                 <div
                   key={i}
@@ -774,7 +749,7 @@ export default function Careers() {
               </p>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '28px' }}>
+            <div className="benefits-grid">
               {benefits.map((b, i) => (
                 <div
                   key={i}
@@ -957,7 +932,7 @@ export default function Careers() {
               </p>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '28px' }}>
+            <div className="cert-grid">
               {testimonials.map((t, i) => (
                 <div
                   key={i}
