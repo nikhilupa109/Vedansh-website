@@ -598,88 +598,7 @@ return (
 
 
 
-      <style>{`
-              @keyframes scroll-left {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(-50%); }
-              }
-
-              .auto-scroll-container {
-                overflow: hidden;
-                position: relative;
-                width: 100%;
-              }
-
-              .auto-scroll-track {
-                display: flex;
-                animation: scroll-left 40s linear infinite;
-                width: fit-content;
-              }
-
-              .auto-scroll-track:hover {
-                animation-play-state: paused;
-              }
-
-              .photo-card {
-                flex-shrink: 0;
-                width: 400px;
-                height: 300px;
-                margin: 0 16px;
-                border-radius: 16px;
-                overflow: hidden;
-                box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-                transition: all 0.4s ease;
-              }
-
-              .photo-card:hover {
-                transform: translateY(-12px) scale(1.05);
-                box-shadow: 0 16px 40px rgba(31, 173, 191, 0.3);
-              }
-
-              .team-photo-card {
-                flex-shrink: 0;
-                width: 350px;
-                height: 280px;
-                margin: 0 16px;
-                border-radius: 16px;
-                overflow: hidden;
-                box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-                transition: all 0.4s ease;
-              }
-
-              .team-photo-card:hover {
-                transform: translateY(-12px) scale(1.05);
-                box-shadow: 0 16px 40px rgba(245, 87, 108, 0.3);
-              }
-
-              .view-details-btn {
-                display: inline-flex;
-                align-items: center;
-                gap: 8px;
-                padding: 12px 24px;
-                background: linear-gradient(135deg, #1fadbf 0%, #16a085 100%);
-                color: white;
-                text-decoration: none;
-                border-radius: 8px;
-                font-weight: 600;
-                font-size: 14px;
-                transition: all 0.3s ease;
-                margin-top: 20px;
-              }
-
-              .view-details-btn:hover {
-                transform: translateX(5px);
-                box-shadow: 0 8px 20px rgba(31, 173, 191, 0.4);
-              }
-
-              .view-details-btn svg {
-                transition: transform 0.3s ease;
-              }
-
-              .view-details-btn:hover svg {
-                transform: translateX(5px);
-              }
-            `}</style>
+      
 
       {/* PROJECT GALLERY */}
             <section style={{ padding: '100px 0', backgroundColor: '#1F2937', overflow: 'hidden' }}>
@@ -718,19 +637,25 @@ return (
                 </p>
               </div>
 
-              <div className="auto-scroll-container">
-                <div className="auto-scroll-track" style={{ animationDuration: '35s', animationDirection: 'reverse' }}>
-                  {[1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10].map((num, index) => (
-                    <div key={index} className="team-photo-card">
-                      <SmartImage 
-                        num={num} 
-                        type="team" 
-                        gradient={teamGradients[(num - 1) % 10]}
-                      />
-                    </div>
-                  ))}
-                </div>
+              <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+              gap: 32,
+              maxWidth: 900,
+              margin: '0 auto',
+            }}
+          >
+            {[1, 2].map((num, index) => (
+              <div key={index} className="team-photo-card">
+                <SmartImage
+                  num={num}
+                  type="team"
+                  gradient={teamGradients[(num - 1) % teamGradients.length]}
+                />
               </div>
+            ))}
+          </div>
             </section>
 {/* Quick Stats */}
       <section style={{ padding: '60px 0', backgroundColor: '#1F2937' }}>

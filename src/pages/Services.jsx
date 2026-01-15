@@ -1,10 +1,18 @@
-import { useRef, useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { 
-  FaCogs, FaTools, FaClipboardCheck, FaUsers, FaBolt, FaIndustry,
-  FaHardHat, FaCertificate, FaCheckCircle, FaLightbulb, FaProjectDiagram
+import {
+  FaCogs,
+  FaTools,
+  FaClipboardCheck,
+  FaUsers,
+  FaBolt,
+  FaIndustry,
+  FaHardHat,
+  FaCertificate,
+  FaLightbulb,
+  FaProjectDiagram,
 } from 'react-icons/fa';
 import { GiElectric, GiCrane, GiFactory } from 'react-icons/gi';
 import { MdPrecisionManufacturing, MdEngineering } from 'react-icons/md';
@@ -17,100 +25,50 @@ const Services = () => {
   const heroRef = useRef(null);
   const heroTitleRef = useRef(null);
 
+  const [heroBg, setHeroBg] = useState(`${BASE}images/hero/services.jpg`);
 
-// Hero background image (GitHub Pages-safe) with extension fallbacks
-const [heroBg, setHeroBg] = useState(`${BASE}images/hero/services.jpg`);
-
-useEffect(() => {
-  const candidates = [
-    `${BASE}images/hero/services.jpg`,
-    `${BASE}images/hero/services.jpeg`,
-    `${BASE}images/hero/services.png`,
-    `${BASE}images/hero/services.webp`,
-    `${BASE}images/hero/services-hero.jpg`,
-    `${BASE}images/hero/services-hero.jpeg`,
-    `${BASE}images/hero/services-hero.png`,
-    `${BASE}images/hero/services-hero.webp`,
-  ];
-
-  let cancelled = false;
-
-  const tryLoad = (idx) => {
-    if (idx >= candidates.length) return;
-    const img = new Image();
-    img.onload = () => {
-      if (!cancelled) setHeroBg(candidates[idx]);
-    };
-    img.onerror = () => tryLoad(idx + 1);
-    img.src = candidates[idx];
-  };
-
-  tryLoad(0);
-  return () => { cancelled = true; };
-}, []);
-
-
-  // Character animation for title
   useEffect(() => {
-    if (!heroTitleRef.current) return;
+    const candidates = [
+      `${BASE}images/hero/services.jpg`,
+      `${BASE}images/hero/services.jpeg`,
+      `${BASE}images/hero/services.png`,
+      `${BASE}images/hero/services.webp`,
+      `${BASE}images/hero/services-hero.jpg`,
+      `${BASE}images/hero/services-hero.jpeg`,
+      `${BASE}images/hero/services-hero.png`,
+      `${BASE}images/hero/services-hero.webp`,
+    ];
 
-    const title = heroTitleRef.current;
-    const text = title.textContent;
-    title.innerHTML = '';
+    let cancelled = false;
 
-    const words = text.split(' ');
-    const allChars = [];
+    const tryLoad = (idx) => {
+      if (idx >= candidates.length) return;
 
-    words.forEach((word, wordIndex) => {
-      const wordSpan = document.createElement('span');
-      wordSpan.style.display = 'inline-block';
-      wordSpan.style.whiteSpace = 'nowrap';
+      const img = new Image();
+      img.onload = () => {
+        if (!cancelled) setHeroBg(candidates[idx]);
+      };
+      img.onerror = () => {
+        if (!cancelled) tryLoad(idx + 1);
+      };
+      img.src = candidates[idx];
+    };
 
-      word.split('').forEach((char) => {
-        const charSpan = document.createElement('span');
-        charSpan.textContent = char;
-        charSpan.style.display = 'inline-block';
-        charSpan.style.opacity = '0';
-        wordSpan.appendChild(charSpan);
-        allChars.push(charSpan);
-      });
-
-      title.appendChild(wordSpan);
-
-      if (wordIndex < words.length - 1) {
-        title.appendChild(document.createTextNode(' '));
-      }
-    });
-
-    gsap.to(allChars, {
-      opacity: 1,
-      y: 0,
-      rotationX: 0,
-      duration: 0.8,
-      stagger: 0.02,
-      ease: "back.out(1.7)",
-      delay: 0.3,
-      onStart: () => {
-        allChars.forEach(char => {
-          char.style.transform = 'translateY(50px) rotateX(-90deg)';
-        });
-      }
-    });
+    tryLoad(0);
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
-  // Hero animation
   useEffect(() => {
     if (!heroRef.current) return;
 
     const ctx = gsap.context(() => {
-      gsap.from('.hero-animate', {
-        y: 80,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.2,
-        ease: "expo.out",
-        delay: 0.5
-      });
+      gsap.fromTo(
+        heroTitleRef.current,
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }
+      );
     }, heroRef);
 
     return () => ctx.revert();
@@ -118,67 +76,62 @@ useEffect(() => {
 
   const coreServices = [
     {
-      Icon: GiCrane,
-      title: 'Mechanical Plant Erection',
-      description: 'Heavy mechanical erection of industrial plants with precision installation, alignment, and commissioning support.',
-      highlights: ['Heavy Equipment Installation', 'Alignment & Commissioning', 'Shutdown & Turnaround Support', 'Site Safety Compliance']
+      title: 'EPC / Turnkey Project Execution',
+      description:
+        'Complete engineering, procurement, and construction management for industrial projects—from planning to commissioning.',
+      Icon: FaProjectDiagram,
+      highlights: ['Engineering', 'Procurement', 'Construction', 'Commissioning'],
     },
     {
+      title: 'Electrical & Instrumentation',
+      description:
+        'HV/LV installations, cabling, panels, testing, and instrumentation works for plants and industrial facilities.',
+      Icon: GiElectric,
+      highlights: ['HT/LT Works', 'Cabling', 'Panels', 'Testing & Commissioning'],
+    },
+    {
+      title: 'Mechanical Erection & Maintenance',
+      description:
+        'Equipment installation, alignment, piping, structural works, shutdown maintenance, and plant upgrades.',
       Icon: FaTools,
-      title: 'Boilers and Pipeline',
-      description: 'Boiler erection support and piping fabrication / installation to accelerate plant timelines and improve reliability.',
-      highlights: ['IBR Boiler Erection', 'Piping Fabrication & Installation', 'Hydro / Pneumatic Testing', 'Commissioning Support']
+      highlights: ['Equipment Erection', 'Piping', 'Structural', 'Shutdown Works'],
     },
     {
-      Icon: FaBolt,
-      title: 'Electrical and Substation EPC',
-      description: 'EPC delivery for electrical packages and substations including testing, commissioning, and integrated execution.',
-      highlights: ['HV/LV Cabling & Panels', 'Substations & Switchyards', 'Testing & Commissioning', 'E&I Integration']
+      title: 'Civil & Structural Works',
+      description:
+        'Industrial civil execution including foundations, sheds, utility structures, and allied infrastructure.',
+      Icon: MdEngineering,
+      highlights: ['Foundations', 'Sheds', 'Utilities', 'Infrastructure'],
     },
-    {
-      Icon: FaCogs,
-      title: 'Operation & Maintenance',
-      description: 'O&M services designed to increase uptime, improve reliability, and extend the life of critical assets.',
-      highlights: ['Annual Maintenance Contracts', 'Preventive Maintenance', 'Breakdown Support', 'Shutdown Overhauls']
-    },
-    {
-      Icon: MdPrecisionManufacturing,
-      title: 'Fabrication Workshop',
-      description: 'Fabrication capability for critical steel components with quality checks and reliable, repeatable output.',
-      highlights: ['Structural Fabrication', 'Pipe Spools & Supports', 'QA/QC Checks', 'Repeatable Output']
-    }
   ];
-
 
   const technicalDisciplines = [
-    { Icon: FaIndustry, name: 'Civil', desc: 'Foundations, structures, infrastructure' },
-    { Icon: FaBolt, name: 'Electrical', desc: 'HV/LV installations, substations, switchyards' },
-    { Icon: GiElectric, name: 'Instrumentation', desc: 'Control systems, automation, calibration' },
-    { Icon: MdEngineering, name: 'Mechanical', desc: 'Heavy equipment, piping, structural work' }
+    { name: 'Industrial Electrical Works', Icon: GiElectric },
+    { name: 'Mechanical Erection', Icon: GiCrane },
+    { name: 'Instrumentation', Icon: FaClipboardCheck },
+    { name: 'Plant Maintenance', Icon: FaCogs },
+    { name: 'Fabrication & Structural', Icon: MdPrecisionManufacturing },
+    { name: 'Safety & Compliance', Icon: FaHardHat },
   ];
-
 
   const industries = [
-    { name: 'Chemical', icon: '🧪' },
-    { name: 'Cement', icon: '🏗️' },
-    { name: 'Fertilizers', icon: '🌾' },
-    { name: 'Metal & Mining', icon: '⚙️' },
-    { name: 'Petrochemical', icon: '🛢️' },
-    { name: 'Power Generation', icon: '⚡' },
-    { name: 'Renewables', icon: '♻️' }
+    { name: 'Cement', icon: <FaIndustry /> },
+    { name: 'Steel', icon: <GiFactory /> },
+    { name: 'Power & Utilities', icon: <FaBolt /> },
+    { name: 'Oil & Gas', icon: <FaCogs /> },
+    { name: 'Manufacturing', icon: <MdPrecisionManufacturing /> },
+    { name: 'Infrastructure', icon: <MdEngineering /> },
   ];
-
 
   const capabilities = [
     { Icon: FaCertificate, text: 'Special Class IBR Boiler Erector License' },
     { Icon: FaBolt, text: 'Class-A Electrical Contractor License (Rajasthan & Gujarat)' },
     { Icon: FaHardHat, text: '77+ Lakh Safe Man-Hours with Zero Fatalities' },
-    { Icon: FaLightbulb, text: '19+ Years of Industrial Expertise' }
+    { Icon: FaLightbulb, text: '19+ Years of Industrial Expertise' },
   ];
 
-
   return (
-    <>
+    <div>
       {/* Hero Section */}
       <section
         ref={heroRef}
@@ -193,227 +146,193 @@ useEffect(() => {
           backgroundImage: `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(${heroBg})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundColor: '#111827'
         }}
       >
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
-            <div
-              className="hero-animate"
-              style={{
-                display: 'inline-block',
-                background: 'rgba(31, 173, 191, 0.9)',
-                color: 'white',
-                padding: '10px 24px',
-                borderRadius: '999px',
-                fontSize: '14px',
-                fontWeight: 800,
-                textTransform: 'uppercase',
-                letterSpacing: '1px',
-                marginBottom: '26px',
-                border: '1px solid rgba(255,255,255,0.25)'
-              }}
-            >
-              INDUSTRIAL EXCELLENCE SINCE 2006
-            </div>
-
             <h1
               ref={heroTitleRef}
               style={{
-                fontSize: 'clamp(40px, 6vw, 68px)',
-                fontWeight: '900',
-                marginBottom: '22px',
-                fontFamily: "'Poppins', sans-serif",
                 color: '#FFFFFF',
-                lineHeight: '1.1',
-                perspective: '1000px'
+                fontSize: 'clamp(42px, 5vw, 64px)',
+                fontWeight: '900',
+                marginBottom: '18px',
+                letterSpacing: '-0.02em',
               }}
             >
-              Comprehensive industrial solutions across all disciplines
+              Industrial Services & Turnkey Execution
             </h1>
-
             <p
-              className="hero-animate"
               style={{
-                fontSize: '22px',
-                color: 'rgba(255,255,255,0.85)',
-                lineHeight: '1.7',
-                maxWidth: '750px',
-                margin: '0 auto 40px'
+                color: 'rgba(255,255,255,0.92)',
+                fontSize: '18px',
+                lineHeight: 1.8,
+                maxWidth: '850px',
+                margin: '0 auto 36px',
               }}
             >
-              Expert EPC, plant erection, and O&M services delivering quality excellence across electrical, mechanical, civil, and instrumentation projects.
+              Expert EPC, plant erection, and O&amp;M services delivering quality excellence across electrical,
+              mechanical, civil, and instrumentation projects.
             </p>
-
-            <div className="hero-animate" style={{ display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Link to="/projects" className="btn btn-primary">View Projects</Link>
-              <Link
-                to="/contact"
-                className="btn btn-secondary"
-                style={{ color: '#FFFFFF', borderColor: 'rgba(255,255,255,0.65)', background: 'transparent' }}
-              >
-                Request Quote
+            <div style={{ display: 'flex', gap: 18, justifyContent: 'center', flexWrap: 'wrap' }}>
+              <Link to="/contact" className="btn btn-primary">
+                Contact Us
+              </Link>
+              <Link to="/projects" className="btn btn-secondary">
+                View Projects
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-
-      {/* Core Services - IMMEDIATELY VISIBLE */}
+      {/* Core Services */}
       <section style={{ padding: '120px 0', backgroundColor: '#FFFFFF' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-            <h2 style={{ fontSize: '48px', fontWeight: '800', marginBottom: '20px', fontFamily: "'Poppins', sans-serif", color: '#1F2937' }}>Our Core Services</h2>
-            <p style={{ fontSize: '18px', color: '#6B7280', maxWidth: '700px', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: 80 }}>
+            <h2
+              style={{
+                fontSize: '48px',
+                fontWeight: 800,
+                marginBottom: 20,
+                fontFamily: "'Poppins', sans-serif",
+                color: '#1F2937',
+              }}
+            >
+              Our Core Services
+            </h2>
+            <p style={{ fontSize: 18, color: '#6B7280', maxWidth: 700, margin: '0 auto' }}>
               Comprehensive solutions tailored to meet the unique demands of India's industrial sector
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(500px, 1fr))', gap: '40px' }}>
+          <div className="services-grid">
             {coreServices.map((service, i) => (
-              <div 
-                key={i}
-                style={{
-                  background: '#F8F9FA',
-                  padding: '48px',
-                  borderRadius: '24px',
-                  border: '1px solid #E5E7EB',
-                  transition: 'all 0.4s ease',
-                  cursor: 'pointer',
-                  opacity: 1,
-                  transform: 'translateY(0)'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-12px)';
-                  e.currentTarget.style.boxShadow = '0 20px 50px rgba(31, 173, 191, 0.15)';
-                  e.currentTarget.style.borderColor = '#1fadbf';
-                  e.currentTarget.style.background = '#FFFFFF';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = 'none';
-                  e.currentTarget.style.borderColor = '#E5E7EB';
-                  e.currentTarget.style.background = '#F8F9FA';
-                }}
-              >
-                <service.Icon style={{ fontSize: '56px', color: '#1fadbf', marginBottom: '24px' }} />
-                <h3 style={{ fontSize: '28px', fontWeight: '700', marginBottom: '16px', fontFamily: "'Poppins', sans-serif", color: '#1F2937' }}>
-                  {service.title}
-                </h3>
-                <p style={{ fontSize: '16px', color: '#6B7280', lineHeight: '1.7', marginBottom: '24px' }}>
+              <div key={i} className="service-card" style={{ textAlign: 'left' }}>
+                <div style={{ display: 'flex', gap: 16, alignItems: 'center', marginBottom: 16 }}>
+                  <service.Icon style={{ fontSize: 34, color: '#1fadbf' }} />
+                  <h3
+                    style={{
+                      fontSize: 22,
+                      fontWeight: 800,
+                      margin: 0,
+                      fontFamily: "'Poppins', sans-serif",
+                      color: '#1F2937',
+                    }}
+                  >
+                    {service.title}
+                  </h3>
+                </div>
+
+                <p style={{ fontSize: 16, color: '#6B7280', lineHeight: 1.7, marginBottom: 18 }}>
                   {service.description}
                 </p>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px' }}>
-                  {service.highlights.map((highlight, idx) => (
-                    <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <FaCheckCircle style={{ color: '#1fadbf', fontSize: '16px', flexShrink: 0 }} />
-                      <span style={{ fontSize: '14px', color: '#4B5563', fontWeight: '500' }}>{highlight}</span>
-                    </div>
+
+                <ul style={{ paddingLeft: 18, margin: 0, color: '#1F2937' }}>
+                  {service.highlights.map((h, idx) => (
+                    <li key={idx} style={{ marginBottom: 8 }}>
+                      {h}
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Technical Disciplines - IMMEDIATELY VISIBLE */}
+      {/* Technical Disciplines */}
       <section style={{ padding: '120px 0', backgroundColor: '#F8F9FA' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-            <h2 style={{ fontSize: '48px', fontWeight: '800', marginBottom: '20px', fontFamily: "'Poppins', sans-serif", color: '#1F2937' }}>
+          <div style={{ textAlign: 'center', marginBottom: 80 }}>
+            <h2
+              style={{
+                fontSize: '48px',
+                fontWeight: 800,
+                marginBottom: 20,
+                fontFamily: "'Poppins', sans-serif",
+                color: '#1F2937',
+              }}
+            >
               Technical Disciplines
             </h2>
-            <p style={{ fontSize: '18px', color: '#6B7280', maxWidth: '700px', margin: '0 auto' }}>
-              Advanced technical expertise across all major industrial disciplines
+            <p style={{ fontSize: 18, color: '#6B7280', maxWidth: 700, margin: '0 auto' }}>
+              Specialized execution capabilities across major industrial disciplines
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '32px' }}>
-            {technicalDisciplines.map((discipline, i) => (
+          <div className="cert-grid">
+            {technicalDisciplines.map((d, i) => (
               <div
                 key={i}
                 style={{
                   background: '#FFFFFF',
-                  padding: '40px',
-                  borderRadius: '20px',
+                  padding: 40,
+                  borderRadius: 20,
                   textAlign: 'center',
                   border: '2px solid #E5E7EB',
                   transition: 'all 0.3s ease',
-                  opacity: 1,
-                  transform: 'scale(1)'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = '#1fadbf';
-                  e.currentTarget.style.transform = 'scale(1.05)';
-                  e.currentTarget.style.boxShadow = '0 12px 24px rgba(31, 173, 191, 0.15)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = '#E5E7EB';
-                  e.currentTarget.style.transform = 'scale(1)';
-                  e.currentTarget.style.boxShadow = 'none';
                 }}
               >
-                <discipline.Icon style={{ fontSize: '64px', color: '#1fadbf', marginBottom: '20px' }} />
-                <h3 style={{ fontSize: '24px', fontWeight: '700', marginBottom: '12px', fontFamily: "'Poppins', sans-serif", color: '#1F2937' }}>
-                  {discipline.name}
+                <d.Icon style={{ fontSize: 64, color: '#1fadbf', marginBottom: 20 }} />
+                <h3
+                  style={{
+                    fontSize: 20,
+                    fontWeight: 800,
+                    marginBottom: 8,
+                    fontFamily: "'Poppins', sans-serif",
+                    color: '#1F2937',
+                  }}
+                >
+                  {d.name}
                 </h3>
-                <p style={{ fontSize: '15px', color: '#6B7280', lineHeight: '1.6' }}>
-                  {discipline.desc}
-                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Industries Served - IMMEDIATELY VISIBLE */}
-      <section style={{ padding: '140px 0', backgroundColor: '#FFFFFF' }}>
+      {/* Industries */}
+      <section style={{ padding: '120px 0', backgroundColor: '#FFFFFF' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-            <h2 style={{ fontSize: '48px', fontWeight: '800', marginBottom: '20px', fontFamily: "'Poppins', sans-serif", color: '#1F2937' }}>
+          <div style={{ textAlign: 'center', marginBottom: 80 }}>
+            <h2
+              style={{
+                fontSize: '48px',
+                fontWeight: 800,
+                marginBottom: 20,
+                fontFamily: "'Poppins', sans-serif",
+                color: '#1F2937',
+              }}
+            >
               Industries We Serve
             </h2>
-            <p style={{ fontSize: '18px', color: '#6B7280', maxWidth: '700px', margin: '0 auto' }}>
-              Proven expertise across diverse industrial sectors throughout India
+            <p style={{ fontSize: 18, color: '#6B7280', maxWidth: 700, margin: '0 auto' }}>
+              Proven delivery across diverse industrial sectors
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '28px', maxWidth: '1200px', margin: '0 auto' }}>
+          <div className="industries-grid">
             {industries.map((industry, i) => (
               <div
                 key={i}
                 style={{
                   background: 'linear-gradient(135deg, #F8F9FA 0%, #FFFFFF 100%)',
-                  padding: '40px 26px',
-                  borderRadius: '16px',
-                  textAlign: 'center',
+                  padding: 30,
+                  borderRadius: 16,
                   border: '1px solid #E5E7EB',
-                  transition: 'all 0.3s ease',
-                  cursor: 'pointer',
-                  opacity: 1,
-                  transform: 'translateY(0)'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'linear-gradient(135deg, #1fadbf 0%, #16a085 100%)';
-                  e.currentTarget.style.transform = 'translateY(-8px)';
-                  e.currentTarget.style.boxShadow = '0 12px 24px rgba(31, 173, 191, 0.2)';
-                  e.currentTarget.querySelector('span').style.color = 'white';
-                  e.currentTarget.querySelector('div').style.filter = 'brightness(0) invert(1)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'linear-gradient(135deg, #F8F9FA 0%, #FFFFFF 100%)';
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = 'none';
-                  e.currentTarget.querySelector('span').style.color = '#1F2937';
-                  e.currentTarget.querySelector('div').style.filter = 'none';
+                  textAlign: 'center',
                 }}
               >
-                <div style={{ fontSize: '48px', marginBottom: '12px', transition: 'all 0.3s ease' }}>
-                  {industry.icon}
-                </div>
-                <span style={{ fontSize: '16px', fontWeight: '700', fontFamily: "'Poppins', sans-serif", color: '#1F2937', transition: 'all 0.3s ease' }}>
+                <div style={{ fontSize: 48, marginBottom: 12 }}>{industry.icon}</div>
+                <span
+                  style={{
+                    fontSize: 16,
+                    fontWeight: 800,
+                    fontFamily: "'Poppins', sans-serif",
+                    color: '#1F2937',
+                  }}
+                >
                   {industry.name}
                 </span>
               </div>
@@ -422,47 +341,42 @@ useEffect(() => {
         </div>
       </section>
 
-      {/* Capabilities & Credentials - IMMEDIATELY VISIBLE */}
+      {/* Capabilities */}
       <section style={{ padding: '120px 0', backgroundColor: '#1F2937' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-            <h2 style={{ fontSize: '48px', fontWeight: '800', marginBottom: '20px', fontFamily: "'Poppins', sans-serif", color: '#FFFFFF' }}>
+          <div style={{ textAlign: 'center', marginBottom: 80 }}>
+            <h2
+              style={{
+                fontSize: '48px',
+                fontWeight: 800,
+                marginBottom: 20,
+                fontFamily: "'Poppins', sans-serif",
+                color: '#FFFFFF',
+              }}
+            >
               Our Capabilities
             </h2>
-            <p style={{ fontSize: '18px', color: '#E5E7EB', maxWidth: '700px', margin: '0 auto' }}>
+            <p style={{ fontSize: 18, color: '#E5E7EB', maxWidth: 700, margin: '0 auto' }}>
               Industry certifications and credentials that validate our expertise
             </p>
           </div>
 
-          <div style={{ maxWidth: '900px', margin: '0 auto', display: 'grid', gap: '24px' }}>
+          <div style={{ maxWidth: 900, margin: '0 auto', display: 'grid', gap: 24 }}>
             {capabilities.map((cap, i) => (
               <div
                 key={i}
                 style={{
                   background: 'rgba(255, 255, 255, 0.05)',
                   padding: '24px 32px',
-                  borderRadius: '16px',
+                  borderRadius: 16,
                   border: '1px solid rgba(255, 255, 255, 0.1)',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '20px',
-                  transition: 'all 0.3s ease',
-                  opacity: 1,
-                  transform: 'translateX(0)'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'rgba(31, 173, 191, 0.1)';
-                  e.currentTarget.style.borderColor = '#1fadbf';
-                  e.currentTarget.style.transform = 'translateX(12px)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-                  e.currentTarget.style.transform = 'translateX(0)';
+                  gap: 20,
                 }}
               >
-                <cap.Icon style={{ fontSize: '32px', color: '#1fadbf', flexShrink: 0 }} />
-                <span style={{ fontSize: '18px', fontWeight: '600', color: '#FFFFFF', fontFamily: "'Poppins', sans-serif" }}>
+                <cap.Icon style={{ fontSize: 32, color: '#1fadbf', flexShrink: 0 }} />
+                <span style={{ fontSize: 18, fontWeight: 700, color: '#FFFFFF', fontFamily: "'Poppins', sans-serif" }}>
                   {cap.text}
                 </span>
               </div>
@@ -471,20 +385,32 @@ useEffect(() => {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA */}
       <section className="cta-section">
         <div className="container">
           <div className="cta-content">
             <h2>Need expert industrial services?</h2>
             <p>Our team is ready to deliver comprehensive solutions tailored to your project requirements.</p>
-            <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap', marginTop: '32px' }}>
-              <Link to="/contact" className="btn btn-primary">Get in Touch</Link>
-              <Link to="/projects" className="btn btn-secondary">View Our Work</Link>
+            <div
+              style={{
+                display: 'flex',
+                gap: 20,
+                justifyContent: 'center',
+                flexWrap: 'wrap',
+                marginTop: 32,
+              }}
+            >
+              <Link to="/contact" className="btn btn-primary">
+                Get in Touch
+              </Link>
+              <Link to="/projects" className="btn btn-secondary">
+                View Our Work
+              </Link>
             </div>
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

@@ -399,8 +399,7 @@ const Contact = () => {
 
               {/* Google Map */}
               <div className="map-container" style={{ marginBottom: '32px', height: '400px' }}>
-                <iframe
-                  src="https://maps.app.goo.gl/NgZbED8Ye1V4dMrC8"
+                <iframe src="https://www.google.com/maps?q=F-16%2C%20Block-II%2C%20Ambe%20Market%2C%20Chittorgarh%20312001%20Rajasthan&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
