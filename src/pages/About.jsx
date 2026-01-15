@@ -638,24 +638,24 @@ return (
               </div>
 
               <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-              gap: 32,
-              maxWidth: 900,
-              margin: '0 auto',
-            }}
-          >
-            {[1, 2].map((num, index) => (
-              <div key={index} className="team-photo-card">
-                <SmartImage
-                  num={num}
-                  type="team"
-                  gradient={teamGradients[(num - 1) % teamGradients.length]}
-                />
-              </div>
-            ))}
-          </div>
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+                gap: 32,
+                maxWidth: 900,
+                margin: '0 auto',
+              }}
+            >
+              {[1, 2].map((num, index) => (
+                <div key={index} className="team-photo-card">
+                  <SmartImage
+                    num={num}
+                    type="team"
+                    gradient={teamGradients[(num - 1) % teamGradients.length]}
+                  />
+                </div>
+              ))}
+            </div>
             </section>
 {/* Quick Stats */}
       <section style={{ padding: '60px 0', backgroundColor: '#1F2937' }}>
