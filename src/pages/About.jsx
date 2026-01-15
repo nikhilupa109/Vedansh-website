@@ -28,13 +28,13 @@ const fallbackTeam = [
   { name: 'Lokendra Upadhyay', position: 'Managing Director', initials: 'LU' },
   { name: 'K.V. Chamy', position: 'Head - Business Development', initials: 'KC' },
   { name: 'Siddhartha Majumder', position: 'Chief Advisor - Projects', initials: 'SM' },
-  { name: 'Arun Shrimali', position: 'Head – Civil Projects', initials: 'AS' },
+  { name: 'Arun Shrimali', position: 'Head â€“ Civil Projects', initials: 'AS' },
   { name: 'D.K. Gupta', position: 'Technical Head - Electrical', initials: 'DG' },
   { name: 'R.C. Rathore', position: 'Head - Planning & Execution', initials: 'RR' },
   { name: 'Santosh Giri', position: 'Head - Project Commercial', initials: 'SG' },
   { name: 'Amit Kr. Singh', position: 'Sr. Manager - EHS', initials: 'AS' },
   { name: 'Nikhil Upadhyay', position: 'Sr. Manager - Internal Control', initials: 'NU' },
-  { name: 'Pragnesh Prajapati', position: 'Sr. Manager – Projects', initials: 'PP' },
+  { name: 'Pragnesh Prajapati', position: 'Sr. Manager â€“ Projects', initials: 'PP' },
 ];
 
 const About = () => {
@@ -598,7 +598,88 @@ return (
 
 
 
-      
+      <style>{`
+              @keyframes scroll-left {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
+              }
+
+              .auto-scroll-container {
+                overflow: hidden;
+                position: relative;
+                width: 100%;
+              }
+
+              .auto-scroll-track {
+                display: flex;
+                animation: scroll-left 40s linear infinite;
+                width: fit-content;
+              }
+
+              .auto-scroll-track:hover {
+                animation-play-state: paused;
+              }
+
+              .photo-card {
+                flex-shrink: 0;
+                width: 400px;
+                height: 300px;
+                margin: 0 16px;
+                border-radius: 16px;
+                overflow: hidden;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+                transition: all 0.4s ease;
+              }
+
+              .photo-card:hover {
+                transform: translateY(-12px) scale(1.05);
+                box-shadow: 0 16px 40px rgba(31, 173, 191, 0.3);
+              }
+
+              .team-photo-card {
+                flex-shrink: 0;
+                width: 350px;
+                height: 280px;
+                margin: 0 16px;
+                border-radius: 16px;
+                overflow: hidden;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+                transition: all 0.4s ease;
+              }
+
+              .team-photo-card:hover {
+                transform: translateY(-12px) scale(1.05);
+                box-shadow: 0 16px 40px rgba(245, 87, 108, 0.3);
+              }
+
+              .view-details-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 12px 24px;
+                background: linear-gradient(135deg, #1fadbf 0%, #16a085 100%);
+                color: white;
+                text-decoration: none;
+                border-radius: 8px;
+                font-weight: 600;
+                font-size: 14px;
+                transition: all 0.3s ease;
+                margin-top: 20px;
+              }
+
+              .view-details-btn:hover {
+                transform: translateX(5px);
+                box-shadow: 0 8px 20px rgba(31, 173, 191, 0.4);
+              }
+
+              .view-details-btn svg {
+                transition: transform 0.3s ease;
+              }
+
+              .view-details-btn:hover svg {
+                transform: translateX(5px);
+              }
+            `}</style>
 
       {/* PROJECT GALLERY */}
             <section style={{ padding: '100px 0', backgroundColor: '#1F2937', overflow: 'hidden' }}>
@@ -637,25 +718,19 @@ return (
                 </p>
               </div>
 
-              <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-                gap: 32,
-                maxWidth: 900,
-                margin: '0 auto',
-              }}
-            >
-              {[1, 2].map((num, index) => (
-                <div key={index} className="team-photo-card">
-                  <SmartImage
-                    num={num}
-                    type="team"
-                    gradient={teamGradients[(num - 1) % teamGradients.length]}
-                  />
+              <div className="auto-scroll-container">
+                <div className="auto-scroll-track" style={{ animationDuration: '35s', animationDirection: 'reverse' }}>
+                  {[1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10].map((num, index) => (
+                    <div key={index} className="team-photo-card">
+                      <SmartImage 
+                        num={num} 
+                        type="team" 
+                        gradient={teamGradients[(num - 1) % 10]}
+                      />
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </div>
             </section>
 {/* Quick Stats */}
       <section style={{ padding: '60px 0', backgroundColor: '#1F2937' }}>
@@ -664,7 +739,7 @@ return (
             <div><div style={{ fontSize: '48px', fontWeight: '900', color: '#1fadbf', marginBottom: '8px', fontFamily: "'Poppins', sans-serif" }}>2006</div><p style={{ fontSize: '16px', color: '#E5E7EB', fontWeight: '500' }}>Founded in Chittorgarh</p></div>
             <div><div style={{ fontSize: '48px', fontWeight: '900', color: '#1fadbf', marginBottom: '8px', fontFamily: "'Poppins', sans-serif" }}>250+</div><p style={{ fontSize: '16px', color: '#E5E7EB', fontWeight: '500' }}>Projects Delivered</p></div>
             <div><div style={{ fontSize: '48px', fontWeight: '900', color: '#1fadbf', marginBottom: '8px', fontFamily: "'Poppins', sans-serif" }}>20+</div><p style={{ fontSize: '16px', color: '#E5E7EB', fontWeight: '500' }}>Major Clients</p></div>
-            <div><div style={{ fontSize: '48px', fontWeight: '900', color: '#1fadbf', marginBottom: '8px', fontFamily: "'Poppins', sans-serif" }}>₹166Cr</div><p style={{ fontSize: '16px', color: '#E5E7EB', fontWeight: '500' }}>Annual Turnover (FY24-25)</p></div>
+            <div><div style={{ fontSize: '48px', fontWeight: '900', color: '#1fadbf', marginBottom: '8px', fontFamily: "'Poppins', sans-serif" }}>â‚¹166Cr</div><p style={{ fontSize: '16px', color: '#E5E7EB', fontWeight: '500' }}>Annual Turnover (FY24-25)</p></div>
           </div>
         </div>
       </section>
@@ -676,16 +751,16 @@ return (
             <div className="story-content">
               <h2 style={{ fontSize: '48px', fontWeight: '800', marginBottom: '28px', fontFamily: "'Poppins', sans-serif", color: '#1F2937', lineHeight: '1.2' }}>From regional contractor to national leader</h2>
               <p style={{ fontSize: '18px', color: '#6B7280', lineHeight: '1.8', marginBottom: '24px' }}><strong style={{ color: '#1F2937' }}>Founded in 2006</strong> in the industrial heartland of Chittorgarh, Rajasthan, Vedansh Infra Services began with a simple mission: deliver uncompromising quality in every industrial project we undertake.</p>
-              <p style={{ fontSize: '18px', color: '#6B7280', lineHeight: '1.8', marginBottom: '24px' }}>Over 19 years, we've evolved from a regional contractor into one of India's most trusted names in industrial EPC and plant erection, executing projects worth over ₹226 crores currently underway.</p>
+              <p style={{ fontSize: '18px', color: '#6B7280', lineHeight: '1.8', marginBottom: '24px' }}>Over 19 years, we've evolved from a regional contractor into one of India's most trusted names in industrial EPC and plant erection, executing projects worth over â‚¹226 crores currently underway.</p>
               <p style={{ fontSize: '18px', color: '#6B7280', lineHeight: '1.8' }}>With <strong style={{ color: '#1F2937' }}>77+ lakh safe man-hours</strong> and zero fatalities, we build lasting partnerships based on trust and consistent delivery.</p>
             </div>
             <div className="milestone-box" style={{ background: 'linear-gradient(135deg, #1fadbf 0%, #16a085 100%)', borderRadius: '24px', padding: '48px', color: 'white', boxShadow: '0 20px 60px rgba(31, 173, 191, 0.3)' }}>
               <h3 style={{ fontSize: '28px', fontWeight: '700', marginBottom: '36px', fontFamily: "'Poppins', sans-serif" }}>Key Milestones</h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
                 <div><div style={{ fontSize: '52px', fontWeight: '900', marginBottom: '8px', fontFamily: "'Poppins', sans-serif" }}>77L+</div><p style={{ fontSize: '18px', fontWeight: '600', marginBottom: '4px' }}>Safe Man-Hours</p><p style={{ fontSize: '15px', opacity: '0.9' }}>Zero fatalities record</p></div>
-                <div><div style={{ fontSize: '52px', fontWeight: '900', marginBottom: '8px', fontFamily: "'Poppins', sans-serif" }}>₹403 Cr</div><p style={{ fontSize: '18px', fontWeight: '600', marginBottom: '4px' }}>Cumulative Revenue</p><p style={{ fontSize: '15px', opacity: '0.9' }}>Last 4 Years (FY21-25)</p></div>
+                <div><div style={{ fontSize: '52px', fontWeight: '900', marginBottom: '8px', fontFamily: "'Poppins', sans-serif" }}>â‚¹403 Cr</div><p style={{ fontSize: '18px', fontWeight: '600', marginBottom: '4px' }}>Cumulative Revenue</p><p style={{ fontSize: '15px', opacity: '0.9' }}>Last 4 Years (FY21-25)</p></div>
                 <div><div style={{ fontSize: '52px', fontWeight: '900', marginBottom: '8px', fontFamily: "'Poppins', sans-serif" }}>4</div><p style={{ fontSize: '18px', fontWeight: '600', marginBottom: '4px' }}>ISO Certifications</p><p style={{ fontSize: '15px', opacity: '0.9' }}>Including IBR approval</p></div>
-                <div><div style={{ fontSize: '52px', fontWeight: '900', marginBottom: '8px', fontFamily: "'Poppins', sans-serif" }}>₹226Cr+</div><p style={{ fontSize: '18px', fontWeight: '600', marginBottom: '4px' }}>Ongoing Projects</p><p style={{ fontSize: '15px', opacity: '0.9' }}>Major contracts underway</p></div>
+                <div><div style={{ fontSize: '52px', fontWeight: '900', marginBottom: '8px', fontFamily: "'Poppins', sans-serif" }}>â‚¹226Cr+</div><p style={{ fontSize: '18px', fontWeight: '600', marginBottom: '4px' }}>Ongoing Projects</p><p style={{ fontSize: '15px', opacity: '0.9' }}>Major contracts underway</p></div>
               </div>
             </div>
           </div>
@@ -755,7 +830,7 @@ return (
             <h2 style={{ fontSize: '48px', fontWeight: '800', marginBottom: '20px', fontFamily: "'Poppins', sans-serif", color: '#1F2937' }}>Values that drive us forward</h2>
             <p style={{ fontSize: '18px', color: '#6B7280', maxWidth: '700px', margin: '0 auto' }}>These core principles guide every decision we make and every project we deliver</p>
           </div>
-          <div className="value-grid">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '32px' }}>
             {values.map((value, i) => (
               <div key={i} className="value-card" style={{ background: '#F8F9FA', padding: '48px', borderRadius: '24px', border: '1px solid #E5E7EB', transition: 'all 0.3s ease', clipPath: 'inset(0% 0% 0% 0%)', opacity: 1 }}
               onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-12px)'; e.currentTarget.style.boxShadow = '0 20px 50px rgba(0,0,0,0.1)'; e.currentTarget.style.borderColor = '#1fadbf'; }}
@@ -840,7 +915,7 @@ return (
       <section ref={industryRef} style={{ padding: '120px 0', backgroundColor: '#FFFFFF' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-            <h2 style={{ fontSize: '48px', fontWeight: '800', marginBottom: '20px', fontFamily: "'Poppins', sans-serif", color: '#1F2937' }}>Diversified Portfolio</h2>
+            <h2 style={{ fontSize: '48px', fontWeight: '800', marginBottom: '20px', fontFamily: "'Poppins', sans-serif", color: '#1F2937' }}>Industry expertise</h2>
             <p style={{ fontSize: '18px', color: '#6B7280', maxWidth: '700px', margin: '0 auto' }}>Our diversified portfolio across major industrial sectors</p>
           </div>
           <div style={{ maxWidth: '900px', margin: '0 auto' }}>
@@ -872,7 +947,7 @@ return (
             <h2 style={{ fontSize: '48px', fontWeight: '800', marginBottom: '20px', fontFamily: "'Poppins', sans-serif", color: '#1F2937' }}>Certifications & approvals</h2>
             <p style={{ fontSize: '18px', color: '#6B7280', maxWidth: '700px', margin: '0 auto' }}>Industry-recognized certifications that validate our commitment to excellence</p>
           </div>
-          <div className="cert-grid">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '32px', maxWidth: '1000px', margin: '0 auto' }}>
             {[
               { name: 'ISO 9001:2015', desc: 'Quality Management System' },
               { name: 'ISO 14001:2015', desc: 'Environmental Management' },

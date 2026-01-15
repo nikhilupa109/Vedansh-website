@@ -11,7 +11,7 @@ const Home = () => {
   const location = useLocation();
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // ✅ BASE URL SAFE (works in local + GitHub Pages /Vedansh-website/)
+  // âœ… BASE URL SAFE (works in local + GitHub Pages /Vedansh-website/)
   const BASE = import.meta.env.BASE_URL || '/';
 
   // Lightbox for Certification images
@@ -66,14 +66,14 @@ const Home = () => {
   const magneticBtn2 = useMagneticButton(0.25);
   const magneticBtn3 = useMagneticButton(0.3);
 
-  // ✅ Recent Notable Achievements (3x3 grid + photo space in cards)
+  // âœ… Recent Notable Achievements (3x3 grid + photo space in cards)
   const notableAchievements = [
     {
       id: 1,
       title: 'Installation of 5 nos. WHR Boilers and Auxiliaries & Piping in record time',
       meta: 'Kutch Copper Ltd., Mundra (Adani Group)',
       logo: `${BASE}logos/adani.png`,
-      period: '2023–25',
+      period: '2023â€“25',
       photo: `${BASE}images/achievements/a1.jpg` // add your image URL later if needed
     },
     {
@@ -81,7 +81,7 @@ const Home = () => {
       title: 'Erection of 150 mtr. elevation FGD stack',
       meta: 'Kutch Copper Ltd., Mundra (Adani Group)',
       logo: `${BASE}logos/adani.png`,
-      period: '2023–25',
+      period: '2023â€“25',
       photo: `${BASE}images/achievements/a2.jpg`
     },
     {
@@ -89,7 +89,7 @@ const Home = () => {
       title: 'Supply, Installation, Testing and Commissioning of 220KVA Solar PV Plant Substation',
       meta: 'Barmer, Rajasthan',
       logo: '',
-      period: '2023–25',
+      period: '2023â€“25',
       photo: `${BASE}images/achievements/a3.jpg`
     },
     {
@@ -97,7 +97,7 @@ const Home = () => {
       title: 'Erection of multiple vessels with individual weight of 300 MT plus of FGD package',
       meta: 'Kutch Copper Ltd., Mundra (Adani Group)',
       logo: `${BASE}logos/adani.png`,
-      period: '2023–25',
+      period: '2023â€“25',
       photo: `${BASE}images/achievements/a4.jpg`
     },
     {
@@ -105,15 +105,15 @@ const Home = () => {
       title: 'Executing 4,00,000 sq.mtr. of roof and wall sheeting with complete supply',
       meta: 'Mundra Petrochem Ltd., Mundra (Adani Group)',
       logo: `${BASE}logos/adani.png`,
-      period: '2023–25',
+      period: '2023â€“25',
       photo: `${BASE}images/achievements/a5.jpg`
     },
     {
       id: 6,
-      title: 'Mechanical erection, testing and commissioning — Greenfield E‑waste Recycling Plant',
+      title: 'Mechanical erection, testing and commissioning â€” Greenfield Eâ€‘waste Recycling Plant',
       meta: 'HINDALCO Industries Ltd., Bharuch (Aditya Birla Group)',
       logo: `${BASE}logos/hindalco.png`,
-      period: '2023–25',
+      period: '2023â€“25',
       photo: ''
     },
     {
@@ -121,7 +121,7 @@ const Home = () => {
       title: 'Installation of complete Electrical and Instrumentation package',
       meta: 'Mundra Petrochem Ltd., Mundra (Adani Group)',
       logo: `${BASE}logos/adani.png`,
-      period: '2023–25',
+      period: '2023â€“25',
       photo: ''
     },
     {
@@ -129,7 +129,7 @@ const Home = () => {
       title: 'Fabrication workshop set up for supply of critical steel components',
       meta: 'Chittorgarh',
       logo: `${BASE}logo.png`,
-      period: '2023–25',
+      period: '2023â€“25',
       photo: ''
     },
     {
@@ -137,7 +137,7 @@ const Home = () => {
       title: 'Boiler & pipeline execution support for fast-track plant timelines',
       meta: 'Multiple industrial sites',
       logo: '',
-      period: '2023–25',
+      period: '2023â€“25',
       photo: ''
     }
   ];
@@ -342,65 +342,39 @@ const Home = () => {
 
     const viewport = logosViewportRef.current;
 
-    // Slower + smoother tuning
-    const AUTO_INTERVAL_MS = 4500; // was 650
-    const SCROLL_DURATION = 1.9;
-    const SNAP_DURATION = 1.1;
-    const STEP_MULTIPLIER = 0.85;
-
     const getStep = () => {
       const first = viewport.querySelector('.logo-item');
       if (!first) return 380;
-
       const track = viewport.querySelector('.logo-scroll') || viewport;
       const styles = window.getComputedStyle(track);
       const gap = parseInt(styles.gap || styles.columnGap || '24', 10) || 24;
-
       return first.getBoundingClientRect().width + gap;
-    };
-
-    const animateScrollTo = (left, duration = SCROLL_DURATION) => {
-      gsap.killTweensOf(viewport);
-      gsap.to(viewport, {
-        scrollLeft: left,
-        duration,
-        ease: 'power2.out',
-        overwrite: 'auto'
-      });
     };
 
     const snapToNearest = () => {
       const step = getStep();
       const target = Math.round(viewport.scrollLeft / step) * step;
-      animateScrollTo(target, SNAP_DURATION);
+      viewport.scrollTo({ left: target, behavior: 'smooth' });
     };
 
     const stepScroll = (dir = 1) => {
       const step = getStep();
       const max = viewport.scrollWidth - viewport.clientWidth;
-      const delta = step * STEP_MULTIPLIER;
 
-      if (dir > 0 && viewport.scrollLeft >= max - delta) {
-        animateScrollTo(0, SCROLL_DURATION);
+      if (dir > 0 && viewport.scrollLeft >= max - step) {
+        viewport.scrollTo({ left: 0, behavior: 'smooth' });
         return;
       }
-      if (dir < 0 && viewport.scrollLeft <= 0) {
-        animateScrollTo(max, SCROLL_DURATION);
-        return;
-      }
-
-      const next = Math.max(0, Math.min(max, viewport.scrollLeft + dir * delta));
-      animateScrollTo(next, SCROLL_DURATION);
+      viewport.scrollBy({ left: dir * step, behavior: 'smooth' });
     };
 
     const startAuto = () => {
       stopAuto();
-
       logosAutoTimerRef.current = window.setInterval(() => {
         if (logosIsHoveringRef.current) return;
         if (logosIsDraggingRef.current) return;
         stepScroll(1);
-      }, AUTO_INTERVAL_MS);
+      }, 650); // faster
     };
 
     const stopAuto = () => {
@@ -411,7 +385,6 @@ const Home = () => {
     };
 
     const onEnter = () => (logosIsHoveringRef.current = true);
-
     const onLeave = () => {
       logosIsHoveringRef.current = false;
       snapToNearest();
@@ -428,7 +401,7 @@ const Home = () => {
         ease: 'expo.out',
         scrollTrigger: {
           trigger: logosSectionRef.current,
-          start: 'top 80%'
+          start: 'top 80%',
         }
       });
     }, logosSectionRef);
@@ -446,8 +419,6 @@ const Home = () => {
   const onLogoPointerDown = (e) => {
     const viewport = logosViewportRef.current;
     if (!viewport) return;
-
-    gsap.killTweensOf(viewport);
     logosIsDraggingRef.current = true;
     viewport.classList.add('dragging');
     logosDragStartXRef.current = e.clientX;
@@ -476,41 +447,26 @@ const Home = () => {
     const step = first.getBoundingClientRect().width + gap;
 
     const target = Math.round(viewport.scrollLeft / step) * step;
-    gsap.killTweensOf(viewport);
-    gsap.to(viewport, { scrollLeft: target, duration: 1.1, ease: 'power2.out', overwrite: 'auto' });
+    viewport.scrollTo({ left: target, behavior: 'smooth' });
   };
 
   const logoStepScroll = (dir) => {
     const viewport = logosViewportRef.current;
     if (!viewport) return;
-
     const first = viewport.querySelector('.logo-item');
     if (!first) return;
-
     const track = viewport.querySelector('.logo-scroll') || viewport;
     const styles = window.getComputedStyle(track);
     const gap = parseInt(styles.gap || styles.columnGap || '24', 10) || 24;
-
     const step = first.getBoundingClientRect().width + gap;
-    const delta = step * 0.85;
+
     const max = viewport.scrollWidth - viewport.clientWidth;
-
-    const animateTo = (left) => {
-      gsap.killTweensOf(viewport);
-      gsap.to(viewport, { scrollLeft: left, duration: 1.9, ease: 'power2.out', overwrite: 'auto' });
-    };
-
-    if (dir > 0 && viewport.scrollLeft >= max - delta) {
-      animateTo(0);
+    if (dir > 0 && viewport.scrollLeft >= max - step) {
+      viewport.scrollTo({ left: 0, behavior: 'smooth' });
       return;
     }
 
-    if (dir < 0 && viewport.scrollLeft <= 0) {
-      animateTo(max);
-      return;
-    }
-
-    animateTo(Math.max(0, Math.min(max, viewport.scrollLeft + dir * delta)));
+    viewport.scrollBy({ left: dir * step, behavior: 'smooth' });
   };
 
   // Lightbox close (ESC)
@@ -531,7 +487,7 @@ const Home = () => {
 
   return (
     <>
-      {/* Page-level tweaks (kept inside Home.jsx so you don’t have to chase CSS) */}
+      {/* Page-level tweaks (kept inside Home.jsx so you donâ€™t have to chase CSS) */}
       <style>{`
         /* Achievements: 3x3 grid on desktop */
         .achievements-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: 56px; }
@@ -574,7 +530,7 @@ const Home = () => {
           paddingBottom: '90px',
         }}
       >
-        {/* ✅ HOME HERO IMAGE (1300 MT crane lifting stack) */}
+        {/* âœ… HOME HERO IMAGE (1300 MT crane lifting stack) */}
         <div
           ref={heroBgRef}
           style={{
@@ -698,7 +654,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Comprehensive industrial services (✅ updated to 5 items) */}
+      {/* Comprehensive industrial services (âœ… updated to 5 items) */}
       <section style={{ padding: '120px 0', backgroundColor: '#FFFFFF' }}>
         <div className="container">
           <h2 className="section-title">Comprehensive industrial services.</h2>
@@ -800,7 +756,7 @@ const Home = () => {
                     {service.desc}
                   </p>
                   <Link to="/services" style={{ color: '#1fadbf', fontWeight: '700', textDecoration: 'none', fontSize: '14px' }}>
-                    Learn More →
+                    Learn More â†’
                   </Link>
                 </div>
               </div>
@@ -809,12 +765,12 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Recent Notable Achievements (✅ consistent fonts + photo space) */}
+      {/* Recent Notable Achievements (âœ… consistent fonts + photo space) */}
       <section style={{ padding: '120px 0', backgroundColor: '#F8F9FA' }}>
         <div className="container">
           <h2 className="section-title">Recent Notable Achievements.</h2>
           <p className="section-description">
-            Notable work delivered during 2023–25 across EPC, erection, E&amp;I, fabrication, and commissioning.
+            Notable work delivered during 2023â€“25 across EPC, erection, E&amp;I, fabrication, and commissioning.
           </p>
 
           <div ref={achievementsRef} className="achievements-grid">
@@ -908,7 +864,7 @@ const Home = () => {
                       textDecoration: 'none'
                     }}
                   >
-                    View related projects <span aria-hidden="true">→</span>
+                    View related projects <span aria-hidden="true">â†’</span>
                   </Link>
                 </div>
               </div>
@@ -948,7 +904,7 @@ const Home = () => {
               aria-label="Scroll logos left"
               onClick={() => logoStepScroll(-1)}
             >
-              ‹
+              â€¹
             </button>
 
             <div
@@ -974,13 +930,13 @@ const Home = () => {
               aria-label="Scroll logos right"
               onClick={() => logoStepScroll(1)}
             >
-              ›
+              â€º
             </button>
           </div>
         </div>
       </section>
 
-      {/* Vision For Tomorrow (✅ better layout + justified text + headings like screenshot) */}
+      {/* Vision For Tomorrow (âœ… better layout + justified text + headings like screenshot) */}
       <section
         ref={visionRef}
         style={{
@@ -992,7 +948,7 @@ const Home = () => {
         <div className="container">
           <h2 className="section-title vision-animate">Vision For Tomorrow</h2>
           <p className="section-description vision-animate" style={{ maxWidth: '980px' }}>
-            At Vedansh, we are driven by a bold and clear vision — to evolve into a leading, specialized EPC and plant-installation powerhouse.
+            At Vedansh, we are driven by a bold and clear vision â€” to evolve into a leading, specialized EPC and plant-installation powerhouse.
           </p>
 
           <div className="vision-grid">
@@ -1002,17 +958,17 @@ const Home = () => {
                 By the end of FY 2029-30, we aim to achieve an annual turnover exceeding INR 500 crore, and generate a combined mechanical and electrical execution value of approximately INR 1,800 crore during the period 2025-26 to 2029-30.
               </p>
               <p className="vision-animate" style={{ marginBottom: '18px' }}>
-                Our goal is to deliver excellence across sectors such as metals (both ferrous and non-ferrous), power, oil &amp; gas, and defence — serving both public and private enterprises with highest standards of quality, reliability, and integrity.
+                Our goal is to deliver excellence across sectors such as metals (both ferrous and non-ferrous), power, oil &amp; gas, and defence â€” serving both public and private enterprises with highest standards of quality, reliability, and integrity.
               </p>
               <p className="vision-animate" style={{ marginBottom: '0px' }}>
-                To support this ambition, we have already established a state-of-the-art steel fabrication unit in Chittorgarh — purpose-built to meet large-scale infrastructure requirements for major organizations.
+                To support this ambition, we have already established a state-of-the-art steel fabrication unit in Chittorgarh â€” purpose-built to meet large-scale infrastructure requirements for major organizations.
               </p>
             </div>
 
             {/* Targets / Cards */}
             <div style={{ display: 'grid', gap: '22px' }}>
               <div className="vision-animate" style={{ fontSize: '22px', fontWeight: 900, color: '#111827', marginTop: '6px' }}>
-                Annual revenue by 2029–30
+                Annual revenue by 2029â€“30
               </div>
               <div
                 className="vision-card"
@@ -1035,7 +991,7 @@ const Home = () => {
               </div>
 
               <div className="vision-animate" style={{ fontSize: '22px', fontWeight: 900, color: '#111827', marginTop: '8px' }}>
-                Total Executed Value by 2029–30
+                Total Executed Value by 2029â€“30
               </div>
               <div
                 className="vision-card"
@@ -1086,7 +1042,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Quality Certifications (✅ click to enlarge images) */}
+      {/* Quality Certifications (âœ… click to enlarge images) */}
       <section ref={certRef} style={{ padding: '120px 0', backgroundColor: '#F8F9FA' }}>
         <div className="container">
           <h2 className="section-title">Quality Certifications</h2>
@@ -1196,7 +1152,7 @@ const Home = () => {
             <div className="lightbox-bar">
               <div style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{lightbox.alt}</div>
               <button className="lightbox-close" onClick={() => setLightbox({ open: false, src: '', alt: '' })} aria-label="Close">
-                ✕
+                âœ•
               </button>
             </div>
             <img className="lightbox-img" src={lightbox.src} alt={lightbox.alt} />
