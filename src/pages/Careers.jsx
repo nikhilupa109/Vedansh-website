@@ -642,11 +642,11 @@ export default function Careers() {
               </p>
             </div>
 
-            <div className="cert-grid">
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '28px' }}>
               {whyVedansh.map((item, i) => (
                 <div
                   key={i}
-                  className="benefit-card"
+                  className="reveal-card"
                   style={{ ...cardBase, cursor: 'pointer' }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = 'translateY(-12px)';
@@ -684,7 +684,7 @@ export default function Careers() {
               </p>
             </div>
 
-            <div className="cert-grid">
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '28px' }}>
               {careerPaths.map((path, i) => (
                 <div
                   key={i}
@@ -749,7 +749,7 @@ export default function Careers() {
               </p>
             </div>
 
-            <div className="benefits-grid">
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '28px' }}>
               {benefits.map((b, i) => (
                 <div
                   key={i}
@@ -932,7 +932,7 @@ export default function Careers() {
               </p>
             </div>
 
-            <div className="cert-grid">
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '28px' }}>
               {testimonials.map((t, i) => (
                 <div
                   key={i}

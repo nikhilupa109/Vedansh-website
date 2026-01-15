@@ -915,7 +915,7 @@ return (
       <section ref={industryRef} style={{ padding: '120px 0', backgroundColor: '#FFFFFF' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-            <h2 style={{ fontSize: '48px', fontWeight: '800', marginBottom: '20px', fontFamily: "'Poppins', sans-serif", color: '#1F2937' }}>Industry expertise</h2>
+            <h2 style={{ fontSize: '48px', fontWeight: '800', marginBottom: '20px', fontFamily: "'Poppins', sans-serif", color: '#1F2937' }}>Diversified Portfolio</h2>
             <p style={{ fontSize: '18px', color: '#6B7280', maxWidth: '700px', margin: '0 auto' }}>Our diversified portfolio across major industrial sectors</p>
           </div>
           <div style={{ maxWidth: '900px', margin: '0 auto' }}>
@@ -947,7 +947,7 @@ return (
             <h2 style={{ fontSize: '48px', fontWeight: '800', marginBottom: '20px', fontFamily: "'Poppins', sans-serif", color: '#1F2937' }}>Certifications & approvals</h2>
             <p style={{ fontSize: '18px', color: '#6B7280', maxWidth: '700px', margin: '0 auto' }}>Industry-recognized certifications that validate our commitment to excellence</p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '32px', maxWidth: '1000px', margin: '0 auto' }}>
+          <div className="cert-grid">
             {[
               { name: 'ISO 9001:2015', desc: 'Quality Management System' },
               { name: 'ISO 14001:2015', desc: 'Environmental Management' },
