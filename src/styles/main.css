@@ -1,36 +1,45 @@
 /* Import Google Fonts - Lato + Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Poppins:wght@400;500;600;700;800;900&display=swap');
 
-/* Professional Light Theme */
+/* =========================================================
+THEME TOKENS
+========================================================= */
 :root {
   --primary-color: #1f2a38;
   --primary-dark: #215f69;
   --primary-light: #4ec9d9;
 
-  
-  --background-white: #FFFFFF;
-  --background-light: #F8F9FA;
-  --background-lighter: #F1F3F5;
-  --background-card: #FFFFFF;
-  
-  --text-primary: #1A1A1A;
-  --text-secondary: #6B7280;
-  --text-muted: #9CA3AF;
-  
-  --border-color: #E5E7EB;
-  --border-light: #F3F4F6;
-  
+  --background-white: #ffffff;
+  --background-light: #f8f9fa;
+  --background-lighter: #f1f3f5;
+  --background-card: #ffffff;
+
+  --text-primary: #1a1a1a;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+
+  --border-color: #e5e7eb;
+  --border-light: #f3f4f6;
+
   --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-sm: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
   --shadow-md: 0 4px 16px 0 rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 8px 24px 0 rgba(0, 0, 0, 0.12);
   --shadow-xl: 0 12px 40px 0 rgba(0, 0, 0, 0.15);
-  
+
   --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Site-specific overrides (current theme) */
+  --site-bar: #deded1;
+  --site-ink: rgba(0, 0, 0, 0.78);
+  --site-ink-strong: rgba(0, 0, 0, 0.9);
 }
 
+/* =========================================================
+BASE
+========================================================= */
 * {
   margin: 0;
   padding: 0;
@@ -57,33 +66,41 @@ body {
   padding: 0 40px;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   line-height: 1.2;
   color: var(--text-primary);
 }
 
-/* NAVBAR */
+/* =========================================================
+NAVBAR (single source of truth)
+========================================================= */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border-color);
-  padding: 20px 0;
-  z-index: 1000;
+  height: 56px;
+  padding: 0;
+  background: var(--site-bar);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  z-index: 99999;
   transition: var(--transition-fast);
 }
 
 .navbar.scrolled {
-  padding: 16px 0;
+  padding: 0;
   box-shadow: var(--shadow-sm);
 }
 
 .navbar .container {
+  height: 56px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -93,9 +110,32 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Poppins', sans-serif;
   font-size: 24px;
   font-weight: 800;
-  color: var(--text-primary);
+  color: var(--site-ink-strong);
   text-decoration: none;
   letter-spacing: -0.5px;
+
+  /* cleanup: no pill styling on .logo itself */
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Navbar logo visibility helpers (optional wrapper around <img>) */
+.nav-logo-wrap {
+  background: #ffffff;
+  padding: 6px 10px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.nav-logo-img {
+  height: 46px;
+  width: auto;
+  display: block;
 }
 
 .nav-menu {
@@ -106,17 +146,33 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-menu a {
-  color: var(--text-secondary);
+  color: var(--site-ink);
   text-decoration: none;
-  font-weight: 500;
-  font-size: 15px;
+  font-weight: 700;
+  font-size: 18px;
   transition: var(--transition-fast);
   position: relative;
 }
 
 .nav-menu a:hover,
 .nav-menu a.active {
-  color: var(--text-primary);
+  color: #000000;
+}
+
+/* If you use an underline indicator elsewhere */
+.nav-menu a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  height: 2px;
+  width: 0;
+  background: rgba(0, 0, 0, 0.85);
+  transition: width 0.25s ease;
+}
+.nav-menu a:hover::after,
+.nav-menu a.active::after {
+  width: 100%;
 }
 
 .mobile-toggle {
@@ -132,19 +188,23 @@ h1, h2, h3, h4, h5, h6 {
 .mobile-toggle span {
   width: 24px;
   height: 2px;
-  background: var(--text-primary);
+  background: rgba(0, 0, 0, 0.85);
   transition: var(--transition-fast);
 }
 
-/* HERO SECTION */
-.hero {
+/* =========================================================
+HERO
+========================================================= */
+.hero,
+.hero-section,
+.page-hero {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   background: var(--background-light);
-  padding-top: 80px;
+  padding-top: 100px; /* spacing below fixed navbar */
   padding-bottom: 100px;
 }
 
@@ -198,7 +258,20 @@ h1, h2, h3, h4, h5, h6 {
   flex-wrap: wrap;
 }
 
-/* BUTTONS */
+/* Generic safeguard for hero pills/badges overlapping navbar */
+.hero-badge,
+.hero-pill,
+.hero-tag,
+.hero-label,
+.hero-subtitle-pill {
+  margin-top: 24px;
+  position: relative;
+  top: 0;
+}
+
+/* =========================================================
+BUTTONS
+========================================================= */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -236,7 +309,9 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(-2px);
 }
 
-/* SECTIONS */
+/* =========================================================
+SECTIONS
+========================================================= */
 section {
   padding: 120px 0;
   position: relative;
@@ -265,7 +340,9 @@ section {
   margin: 0 auto 80px;
 }
 
-/* FEATURED SECTION */
+/* =========================================================
+FEATURED
+========================================================= */
 .featured-section {
   background: var(--background-white);
 }
@@ -343,7 +420,9 @@ section {
   color: var(--primary-color);
 }
 
-/* PROCESS SECTION */
+/* =========================================================
+PROCESS
+========================================================= */
 .process-section {
   background: var(--background-light);
 }
@@ -387,11 +466,8 @@ section {
 
 .process-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.7));
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, rgba(0, 0, 0, 0.7));
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -434,7 +510,9 @@ section {
   line-height: 1.6;
 }
 
-/* STATS SECTION */
+/* =========================================================
+STATS
+========================================================= */
 .stats-section {
   background: var(--background-white);
   border-top: 1px solid var(--border-color);
@@ -467,7 +545,9 @@ section {
   color: var(--text-secondary);
 }
 
-/* CTA SECTION */
+/* =========================================================
+CTA
+========================================================= */
 .cta-section {
   background: var(--background-light);
 }
@@ -493,11 +573,13 @@ section {
   line-height: 1.7;
 }
 
-/* FOOTER */
+/* =========================================================
+FOOTER (single source of truth)
+========================================================= */
 .footer {
-  background: var(--background-white);
-  border-top: 1px solid var(--border-color);
-  padding: 80px 0 40px;
+  background: var(--site-bar);
+  border-top: 0;
+  padding: 56px 0;
 }
 
 .footer-content {
@@ -511,12 +593,12 @@ section {
   font-size: 16px;
   font-weight: 700;
   margin-bottom: 24px;
-  color: var(--text-primary);
+  color: var(--site-ink-strong);
   font-family: 'Poppins', sans-serif;
 }
 
 .footer-col p {
-  color: var(--text-secondary);
+  color: var(--site-ink);
   line-height: 1.7;
   font-size: 15px;
 }
@@ -530,280 +612,31 @@ section {
 }
 
 .footer-col ul li a {
-  color: var(--text-secondary);
+  color: var(--site-ink);
   text-decoration: none;
   transition: var(--transition-fast);
   font-size: 15px;
 }
 
 .footer-col ul li a:hover {
-  color: var(--text-primary);
+  color: #000000;
 }
 
 .footer-bottom {
   padding-top: 40px;
-  border-top: 1px solid var(--border-color);
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
   text-align: center;
 }
 
 .footer-bottom p {
-  color: var(--text-muted);
+  color: rgba(0, 0, 0, 0.62);
   font-size: 14px;
 }
 
-/* CLIENT LOGOS INFINITE SCROLL */
-.logo-scroll-container {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  padding: 40px 0;
-}
-
-.logo-scroll {
-  display: flex;
-  gap: 100px;
-  animation: scroll 45s linear infinite;
-  will-change: transform;
-}
-
-.logo-scroll:hover {
-  animation-play-state: paused;
-}
-
-.logo-item {
-  flex-shrink: 0;
-  width: 280px;
-  height: 140px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  filter: grayscale(100%) opacity(0.5);
-  transition: all 0.4s ease;
-  padding: 20px;
-  background: #FAFAFA;
-  border-radius: 16px;
-  border: 1px solid #F0F0F0;
-}
-
-.logo-item:hover {
-  filter: grayscale(0%) opacity(1);
-  transform: scale(1.08);
-  background: #FFFFFF;
-  border-color: #E5E7EB;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-}
-
-.logo-item img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-}
-
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-
-
 /* =========================================================
-   HOME â€“ TIGHTER, EVENLY-SPREAD GRIDS (Industries + Stats)
-   ========================================================= */
-.home-grid-tight{
-  display: grid;
-  gap: 28px;
-  margin-top: 48px;
-  max-width: 1100px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.home-achievements-grid{
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.home-industries-grid{
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-/* Keep cards readable on smaller screens */
-@media (max-width: 1024px){
-  .home-industries-grid{
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 640px){
-  .home-grid-tight{
-    gap: 20px;
-    margin-top: 32px;
-    max-width: 520px;
-  }
-  .home-achievements-grid,
-  .home-industries-grid{
-    grid-template-columns: 1fr;
-  }
-}
-
-/* RESPONSIVE */
-@media (max-width: 1024px) {
-  .featured-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .process-cards {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
-  }
-}
-
-@media (max-width: 768px) {
-  .container {
-    padding: 0 24px;
-  }
-  
-  .nav-menu {
-    position: fixed;
-    top: 76px;
-    left: -100%;
-    width: 100%;
-    height: calc(100vh - 76px);
-    background: white;
-    flex-direction: column;
-    padding: 40px;
-    transition: var(--transition);
-    box-shadow: var(--shadow-lg);
-    gap: 24px;
-  }
-
-  .nav-menu.active {
-    left: 0;
-  }
-
-  .mobile-toggle {
-    display: flex;
-  }
-
-  .mobile-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
-  }
-
-  .mobile-toggle.active span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .mobile-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px);
-  }
-
-  .featured-grid,
-  .process-cards {
-    grid-template-columns: 1fr;
-  }
-  
-  .stats-grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-  
-  section {
-    padding: 80px 0;
-  }
-  
-  .footer-content {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  
-  .logo-item {
-    width: 180px;
-    height: 90px;
-    padding: 15px;
-  }
-  
-  .logo-scroll {
-    gap: 50px;
-    animation: scroll 35s linear infinite;
-  }
-}
-/* =========================================
-   THEME OVERRIDES: Teal Navbar + Footer
-   (Safe overrides â€” preserves GSAP/classes)
-   ========================================= */
-
-/* Navbar background teal + white text */
-.navbar {
-  background: #deded1 !important;
-  backdrop-filter: none !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.18) !important;
-}
-
-.navbar.scrolled {
-  background: #deded1 !important;
-  box-shadow: var(--shadow-sm) !important;
-}
-
-/* Nav links white + slightly bigger */
-.nav-menu a {
-  color: rgba(0, 0, 0, 0.78) !important;
-  font-size: 16px !important;
-  font-weight: 600 !important;
-}
-
-.nav-menu a:hover,
-.nav-menu a.active {
-  color: #000000 !important;
-}
-
-/* Mobile hamburger visible on teal */
-.mobile-toggle span {
-  background: rgba(0, 0, 0, 0.85) !important;
-}
-
-/* Mobile menu background teal */
-@media (max-width: 768px) {
-  .nav-menu {
-    background: #deded1 !important;
-  }
-}
-
-/* Footer teal + white text */
-.footer {
-  background: #deded1 !important;
-  border-top: 0 !important;
-}
-
-.footer-col h4,
-.footer-col p,
-.footer-col ul li,
-.footer-col ul li a {
-  color: rgba(0, 0, 0, 0.78) !important;
-}
-
-.footer-col ul li a:hover {
-  color: #000000 !important;
-}
-
-.footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.22) !important;
-}
-
-.footer-bottom p {
-  color: rgba(0, 0, 0, 0.62) !important;
-}
-/* =========================================
-   Client Logos: Step-scroll + drag + arrows
-   (Overrides old infinite marquee safely)
-   ========================================= */
-
+CLIENT LOGOS (single source of truth)
+Step-scroll + drag + arrows
+========================================================= */
 .logo-slider {
   display: grid;
   grid-template-columns: 52px 1fr 52px;
@@ -822,6 +655,7 @@ section {
   font-weight: 800;
   cursor: pointer;
   box-shadow: var(--shadow-sm);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .logo-arrow:hover {
@@ -829,8 +663,9 @@ section {
 }
 
 .logo-scroll-container {
-  overflow-x: auto !important;
-  overflow-y: hidden !important;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   cursor: grab;
@@ -843,199 +678,111 @@ section {
 }
 
 .logo-scroll {
-  display: flex !important;
-  gap: 24px !important;
-  animation: none !important; /* stops old marquee animation */
-  will-change: auto !important;
+  display: flex;
+  gap: 24px;
   padding: 10px 6px;
+  animation: none; /* stop any old marquee usage */
 }
 
-/* bigger + full color logos */
 .logo-item {
   flex-shrink: 0;
-  width: 320px;
-  height: 160px;
+  width: 380px;
+  height: 190px;
   display: flex;
   align-items: center;
   justify-content: center;
-  filter: none !important;     /* removes grayscale */
-  opacity: 1 !important;       /* full color */
+  filter: none;
+  opacity: 1;
+  background: #ffffff;
   scroll-snap-align: center;
   padding: 18px;
-  background: #fafafa;
   border-radius: 16px;
   border: 1px solid #f0f0f0;
-  transition: transform 0.25s ease;
+  transition:
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.65s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .logo-item:hover {
-  transform: scale(1.04);
+  transform: scale(1.03);
+  border-color: #e5e7eb;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.1);
 }
 
 .logo-item img {
-  width: 85%;
-  height: 85%;
+  width: 90%;
+  height: 90%;
   object-fit: contain;
-}
-/* Navbar logo visibility fix */
-.nav-logo-wrap{
-  background: #ffffff;
-  padding: 8px 12px;
-  border-radius: 14px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
-}
-
-.nav-logo-img{
-  height: 56px;
-  width: auto;
-  display: block;
-}
-/* --- Navbar spacing + no overlap --- */
-.navbar .container {
-  padding-top: 10px !important;
-  padding-bottom: 10px !important;
-}
-
-/* shrink the white pill slightly so header height reduces */
-.nav-logo-wrap {
-  padding: 6px 10px !important;
-  border-radius: 12px !important;
-}
-
-.nav-logo-img {
-  height: 46px !important; /* reduced from 56 */
-}
-
-/* ensure page content starts below sticky navbar */
-.hero,
-.hero-section,
-.page-hero {
-  padding-top: 100px; /* prevents overlap even if navbar is sticky */
-}
-/* --- Bigger nav links --- */
-.nav-menu a {
-  font-size: 18px !important;
-  font-weight: 700 !important;
-}
-/* Ensure navbar always stays above hero elements */
-.navbar {
-  z-index: 99999 !important;
-}
-/* Generic safeguard for hero pills/badges overlapping navbar */
-.hero-badge,
-.hero-pill,
-.hero-tag,
-.hero-label,
-.hero-subtitle-pill {
-  margin-top: 24px !important;
-  position: relative !important;
-  top: 0 !important;
+  filter: none;
+  opacity: 1;
 }
 
 /* =========================================================
-   CLIENT CHANGES (17-12-2025) â€” SAFE OVERRIDES
-   (keeps GSAP + existing animations intact)
-   ========================================================= */
-
-/* 1) Navbar: teal background + readable logo + larger menu text */
-.navbar {
-  background: #deded1 !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
-}
-.navbar .container {
-  padding-top: 10px !important;
-  padding-bottom: 10px !important;
-}
-.navbar .logo {
-
-background: transparent !important;
-
-padding: 0 !important;
-
-border-radius: 0 !important;
-
-box-shadow: none !important;
-
+HOME – TIGHTER, EVENLY-SPREAD GRIDS (Industries + Stats)
+========================================================= */
+.home-grid-tight {
+  display: grid;
+  gap: 28px;
+  margin-top: 48px;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.navbar .logo img {
-  display: block;
-  height: 44px;
-  width: auto;
-}
-.nav-menu a {
-  color: rgba(0, 0, 0, 0.78) !important;
-  font-size: 16px !important;
-  font-weight: 700 !important;
-}
-.nav-menu a:hover,
-.nav-menu a.active {
-  color: #000000 !important;
-}
-.nav-menu a::after {
-  background: rgba(0, 0, 0, 0.85) !important;
+.home-achievements-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-/* 2) Footer: teal background */
-.footer {
-  background: #deded1 !important;
-  color: #000000 !important;
-  border-top: none !important;
-}
-.footer a {
-  color: rgba(0, 0, 0, 0.78) !important;
-}
-.footer a:hover {
-  color: #000000 !important;
-}
-.footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.18) !important;
+.home-industries-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-/* 3) Home â€” Comprehensive industrial services: equal grid */
+/* =========================================================
+HOME – Equal-height cards
+========================================================= */
+.services-grid,
+.achievements-grid {
+  align-items: stretch;
+}
+
 .services-grid {
   display: grid;
   gap: 28px;
   margin-top: 60px;
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
-@media (min-width: 1400px) {
-  .services-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-}
-@media (max-width: 1024px) {
-  .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-@media (max-width: 640px) {
-  .services-grid { grid-template-columns: 1fr; }
-}
+
 .services-grid .service-card {
   height: 100%;
   display: flex;
   flex-direction: column;
 }
 
-/* 4) Home â€” Achievements: 3Ã—3 grid + photo space */
+.services-grid .service-card > div {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.services-grid .service-card a {
+  margin-top: auto;
+}
+
 .achievements-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
 }
-@media (max-width: 1100px) {
-  .achievements-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-@media (max-width: 640px) {
-  .achievements-grid { grid-template-columns: 1fr; }
-}
+
 .achievement-photo {
   height: 160px;
   border-radius: 16px;
   overflow: hidden;
-  background: linear-gradient(135deg, rgba(31,173,191,0.18), rgba(17,24,39,0.06));
-  border: 1px solid rgba(0,0,0,0.06);
+  background: linear-gradient(135deg, rgba(31, 173, 191, 0.18), rgba(17, 24, 39, 0.06));
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
+
 .achievement-photo img {
   width: 100%;
   height: 100%;
@@ -1043,26 +790,234 @@ box-shadow: none !important;
   display: block;
 }
 
-/* 5) Home â€” Client logos: bigger + full color (no grayscale) */
-.logo-item {
-  width: 380px !important;
-  height: 190px !important;
-  filter: none !important;
-  opacity: 1 !important;
-  background: rgba(0, 0, 0, 0.85) !important;
-}
-.logo-item img {
-  filter: none !important;
-  opacity: 1 !important;
-  width: 90% !important;
-  height: 90% !important;
-  object-fit: contain !important;
+.achievements-grid .achievement-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 440px;
 }
 
+.achievements-grid .achievement-photo {
+  flex: 0 0 160px;
+}
 
-/* FIXED HEADER/FOOTER 26-12-2025 */
-.navbar{padding:0 !important;height:56px !important;}
-.navbar.scrolled{padding:0 !important;}
-.navbar .container{height:56px !important;}
-@media (max-width:768px){.nav-menu{top:56px !important;height:calc(100vh - 56px) !important;}}
-.footer{padding:56px 0 !important;}
+.achievements-grid .achievement-card a {
+  margin-top: auto;
+}
+
+/* Clamp titles/descriptions (adds standard line-clamp too) */
+.achievements-grid .achievement-card h3,
+.achievements-grid .achievement-card p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.achievements-grid .achievement-card h3 {
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.achievements-grid .achievement-card p {
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+/* =========================================================
+RESPONSIVE
+========================================================= */
+@media (max-width: 1024px) {
+  .featured-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .process-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+
+  .home-industries-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1400px) {
+  .services-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1100px) {
+  .achievements-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 24px;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 56px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 56px);
+    background: var(--site-bar);
+    flex-direction: column;
+    padding: 40px;
+    transition: var(--transition);
+    box-shadow: var(--shadow-lg);
+    gap: 24px;
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
+
+  .mobile-toggle {
+    display: flex;
+  }
+
+  .mobile-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+  .mobile-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .mobile-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
+
+  .featured-grid,
+  .process-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  section {
+    padding: 80px 0;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .logo-item {
+    width: 240px;
+    height: 120px;
+    padding: 14px;
+  }
+
+  .logo-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+  }
+
+  .logo-slider {
+    grid-template-columns: 46px 1fr 46px;
+  }
+}
+
+@media (max-width: 640px) {
+  .home-grid-tight {
+    gap: 20px;
+    margin-top: 32px;
+    max-width: 520px;
+  }
+
+  .home-achievements-grid,
+  .home-industries-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+UNIVERSAL CARD GRID BALANCING (Odd counts centered)
+- 5 cards => 2-1-2
+- 3 cards => 2-1 (last centered)
+Works for Home: .services-grid (.service-card) and .achievements-grid (.achievement-card)
+========================================================= */
+@supports selector(:has(*)) {
+  /* --- Services: 5 cards => 2-1-2 --- */
+  .services-grid:has(> .service-card:nth-child(5):last-child) {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    justify-items: center;
+    align-items: stretch;
+  }
+
+  .services-grid:has(> .service-card:nth-child(5):last-child) > .service-card:nth-child(3) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: min(560px, 100%);
+  }
+
+  /* --- Services: 3 cards => 2-1 (last centered) --- */
+  .services-grid:has(> .service-card:nth-child(3):last-child) {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    justify-items: center;
+    align-items: stretch;
+  }
+
+  .services-grid:has(> .service-card:nth-child(3):last-child) > .service-card:nth-child(3) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: min(560px, 100%);
+  }
+
+  /* --- Achievements: 5 cards => 2-1-2 --- */
+  .achievements-grid:has(> .achievement-card:nth-child(5):last-child) {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    justify-items: center;
+    align-items: stretch;
+  }
+
+  .achievements-grid:has(> .achievement-card:nth-child(5):last-child) > .achievement-card:nth-child(3) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: min(560px, 100%);
+  }
+
+  /* --- Achievements: 3 cards => 2-1 (last centered) --- */
+  .achievements-grid:has(> .achievement-card:nth-child(3):last-child) {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    justify-items: center;
+    align-items: stretch;
+  }
+
+  .achievements-grid:has(> .achievement-card:nth-child(3):last-child) > .achievement-card:nth-child(3) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: min(560px, 100%);
+  }
+}
+
+/* Fallback alignment (if :has is not supported): keep center alignment */
+.services-grid,
+.achievements-grid {
+  justify-items: center;
+  align-items: stretch;
+}
