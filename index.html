@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <title>Vedansh Infra Services Pvt LTD | Electrical EPC & Contractor in Gujarat and Rajasthan</title>
@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" href="./images/favicon.svg" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900&display=swap" rel="stylesheet">
-
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="css/animate.css">
@@ -20,7 +20,12 @@
     
 	<link rel="stylesheet" href="css/flaticon.css">
 	<link rel="stylesheet" href="css/flaticon2.css">
-	
+	<!-- In <head> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<!-- Before </body> -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
     <link rel="stylesheet" href="css/style.css">
 <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/7e673e0a777fe00995e739b04/f94afaa040f67ba2056963689.js");</script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -41,7 +46,7 @@ gtag('config','G-P0CPR9371Z');
 	    <div class="container-fluid">
 	      <a class="navbar-brand" href="index.html"><img src="./images/logo.svg" id="navbar-logo"></a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="oi oi-menu"></span> Menu
+	        <span class="oi oi-menu"></span> <i class="fas fa-bars"></i>
 	      </button>
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
@@ -58,27 +63,117 @@ gtag('config','G-P0CPR9371Z');
 	  </nav>
     <!-- END nav -->
     
-    <section class="hero-wrap" style="background-color: white;" data-stellar-background-ratio="0.3">
+    <section class="hero-wrap swiper mySwiper" data-stellar-background-ratio="0.3">
+  <div class="swiper-wrapper">
+
+    <!-- Slide 1 -->
+    <div class="swiper-slide" style="background-image: url('images/banner/Vedansh_HomePage_Banner-1.1.png'); background-size: cover; background-position: center;">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text align-items-center">
-          <div class="col-md-5 col-lg-5 ftco-animate d-flex align-items-end">
-          	<div class="text">
-	            <h1 class="mb-4"><span>Your Dream </span> Our Team</h1>
-	            
-	            <div class="d-flex meta">
-		            <div class=""><p class="mb-0"><a href="about.html" class="btn btn-primary py-3 px-4 px-md-8">Explore</a></p></div>
-		          </div>
+          <div class="col-md-5 col-lg-5 d-flex align-items-end">
+            <div class="text text-white">
+              <!-- <h1 class="mb-4"><span>Your Dream </span> Our Team</h1> -->
+              <div class="d-flex meta">
+                <!-- <div><p class="mb-0"><a href="about.html" class="btn btn-primary py-3 px-4">Explore</a></p></div> -->
+              </div>
             </div>
-		  </div>
-		<div class="col-md-7 col-lg-7 ftco-animate d-flex align-items-center" style="padding: 25px;">
-			<img style="max-height: 100%; max-width: 100%;" src="./images/engineers-team.svg">
-		</div>
-		</div>
-		
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
 
+    <!-- Slide 2 -->
+    <div class="swiper-slide" style="background-image: url('images/banner/Vedansh_HomePage_Banner-2.jpg'); background-size: cover; background-position: center;">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center">
+          <div class="col-md-5 col-lg-5 d-flex align-items-end">
+            <div class="text text-white">
+              <!-- <h1 class="mb-4"><span>Innovate </span> with Confidence</h1> -->
+              <div class="d-flex meta">
+                <!-- <div><p class="mb-0"><a href="services.html" class="btn btn-primary py-3 px-4">Discover</a></p></div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="swiper-slide" style="background-image: url('images/banner/Vedansh_HomePage_Banner-3.png'); background-size: cover; background-position: center;">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center">
+          <div class="col-md-5 col-lg-5 d-flex align-items-end">
+            <div class="text text-white">
+              <!-- <h1 class="mb-4"><span>Build </span> for the Future</h1> -->
+              <div class="d-flex meta">
+                <!-- <div><p class="mb-0"><a href="contact.html" class="btn btn-primary py-3 px-4">Get Started</a></p></div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Swiper navigation -->
+  <div class="swiper-pagination"></div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+</section>
+<style>
+  .hero-wrap .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Optional dark overlay */
+  z-index: 1;
+}
+.swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 90%;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    transition-timing-function: var(--swiper-wrapper-transition-timing-function,initial);
+    box-sizing: content-box
+}
+
+.hero-wrap .text {
+  position: relative;
+  z-index: 2;
+}
+
+.swiper-slide {
+  position: relative;
+  min-height: 100vh; /* or desired height */
+  display: flex;
+  align-items: center;
+}
+
+</style>
+<script>
+  const swiper = new Swiper(".mySwiper", {
+    loop: true,
+    autoplay: {
+      delay: 5000,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+</script>
     <section class="ftco-section ftco-no-pb ftco-no-pt bg-primary">
       <div class="container">
         <div class="row d-flex no-gutters">
@@ -143,7 +238,8 @@ gtag('config','G-P0CPR9371Z');
       </div>
     </section>
 
-    
+
+	
     <section class="ftco-section ftco-no-pb ftco-no-pt" id="ourroots" style="margin-top: 50px;">
 			<div class="container">
 				<div class="row">
@@ -155,7 +251,7 @@ gtag('config','G-P0CPR9371Z');
 	          <div class="heading-section pr-md-5">
 	            <h2 class="mb-4">Our Roots</h2>
 
-	            <p>Started as a plant erection and manpower sourcing company with a team of 5 people, today Vedansh is a family of 500 and an industry leader in EPC (Engineering, Procurement and Commissioning).<br>
+	            <p style="text-align: justify;">Started as a plant erection and manpower sourcing company with a team of 5 people, today Vedansh is a family of 500 and an industry leader in EPC (Engineering, Procurement and Commissioning).<br>
                 Founded in 2006 in Rajasthan, Vedansh Infra Services Pvt. Ltd. has successfully established its name in the EPC Sector. In our 14 years of extensive experience, we have rendered superior quality engineering, procurement, and commissioning services in the major sectors of India. As the saying goes, ‘Alone, we can do so little; together we can do so much,’ our workforce shares the most significant role in what we have accomplished today, and that’s what keeps us going seamlessly. We always follow the policy of quality, safety, reliability, and timely completion of projects, which has helped us to be a step ahead in the race.<br>
                 Started as a plant erection and manpower sourcing company with a team of 5 people, today Vedansh is a family of 500+ and an industry leader in EPC (Engineering, Procurement and Commissioning). 
                 </p>
@@ -166,9 +262,9 @@ gtag('config','G-P0CPR9371Z');
 					</div>
 				</div>
 			</div>
-		</section>
+		</section><br>
 
-		<section class="ftco-counter img" id="section-counter">
+		<!-- <section class="ftco-counter img" id="section-counter">
     	<div class="container">
     		<div class="row pt-md-5">
           <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
@@ -206,7 +302,7 @@ gtag('config','G-P0CPR9371Z');
         </div>
     	</div>
 	</section>
-	
+	 -->
 	<section class="ftco-section ftco-no-pb ftco-no-pt bg-primary">
 		<div class="container">
 		  <div class="row justify-content-center py-5">
@@ -236,18 +332,18 @@ gtag('config','G-P0CPR9371Z');
 			</div>
 			<div class="col-md-3 d-flex align-items-center ftco-animate">
 				<div class="media block-6 services d-block container text-center px-3 pb-4">
-					<div class="icon d-flex justify-content-center align-items-center"><img class="companylogo" src="./images/lnt.svg"></div>
+					<div class="icon d-flex justify-content-center align-items-center"><img class="companylogo" src="images/logo.webp"></div>
 				<div class="media-body py-md-4">
-					<h3>Larsen & Toubro</h3>
+					<h3>Aditya Birla</h3>
 					
 				</div>
 				</div>      
 			</div>
 			<div class="col-md-3 d-flex align-items-center ftco-animate">
 				<div class="media block-6 services d-block container text-center px-3 pb-4">
-					<div class="icon d-flex justify-content-center align-items-center"><img class="companylogo" src="./images/tata.png"></div>
+					<div class="icon d-flex justify-content-center align-items-center"><img class="companylogo" src="images/5-e1706870206916.png"></div>
 				<div class="media-body py-md-4">
-					<h3>Tata</h3>
+					<h3>sprng energy</h3>
 					
 				</div>
 				</div>      
@@ -312,9 +408,9 @@ gtag('config','G-P0CPR9371Z');
 			</div>
 			<div class="col-md-3 d-flex align-items-center ftco-animate">
 				<div class="media block-6 services d-block container text-center px-3 pb-4">
-					<div class="icon d-flex justify-content-center align-items-center"><img class="companylogo" src="./images/prozeal.png"></div>
+					<div class="icon d-flex justify-content-center align-items-center"><img class="companylogo" src="images/Jitf2.png"></div>
 				<div class="media-body py-md-4">
-					<h3>Prozeal</h3>
+					<h3>jitf ecopolis</h3>
 					
 				</div>
 				</div>      
@@ -446,39 +542,29 @@ gtag('config','G-P0CPR9371Z');
           </div>
         </div>
         <div class="row">
-    			<div class="col-md-4 ftco-animate">
-	          <div class="block-7">
-	          	<div class="img" style="background-image: url(https://lh3.googleusercontent.com/pw/ACtC-3dRn4f-iLTVpLNQGl0l_H6NzB297SAdMQvRzmvIplnD4rRkiyBQEkwCfj_Yu8E6sXmxIZKIUS68RVoTysZY1t6xCfM1AJktHMFlNALy5_HaN9UihL_KiJdx2F4rWPerr3pnxNE_K7U1Na4MJLgfr5pD=w953-h635-no?authuser=0);"></div>
-	            <div class="p-4">
-		           
-		          </div>
-		          <div class="d-lg-flex align-items-center w-100 bg-light py-2 px-4"></div>
-            </div>
-	        </div>
-	        <div class="col-md-4 ftco-animate">
-	          <div class="block-7">
-	          	<div class="img" style="background-image: url(https://lh3.googleusercontent.com/pw/ACtC-3etPQOktcqPrmQU30yYnAMapcqm_dmkFN7OasZ98FLdLv-EJjZdTspDMLbwLaianynztwAJfHXZpeOTH9U3p4mcND04JMKQeKFP68qr_KCToib1GKrDOMX_mcfSgUwH1HQEs2x1GLoZwJ2_OmjCRGAM=w477-h635-no?authuser=0);"></div>
-	            <div class="p-4">
-		           
-		          </div>
-		          <div class="d-lg-flex align-items-center w-100 bg-light py-2 px-4">
-				
-			        </div>
-            </div>
-	        </div>
-	        <div class="col-md-4 ftco-animate">
-	          <div class="block-7">
-	          	<div class="img" style="background-image: url(https://lh3.googleusercontent.com/pw/ACtC-3eotPhSlKmw3tOh1gLHciw8-kcBb_KpISqeaEf8loHpm547A_217g0iDX1DinxyxwR5E2kXRpDDPPgwhCs1XVQxx0jjeNsBIWlQZEgsB4IWZR-akZRqHuPnlavKoGeJz-vc8Q_2-xm4aM7O9KTwZyhB=w953-h635-no?authuser=0);"></div>
-	            <div class="p-4">
-		          
-		          </div>
-		          <div class="d-lg-flex align-items-center w-100 bg-light py-2 px-4">
-					
-			     </div>
-	          </div>
-	        </div>
-	      </div>
-	  </div>
+    		<div class="col-md-4 col-12 ftco-animate">
+  <div class="block-7">
+    <img src="images/vedansh website/1.png" alt="Gallery Image 1" class="img-fluid">
+    <div class="p-4">
+      <!-- Optional content -->
+    </div>
+    <div class="d-lg-flex align-items-center w-100 bg-light py-2 px-4">
+      <!-- Optional content -->
+    </div>
+  </div>
+</div>
+	    <div class="col-md-4 col-12 ftco-animate">
+  <div class="block-7">
+    <img src="images/vedansh website/2.png" alt="Gallery Image 1" class="img-fluid">
+   
+  </div>
+</div>
+	       <div class="col-md-4 col-12 ftco-animate">
+  <div class="block-7">
+    <img src="images/vedansh website/3.png" alt="Gallery Image 1" class="img-fluid">
+    
+  </div>
+</div>
 	  <div class="container">
         <div class="row justify-content-center mb-5">
           <div class="col-md-7 heading-section text-center ftco-animate">
@@ -487,40 +573,36 @@ gtag('config','G-P0CPR9371Z');
           </div>
         </div>
         <div class="row">
-    			<div class="col-md-4 ftco-animate">
-	          <div class="block-7">
-	          	<div class="img" style="background-image: url(https://lh3.googleusercontent.com/pw/ACtC-3fmjJCT35wOtvNhD4nH7F2nD5sRDESrZQeacFzJFUuLGj-ZgI5qBN1URMpbPaxsrNpI082vwI8-Q2zyCXqXGojlzn9-l-rVa48TI51eG7dfYwl8BEmG7E_n1BZBu2GeL4M9dF8XnVLYWnPiAqknf5of=w477-h635-no?authuser=0);"></div>
-	            <div class="p-4">
-		           
-		          </div>
-		          <div class="d-lg-flex align-items-center w-100 bg-light py-2 px-4"></div>
-            </div>
-	        </div>
-	        <div class="col-md-4 ftco-animate">
-	          <div class="block-7">
-	          	<div class="img" style="background-image: url(https://lh3.googleusercontent.com/pw/ACtC-3eD9mrlij5Y6o07zkMuQU1oCTuL8d6Uk_FFcwBoQI9aMu55OnZvfisYQPeB22ItkW62zeOKagwwAIU0nCt3YXmRCMQ_Jtj8bVohl_t3KvaYGKFJMHBp4ZVEKdifWDkInyCPX6YgmnetNZFVQUnFD9Ty=w847-h635-no?authuser=0);"></div>
-	            <div class="p-4">
-		           
-		          </div>
-		          <div class="d-lg-flex align-items-center w-100 bg-light py-2 px-4">
-				
-			        </div>
-            </div>
-	        </div>
-	        <div class="col-md-4 ftco-animate">
-	          <div class="block-7">
-	          	<div class="img" style="background-image: url(https://lh3.googleusercontent.com/pw/ACtC-3fVFWtcuX4XHaPd_0Oye_XKuFRZ4su9KfCw2ayPG8hBqGMGFs_TJpJPyZ90JluAgQSn5Ec9HEXDNBPp5gUlnkH-hH35YmfoR-e7kepq_ZYEPZFORBH5RRvFII6Ud4WB_-Wab0UX1rB6hcBFN4mnX4lm=w847-h635-no?authuser=0);"></div>
-	            <div class="p-4">
-		          
-		          </div>
-		          <div class="d-lg-flex align-items-center w-100 bg-light py-2 px-4">
-						
-			        </div>
-	          </div>
-	        </div>
+    		<div class="col-md-4 col-12 ftco-animate">
+  <div class="block-7">
+    <img src="images/vedansh website/4.png" alt="Gallery Image 1" class="img-fluid">
+    
+  </div>
+</div>
+	       <div class="col-md-4 col-12 ftco-animate">
+  <div class="block-7">
+    <img src="images/vedansh website/5.png" alt="Gallery Image 1" class="img-fluid">
+    
+  </div>
+</div>
+	      
 	      </div>
       </div>
     </section>
+
+<a href="https://in.linkedin.com/company/vedansh?trk=public_post_follow-view-profile" target="_blank" style="display: block; text-decoration: none;">
+    <div class="row py-2" style="background-image: url('images/mm/Vedansh_LinkedInFooter.png'); background-size: contain; background-repeat: no-repeat; background-position: top center; height: 377px; position: relative;">
+        <!-- Button inside the background -->
+        <div style="position: absolute; bottom: 71px; left: 77%; transform: translateX(-50%);">
+            <button style="padding: 5px 10px; font-size: 14px; background-color: #0077B5; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                Visit Our LinkedIn
+            </button>
+        </div>
+    </div>
+</a><br>
+
+
+
 
     <footer class="ftco-footer ftco-section">
       <div class="container">
