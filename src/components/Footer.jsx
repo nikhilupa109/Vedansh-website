@@ -4,9 +4,9 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="footer" style={{ background: "#deded1", padding: "56px 0", borderTop: "1px solid rgba(0,0,0,0.12)" }}>
+    <footer className="footer">
       <div className="container">
-        <div className="footer-content" style={{ gridTemplateColumns: "1.6fr 1fr 1fr 1.4fr", gap: "48px", marginBottom: "40px" }}>
+        <div className="footer-content" style={{ gridTemplateColumns: "1.6fr 1fr 1fr 1.4fr" }}>
           <div className="footer-col">
             <h4>VEDANSH INFRA SERVICES PVT. LTD. </h4>
             <p>Engineering Excellence, Building the Future.</p>
