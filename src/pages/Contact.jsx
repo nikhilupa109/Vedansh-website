@@ -394,32 +394,70 @@ const Contact = () => {
                 color: '#6B7280',
                 marginBottom: '32px'
               }}>
-                Come meet us at our Chittorgarh office or reach out anytime.
+                We have offices in Rajasthan and Gujarat — come meet us or reach out anytime.
               </p>
 
-              {/* Google Map */}
-              <div className="map-container" style={{ marginBottom: '32px', height: '400px' }}>
-                <iframe
-                  src="https://maps.app.goo.gl/NgZbED8Ye1V4dMrC8"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen=""
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Vedansh Infra Location"
-                />
+              {/* Two Maps Side by Side */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '28px', marginBottom: '32px' }}>
 
-                <div style={{ marginTop: '12px' }}>
-                  <a
-                    href="https://maps.app.goo.gl/NgZbED8Ye1V4dMrC8"
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{ color: '#1fadbf', fontWeight: 700, textDecoration: 'none' }}
-                  >
-                    View location on Google Maps
-                  </a>
+                {/* Registered Office - Chittorgarh */}
+                <div style={{ background: '#FFFFFF', borderRadius: '20px', border: '1px solid #E5E7EB', boxShadow: '0 4px 16px rgba(0,0,0,0.08)', overflow: 'hidden' }}>
+                  <div className="map-container" style={{ height: '300px' }}>
+                    <iframe
+                      src="https://www.google.com/maps?q=F-16,+Block+II,+Ambe+Market,+Chittorgarh,+Rajasthan+312001&output=embed"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0, display: 'block' }}
+                      allowFullScreen=""
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title="Vedansh Infra Registered Office - Chittorgarh"
+                    />
+                  </div>
+                  <div style={{ padding: '20px 24px 24px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
+                      <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#1fadbf', flexShrink: 0 }} />
+                      <span style={{ fontSize: '12px', fontWeight: 800, color: '#1fadbf', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Registered Office</span>
+                    </div>
+                    <h3 style={{ fontSize: '18px', fontWeight: '800', color: '#1F2937', marginBottom: '6px', fontFamily: "'Poppins', sans-serif" }}>Chittorgarh, Rajasthan</h3>
+                    <p style={{ fontSize: '14px', color: '#6B7280', lineHeight: '1.6', marginBottom: '14px' }}>
+                      F-16, Block-II, Ambe Market,<br />Chittorgarh - 312001, Rajasthan
+                    </p>
+                    <a href="https://www.google.com/maps?q=F-16,+Block+II,+Ambe+Market,+Chittorgarh,+Rajasthan+312001" target="_blank" rel="noreferrer" style={{ color: '#1fadbf', fontWeight: 700, textDecoration: 'none', fontSize: '14px' }}>
+                      Open in Google Maps →
+                    </a>
+                  </div>
                 </div>
+
+                {/* Branch Office - Ahmedabad */}
+                <div style={{ background: '#FFFFFF', borderRadius: '20px', border: '1px solid #E5E7EB', boxShadow: '0 4px 16px rgba(0,0,0,0.08)', overflow: 'hidden' }}>
+                  <div className="map-container" style={{ height: '300px' }}>
+                    <iframe
+                      src="https://www.google.com/maps?q=Central+by+Sangath+IPL,+Chandkheda,+Ahmedabad,+Gujarat+380005&output=embed"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0, display: 'block' }}
+                      allowFullScreen=""
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title="Vedansh Infra Branch Office - Ahmedabad"
+                    />
+                  </div>
+                  <div style={{ padding: '20px 24px 24px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
+                      <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#1fadbf', flexShrink: 0 }} />
+                      <span style={{ fontSize: '12px', fontWeight: 800, color: '#1fadbf', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Branch Office</span>
+                    </div>
+                    <h3 style={{ fontSize: '18px', fontWeight: '800', color: '#1F2937', marginBottom: '6px', fontFamily: "'Poppins', sans-serif" }}>Ahmedabad, Gujarat</h3>
+                    <p style={{ fontSize: '14px', color: '#6B7280', lineHeight: '1.6', marginBottom: '14px' }}>
+                      302, Central by Sangath IPL, B/H 4D Square Mall,<br />Motera Road, Chandkheda, Ahmedabad - 380005
+                    </p>
+                    <a href="https://www.google.com/maps?q=Central+by+Sangath+IPL,+Chandkheda,+Ahmedabad,+Gujarat+380005" target="_blank" rel="noreferrer" style={{ color: '#1fadbf', fontWeight: 700, textDecoration: 'none', fontSize: '14px' }}>
+                      Open in Google Maps →
+                    </a>
+                  </div>
+                </div>
+
               </div>
 
               {/* Why Choose Us */}
