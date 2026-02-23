@@ -649,16 +649,14 @@ export default function Careers() {
                   className="benefit-card"
                   style={{ ...cardBase, cursor: 'pointer' }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-12px)';
-                    e.currentTarget.style.boxShadow = '0 20px 50px rgba(31, 173, 191, 0.15)';
+                    e.currentTarget.style.transform = 'scale(1.05)';
+                    e.currentTarget.style.boxShadow = '0 12px 24px rgba(31, 173, 191, 0.15)';
                     e.currentTarget.style.borderColor = '#1fadbf';
-                    e.currentTarget.style.background = '#FFFFFF';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.transform = 'scale(1)';
                     e.currentTarget.style.boxShadow = 'none';
                     e.currentTarget.style.borderColor = '#E5E7EB';
-                    e.currentTarget.style.background = '#F8F9FA';
                   }}
                 >
                   <div style={{ fontSize: '46px', color: '#1fadbf', marginBottom: '18px' }}>{item.icon}</div>
@@ -697,12 +695,12 @@ export default function Careers() {
                     transition: 'all 0.35s ease',
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-10px)';
-                    e.currentTarget.style.boxShadow = '0 18px 44px rgba(31, 173, 191, 0.12)';
+                    e.currentTarget.style.transform = 'scale(1.05)';
+                    e.currentTarget.style.boxShadow = '0 12px 24px rgba(31, 173, 191, 0.15)';
                     e.currentTarget.style.borderColor = '#1fadbf';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.transform = 'scale(1)';
                     e.currentTarget.style.boxShadow = 'none';
                     e.currentTarget.style.borderColor = '#E5E7EB';
                   }}
@@ -756,16 +754,14 @@ export default function Careers() {
                   className="reveal-card"
                   style={{ ...cardBase, cursor: 'pointer' }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-12px)';
-                    e.currentTarget.style.boxShadow = '0 20px 50px rgba(31, 173, 191, 0.15)';
+                    e.currentTarget.style.transform = 'scale(1.05)';
+                    e.currentTarget.style.boxShadow = '0 12px 24px rgba(31, 173, 191, 0.15)';
                     e.currentTarget.style.borderColor = '#1fadbf';
-                    e.currentTarget.style.background = '#FFFFFF';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.transform = 'scale(1)';
                     e.currentTarget.style.boxShadow = 'none';
                     e.currentTarget.style.borderColor = '#E5E7EB';
-                    e.currentTarget.style.background = '#F8F9FA';
                   }}
                 >
                   <div style={{ fontSize: '44px', color: '#1fadbf', marginBottom: '18px' }}>{b.icon}</div>
@@ -844,12 +840,12 @@ export default function Careers() {
                       transition: 'all 0.35s ease',
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateY(-10px)';
-                      e.currentTarget.style.boxShadow = '0 18px 44px rgba(31, 173, 191, 0.12)';
+                      e.currentTarget.style.transform = 'scale(1.05)';
+                      e.currentTarget.style.boxShadow = '0 12px 24px rgba(31, 173, 191, 0.15)';
                       e.currentTarget.style.borderColor = '#1fadbf';
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.transform = 'scale(1)';
                       e.currentTarget.style.boxShadow = 'none';
                       e.currentTarget.style.borderColor = '#E5E7EB';
                     }}
@@ -942,6 +938,17 @@ export default function Careers() {
                     padding: '44px',
                     borderRadius: '24px',
                     border: '1px solid #E5E7EB',
+                    transition: 'all 0.3s ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'scale(1.05)';
+                    e.currentTarget.style.borderColor = '#1fadbf';
+                    e.currentTarget.style.boxShadow = '0 12px 24px rgba(31, 173, 191, 0.15)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'scale(1)';
+                    e.currentTarget.style.borderColor = '#E5E7EB';
+                    e.currentTarget.style.boxShadow = 'none';
                   }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '18px' }}>

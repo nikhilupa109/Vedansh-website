@@ -747,25 +747,18 @@ const Home = () => {
                   border: '1px solid #E5E7EB',
                   boxShadow: '0 4px 16px rgba(0,0,0,0.08)',
                   cursor: 'pointer',
-                  clipPath: 'inset(0% 0% 0% 0%)'
+                  clipPath: 'inset(0% 0% 0% 0%)',
+                  transition: 'all 0.3s ease'
                 }}
                 onMouseEnter={(e) => {
-                  gsap.to(e.currentTarget, {
-                    y: -12,
-                    scale: 1.03,
-                    boxShadow: '0 25px 50px rgba(31, 173, 191, 0.2)',
-                    duration: 0.4,
-                    ease: 'power1.inOut'
-                  });
+                  e.currentTarget.style.transform = 'scale(1.05)';
+                  e.currentTarget.style.borderColor = '#1fadbf';
+                  e.currentTarget.style.boxShadow = '0 12px 24px rgba(31, 173, 191, 0.15)';
                 }}
                 onMouseLeave={(e) => {
-                  gsap.to(e.currentTarget, {
-                    y: 0,
-                    scale: 1,
-                    boxShadow: '0 4px 16px rgba(0,0,0,0.08)',
-                    duration: 0.4,
-                    ease: 'power1.inOut'
-                  });
+                  e.currentTarget.style.transform = 'scale(1)';
+                  e.currentTarget.style.borderColor = '#E5E7EB';
+                  e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.08)';
                 }}
               >
                 <img
@@ -828,7 +821,18 @@ const Home = () => {
                   borderRadius: '24px',
                   padding: '18px',
                   boxShadow: '0 18px 46px rgba(17, 24, 39, 0.10)',
-                  overflow: 'hidden'
+                  overflow: 'hidden',
+                  transition: 'all 0.3s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'scale(1.05)';
+                  e.currentTarget.style.borderColor = '#1fadbf';
+                  e.currentTarget.style.boxShadow = '0 12px 24px rgba(31, 173, 191, 0.15)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'scale(1)';
+                  e.currentTarget.style.borderColor = '#E5E7EB';
+                  e.currentTarget.style.boxShadow = '0 18px 46px rgba(17, 24, 39, 0.10)';
                 }}
               >
                 {/* Photo space */}
@@ -1120,13 +1124,18 @@ const Home = () => {
                       borderRadius: '20px',
                       overflow: 'hidden',
                       boxShadow: '0 8px 24px rgba(0,0,0,0.08)',
-                      border: '1px solid #E5E7EB'
+                      border: '1px solid #E5E7EB',
+                      transition: 'all 0.3s ease'
                     }}
                     onMouseEnter={(e) => {
-                      gsap.to(e.currentTarget, { y: -10, boxShadow: '0 25px 50px rgba(31, 173, 191, 0.18)', duration: 0.35, ease: 'power1.inOut' });
+                      e.currentTarget.style.transform = 'scale(1.05)';
+                      e.currentTarget.style.borderColor = '#1fadbf';
+                      e.currentTarget.style.boxShadow = '0 12px 24px rgba(31, 173, 191, 0.15)';
                     }}
                     onMouseLeave={(e) => {
-                      gsap.to(e.currentTarget, { y: 0, boxShadow: '0 8px 24px rgba(0,0,0,0.08)', duration: 0.35, ease: 'power1.inOut' });
+                      e.currentTarget.style.transform = 'scale(1)';
+                      e.currentTarget.style.borderColor = '#E5E7EB';
+                      e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.08)';
                     }}
                   >
                     <div style={{ padding: '22px 22px 0 22px' }}>

@@ -533,7 +533,7 @@ const Projects = () => {
         }
 
         .photo-card:hover {
-          transform: translateY(-12px) scale(1.05);
+          transform: scale(1.05);
           box-shadow: 0 16px 40px rgba(31, 173, 191, 0.3);
         }
 
@@ -549,7 +549,7 @@ const Projects = () => {
         }
 
         .team-photo-card:hover {
-          transform: translateY(-12px) scale(1.05);
+          transform: scale(1.05);
           box-shadow: 0 16px 40px rgba(245, 87, 108, 0.3);
         }
 
@@ -687,12 +687,12 @@ const Projects = () => {
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.borderColor = '#1fadbf';
-                  e.currentTarget.style.transform = 'translateY(-8px)';
+                  e.currentTarget.style.transform = 'scale(1.05)';
                   e.currentTarget.style.boxShadow = '0 12px 24px rgba(31, 173, 191, 0.15)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.borderColor = '#E5E7EB';
-                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.transform = 'scale(1)';
                   e.currentTarget.style.boxShadow = 'none';
                 }}
               >
@@ -775,12 +775,12 @@ const Projects = () => {
                   transition: 'all 0.4s ease'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-8px)';
-                  e.currentTarget.style.boxShadow = '0 16px 40px rgba(31, 173, 191, 0.15)';
+                  e.currentTarget.style.transform = 'scale(1.05)';
+                  e.currentTarget.style.boxShadow = '0 12px 24px rgba(31, 173, 191, 0.15)';
                   e.currentTarget.style.borderColor = '#1fadbf';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.transform = 'scale(1)';
                   e.currentTarget.style.boxShadow = 'none';
                   e.currentTarget.style.borderColor = '#E5E7EB';
                 }}

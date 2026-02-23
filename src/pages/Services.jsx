@@ -270,7 +270,7 @@ useEffect(() => {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(500px, 1fr))', gap: '40px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '40px' }}>
             {coreServices.map((service, i) => (
               <div 
                 key={i}
@@ -282,16 +282,18 @@ useEffect(() => {
                   transition: 'all 0.4s ease',
                   cursor: 'pointer',
                   opacity: 1,
-                  transform: 'translateY(0)'
+                  transform: 'translateY(0)',
+                  ...(coreServices.length % 2 !== 0 && i === coreServices.length - 1
+                    ? { gridColumn: '1 / -1', maxWidth: 'calc(50% - 20px)', justifySelf: 'center', width: '100%' }
+                    : {})
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-12px)';
-                  e.currentTarget.style.boxShadow = '0 20px 50px rgba(31, 173, 191, 0.15)';
+                  e.currentTarget.style.transform = 'scale(1.05)';
+                  e.currentTarget.style.boxShadow = '0 12px 24px rgba(31, 173, 191, 0.15)';
                   e.currentTarget.style.borderColor = '#1fadbf';
-                  e.currentTarget.style.background = '#FFFFFF';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.transform = 'scale(1)';
                   e.currentTarget.style.boxShadow = 'none';
                   e.currentTarget.style.borderColor = '#E5E7EB';
                   e.currentTarget.style.background = '#F8F9FA';
@@ -304,7 +306,7 @@ useEffect(() => {
                 <p style={{ fontSize: '16px', color: '#6B7280', lineHeight: '1.7', marginBottom: '24px' }}>
                   {service.description}
                 </p>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px' }}>
                   {service.highlights.map((highlight, idx) => (
                     <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       <FaCheckCircle style={{ color: '#1fadbf', fontSize: '16px', flexShrink: 0 }} />
@@ -330,7 +332,7 @@ useEffect(() => {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '32px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '32px' }}>
             {technicalDisciplines.map((discipline, i) => (
               <div
                 key={i}
@@ -380,7 +382,7 @@ useEffect(() => {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '28px', maxWidth: '1200px', margin: '0 auto' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '28px', maxWidth: '1200px', margin: '0 auto' }}>
             {industries.map((industry, i) => (
               <div
                 key={i}
@@ -393,21 +395,20 @@ useEffect(() => {
                   transition: 'all 0.3s ease',
                   cursor: 'pointer',
                   opacity: 1,
-                  transform: 'translateY(0)'
+                  transform: 'translateY(0)',
+                  ...(industries.length % 2 !== 0 && i === industries.length - 1
+                    ? { gridColumn: '1 / -1', maxWidth: 'calc(50% - 14px)', justifySelf: 'center', width: '100%' }
+                    : {})
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'linear-gradient(135deg, #1fadbf 0%, #16a085 100%)';
-                  e.currentTarget.style.transform = 'translateY(-8px)';
-                  e.currentTarget.style.boxShadow = '0 12px 24px rgba(31, 173, 191, 0.2)';
-                  e.currentTarget.querySelector('span').style.color = 'white';
-                  e.currentTarget.querySelector('div').style.filter = 'brightness(0) invert(1)';
+                  e.currentTarget.style.transform = 'scale(1.05)';
+                  e.currentTarget.style.borderColor = '#1fadbf';
+                  e.currentTarget.style.boxShadow = '0 12px 24px rgba(31, 173, 191, 0.15)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'linear-gradient(135deg, #F8F9FA 0%, #FFFFFF 100%)';
-                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.transform = 'scale(1)';
+                  e.currentTarget.style.borderColor = '#E5E7EB';
                   e.currentTarget.style.boxShadow = 'none';
-                  e.currentTarget.querySelector('span').style.color = '#1F2937';
-                  e.currentTarget.querySelector('div').style.filter = 'none';
                 }}
               >
                 <div style={{ fontSize: '48px', marginBottom: '12px', transition: 'all 0.3s ease' }}>

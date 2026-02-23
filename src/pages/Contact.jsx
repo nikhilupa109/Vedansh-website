@@ -188,8 +188,8 @@ const Contact = () => {
 
         .info-item:hover {
           border-color: #1fadbf;
-          transform: translateY(-8px);
-          box-shadow: 0 12px 28px rgba(31, 173, 191, 0.15);
+          transform: scale(1.05);
+          box-shadow: 0 12px 24px rgba(31, 173, 191, 0.15);
         }
 
         .info-icon {

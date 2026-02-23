@@ -238,8 +238,8 @@ const heroRef = useRef(null);
 
         .info-card:hover {
           border-color: #1fadbf;
-          transform: translateY(-5px);
-          box-shadow: 0 12px 28px rgba(31, 173, 191, 0.15);
+          transform: scale(1.05);
+          box-shadow: 0 12px 24px rgba(31, 173, 191, 0.15);
         }
 
         .detail-card {
@@ -263,7 +263,7 @@ const heroRef = useRef(null);
         }
 
         .detail-card:hover {
-          transform: translateY(-8px);
+          transform: scale(1.05);
         }
 
         .detail-icon {
@@ -287,8 +287,8 @@ const heroRef = useRef(null);
 
         .highlight-item:hover {
           border-color: #1fadbf;
-          transform: translateY(-8px);
-          box-shadow: 0 16px 32px rgba(31, 173, 191, 0.15);
+          transform: scale(1.05);
+          box-shadow: 0 12px 24px rgba(31, 173, 191, 0.15);
         }
 
         .feature-card {
@@ -297,8 +297,8 @@ const heroRef = useRef(null);
 
         .feature-card:hover {
           border-color: #1fadbf !important;
-          transform: translateY(-8px);
-          box-shadow: 0 16px 32px rgba(31, 173, 191, 0.15);
+          transform: scale(1.05);
+          box-shadow: 0 12px 24px rgba(31, 173, 191, 0.15);
         }
 
         .related-project-card {
@@ -311,8 +311,8 @@ const heroRef = useRef(null);
         }
 
         .related-project-card:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 16px 40px rgba(31, 173, 191, 0.15);
+          transform: scale(1.05);
+          box-shadow: 0 12px 24px rgba(31, 173, 191, 0.15);
           border-color: #1fadbf;
         }
 
